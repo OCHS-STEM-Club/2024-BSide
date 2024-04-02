@@ -1,0 +1,52 @@
+{
+  "version": 1.0,
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 0.631561442495083,
+        "y": 4.546404070386616
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 0.6815614424950827,
+        "y": 4.459801530008173
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 1.5334796588875692,
+        "y": 4.031022232448053
+      },
+      "prevControl": {
+        "x": 1.4627689807689142,
+        "y": 4.101732910566708
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": null
+    }
+  ],
+  "rotationTargets": [],
+  "constraintZones": [],
+  "eventMarkers": [],
+  "globalConstraints": {
+    "maxVelocity": 3.81,
+    "maxAcceleration": 2.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": -40.0,
+    "rotateFast": false
+  },
+  "reversed": false,
+  "folder": "Source Side 2 Piece Subwoofer Midfield Auto",
+  "previewStartingState": {
+    "rotation": -60.642246457208685,
+    "velocity": 0
+  },
+  "useDefaultConstraints": true
+}
