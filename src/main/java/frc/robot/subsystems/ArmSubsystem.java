@@ -6,16 +6,19 @@ package frc.robot.subsystems;
 
 import org.littletonrobotics.junction.Logger;
 
+import com.ctre.phoenix.motorcontrol.LimitSwitchSource;
 import com.revrobotics.AbsoluteEncoder;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
 import com.revrobotics.SparkAbsoluteEncoder;
+import com.revrobotics.SparkLimitSwitch;
 import com.revrobotics.SparkMaxAbsoluteEncoder;
 import com.revrobotics.SparkPIDController;
 import com.revrobotics.CANSparkBase.ControlType;
 import com.revrobotics.CANSparkBase.IdleMode;
 import com.revrobotics.CANSparkLowLevel.MotorType;
 import com.revrobotics.CANSparkLowLevel.PeriodicFrame;
+import com.revrobotics.SparkLimitSwitch.Type;
 
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -31,8 +34,8 @@ public class ArmSubsystem extends SubsystemBase {
   private CANSparkMax armMotorRight;
   private RelativeEncoder armEncoderLeft;
   private RelativeEncoder armEncoderRight;
-  private DigitalInput lowerHardStop;
-  private DigitalInput upperHardStop;
+  private SparkLimitSwitch lowerHardStop;
+  private SparkLimitSwitch upperHardStop;
   private boolean atshootervalue;
 
   private SparkPIDController m_pidController;
@@ -48,20 +51,21 @@ public class ArmSubsystem extends SubsystemBase {
     armMotorRight = new CANSparkMax(Constants.ArmConstants.kArmMotorRightID, MotorType.kBrushless);
     armMotorLeft.setIdleMode(IdleMode.kBrake);
     armMotorRight.setIdleMode(IdleMode.kBrake);
-    armMotorLeft.setInverted(false);
-    armMotorRight.setInverted(false);
+    armMotorLeft.setInverted(false);//TODO:Check Arm Motor Inversions
+    armMotorRight.setInverted(false);//TODO:Check Arm Motor Inversions
 
     armMotorRight.setSmartCurrentLimit(30, 20);
     armMotorLeft.setSmartCurrentLimit(30, 20);
   
+    lowerHardStop = armMotorRight.getForwardLimitSwitch(Type.kNormallyOpen);
 
     m_encoder = armMotorRight.getAbsoluteEncoder(SparkAbsoluteEncoder.Type.kDutyCycle);
     m_encoder.setPositionConversionFactor(360);
-    m_encoder.setZeroOffset(ArmConstants.kEncoderZeroOffset);
+    m_encoder.setZeroOffset(ArmConstants.kEncoderZeroOffset);//TODO:Change Zero Offset
 
     m_pidController = armMotorRight.getPIDController();
 
-    m_pidController.setP(ArmConstants.kP);
+    m_pidController.setP(ArmConstants.kP);//TODO:Arm P Value Tune
     m_pidController.setI(ArmConstants.kI);
     m_pidController.setD(ArmConstants.kD);
     m_pidController.setIZone(ArmConstants.kIz);
@@ -124,28 +128,30 @@ public class ArmSubsystem extends SubsystemBase {
   }
 
   public void intakeSetpoint() {
-    m_pidController.setReference(Constants.ArmConstants.kIntakeSetpoint, CANSparkMax.ControlType.kPosition);
+    m_pidController.setReference(Constants.ArmConstants.kIntakeSetpoint, CANSparkMax.ControlType.kPosition);//TODO:Change Arm Setpoints Accordingly
   }
 
   public void shooterSetpoint() {
-    m_pidController.setReference(Constants.ArmConstants.kShooterSetpoint, CANSparkMax.ControlType.kPosition);
+    m_pidController.setReference(Constants.ArmConstants.kShooterSetpoint, CANSparkMax.ControlType.kPosition);//TODO:Change Arm Setpoints Accordingly
   }
 
   public void ampSetpoint() {
-    m_pidController.setReference(Constants.ArmConstants.kAmpSetpoint, CANSparkMax.ControlType.kPosition);
+    m_pidController.setReference(Constants.ArmConstants.kAmpSetpoint, CANSparkMax.ControlType.kPosition);//TODO:Change Arm Setpoints Accordingly
   }
 
   public void setReference(double pidReference) {
     m_pidController.setReference(pidReference,CANSparkMax.ControlType.kPosition);
   }
 
-  // public void setReferenceSD() {
-  //   if((value != 0)) { m_pidController.setReference(value,CANSparkMax.ControlType.kPosition); armValue = value; }
+  public double getArmEncoder() {
+    return m_encoder.getPosition();
+  }
 
-  // }
-  // public void SettuningMode() {
-  //   boolean tuningMode = true;
-  // }
+  public boolean getLowerHardStop() {
+    return lowerHardStop.isPressed();
+  }
+
+  //TODO:Add Safe spot shooting setpoints
 
 
 

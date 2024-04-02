@@ -50,7 +50,7 @@ public class ClimberSubsystem extends SubsystemBase {
   public void periodic() {
     Logger.recordOutput("Climber Encoder",climberEncoder.getPosition());
   }
-
+  //TODO:Change Climber Setpoints Accordingly
   public void climberDown() {
     if (climberEncoder.getPosition() <= 0 ) {
       climberMotor.set(0.98);

@@ -25,12 +25,15 @@ import frc.robot.commands.Climber.ClimberDownOverrideCmd;
 import frc.robot.commands.Climber.ClimberUpCommand;
 import frc.robot.commands.Climber.ClimberUpOverrideCmd;
 import frc.robot.commands.Drive.AbsoluteFieldDrive;
+import frc.robot.commands.Indexer.IndexerInCommand;
+import frc.robot.commands.Indexer.IndexerOutCommand;
+import frc.robot.commands.Indexer.IndexerOverrideCommand;
 import frc.robot.commands.Intake.IntakeInCommand;
 import frc.robot.commands.Intake.IntakeOutCommand;
-import frc.robot.commands.Intake.IntakeOverrideCommand;
 import frc.robot.commands.Shooter.ShooterCommand;
 import frc.robot.subsystems.ArmSubsystem;
 import frc.robot.subsystems.ClimberSubsystem;
+import frc.robot.subsystems.IndexerSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.SwerveSubsystem;
@@ -55,9 +58,10 @@ public class RobotContainer
   private final SwerveSubsystem drivebase = new SwerveSubsystem(new File(Filesystem.getDeployDirectory(),
                                                                          "swerve/neo"));
   private final ArmSubsystem m_armSubsystem = new ArmSubsystem();
-  private final IntakeSubsystem m_intakeSubsystem = new IntakeSubsystem();
+  private final IndexerSubsystem m_indexerSubsystem = new IndexerSubsystem();
   private final ShooterSubsystem m_shooterSubsystem = new ShooterSubsystem();
   private final ClimberSubsystem m_climberSubsystem = new ClimberSubsystem();
+  private final IntakeSubsystem m_intakeSubsystem = new IntakeSubsystem();
 
   // Replace with CommandPS4Controller or CommandJoystick if needed
   final CommandXboxController driverXbox = new CommandXboxController(OperatorConstants.kDriverControllerPort);
@@ -66,12 +70,20 @@ public class RobotContainer
   private final SendableChooser<Command> autoChooser;
 
   //Commands
+
+  // Arm
   ArmCommand m_manualArmUpCommand = new ArmCommand(m_armSubsystem, ArmConstants.kArmUpSpeed);
   ArmCommand m_manualArmDownCommand = new ArmCommand(m_armSubsystem, ArmConstants.kArmDownSpeed);
+  // Shooter
   ShooterCommand m_shooterCommand = new ShooterCommand(m_shooterSubsystem);
-  IntakeInCommand m_intakeInCommand = new IntakeInCommand(m_intakeSubsystem);
-  IntakeOverrideCommand m_intakeOverrideCommand = new IntakeOverrideCommand(m_intakeSubsystem);
-  IntakeOutCommand m_intakeOutCommand = new IntakeOutCommand(m_intakeSubsystem);
+  // Indexer
+  IndexerInCommand m_indexerInCommand = new IndexerInCommand(m_indexerSubsystem);
+  IndexerOverrideCommand m_IndexerOverrideCommand = new IndexerOverrideCommand(m_indexerSubsystem);
+  IndexerOutCommand m_IndexerOutCommand = new IndexerOutCommand(m_indexerSubsystem);
+  // Intake
+  IntakeInCommand m_intakeInCommand = new IntakeInCommand(m_intakeSubsystem, m_armSubsystem, m_indexerSubsystem);
+  IntakeOutCommand m_intakeOutCommand = new IntakeOutCommand(m_intakeSubsystem, m_indexerSubsystem);
+  // Climber
   ClimberDownOverrideCmd m_ClimberDownOverrideCmd = new ClimberDownOverrideCmd(m_climberSubsystem);
   ClimberUpOverrideCmd m_climberUpOverrideCmd = new ClimberUpOverrideCmd(m_climberSubsystem);
   ClimberDownCommand m_climberDownCommand = new ClimberDownCommand(m_climberSubsystem);
@@ -83,11 +95,11 @@ public class RobotContainer
   public RobotContainer()
   {
 
-    NamedCommands.registerCommand("Intake in Override", Commands.runOnce(() -> m_intakeSubsystem.intakeSpeed(0.4)));
-    NamedCommands.registerCommand("Intake Out", Commands.runOnce(() -> m_intakeSubsystem.intakeSpeed(-0.4)));
-    NamedCommands.registerCommand("Intake in BB", new IntakeInCommand(m_intakeSubsystem));
-    NamedCommands.registerCommand("Intake Off", Commands.runOnce(m_intakeSubsystem::intakeOff));
-    // NamedCommands.registerCommand("Intake In BB w/o Timeout", new IntakeInCommand(m_intakeSubsystem));
+    NamedCommands.registerCommand("Intake in Override", Commands.runOnce(() -> m_indexerSubsystem.indexerSpeed(0.4)));
+    NamedCommands.registerCommand("Intake Out", new IntakeOutCommand(m_intakeSubsystem, m_indexerSubsystem));
+    NamedCommands.registerCommand("Intake in BB", new IntakeInCommand(m_intakeSubsystem, m_armSubsystem, m_indexerSubsystem));
+    NamedCommands.registerCommand("Intake Off", Commands.runOnce(m_indexerSubsystem::indexerOff));
+
 
     // Shooter
     NamedCommands.registerCommand("Shooter On", Commands.runOnce(() -> m_shooterSubsystem.shooterOn(0.4)));
@@ -95,6 +107,7 @@ public class RobotContainer
     NamedCommands.registerCommand("Shooter Off", Commands.runOnce(m_shooterSubsystem::shooterOff));
     
     // Arm
+    //TODO:Change Arm Setpoints Accordingly
     NamedCommands.registerCommand("Arm to Shooter 1st Piece Middle", Commands.runOnce(() -> m_armSubsystem.setReference(27)));
     NamedCommands.registerCommand("Arm to Shooter Shuttle", Commands.runOnce(() -> m_armSubsystem.setReference(27)));
     NamedCommands.registerCommand("Arm to Shooter 4 Piece", Commands.runOnce(() -> m_armSubsystem.setReference(31)));
@@ -159,7 +172,7 @@ public class RobotContainer
     );
 
     driverXbox.b().whileTrue(
-      m_intakeOverrideCommand
+      m_IndexerOverrideCommand
     );
 
     driverXbox.leftBumper().whileTrue(

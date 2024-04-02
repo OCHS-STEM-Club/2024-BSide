@@ -43,9 +43,9 @@ public class IntakeSubsystem extends SubsystemBase {
   public void periodic() {
     // This method will be called once per scheduler run
     Logger.recordOutput("Intake Speed", intakeMotor.get());
-    Logger.recordOutput("Beam Break", beamBreakSensor());
     
   }
+  //TODO:Add if statement for intaking when arm is down or lower limit switch is pressed
 
   public void intakeSpeed(double speed){
     intakeMotor.set(speed);

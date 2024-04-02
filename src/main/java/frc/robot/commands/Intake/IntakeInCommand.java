@@ -7,15 +7,28 @@ package frc.robot.commands.Intake;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants;
 import frc.robot.LimelightHelpers;
+import frc.robot.subsystems.ArmSubsystem;
+import frc.robot.subsystems.IndexerSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
 
 public class IntakeInCommand extends Command {
   /** Creates a new IntakeCommand. */
   IntakeSubsystem m_intakeSubsystem;
+  ArmSubsystem m_armSubsystem;
+  IndexerSubsystem m_indexerSubsystem;
+  double armValue;
+  boolean lowerLimitSwitch;
+  boolean beamBreak;
   // LimelightSubsystem m_limelightSubsystem;
   /** Creates a new IntakeCommand. */
-  public IntakeInCommand(IntakeSubsystem intakeSubsystem) {
+  public IntakeInCommand(IntakeSubsystem intakeSubsystem, ArmSubsystem armSubsystem, IndexerSubsystem indexerSubsystem) {
   m_intakeSubsystem = intakeSubsystem;
+  m_armSubsystem = armSubsystem;
+  m_indexerSubsystem = indexerSubsystem;
+
+  armValue = m_armSubsystem.getArmEncoder();
+  lowerLimitSwitch = m_armSubsystem.getLowerHardStop();
+  beamBreak = m_indexerSubsystem.beamBreakSensor();
   // m_limelightSubsystem = limelight;
     // Use addRequirements() here to declare subsystem dependencies.
   }
@@ -27,18 +40,26 @@ public class IntakeInCommand extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-   if (m_intakeSubsystem.beamBreakSensor() == true) {
+
+   if (((armValue >= 0 && armValue <= 3) || lowerLimitSwitch == true) && beamBreak == true ) {
      m_intakeSubsystem.intakeSpeed(Constants.IntakeConstants.kIntakeInSpeed);
+     m_indexerSubsystem.indexerSpeed(Constants.IndexerConstants.kIndexerInSpeed);
      LimelightHelpers.setLEDMode_ForceOff("limelight-boombox");
-   } else  m_intakeSubsystem.intakeOff();
-        LimelightHelpers.setLEDMode_ForceBlink("limelight-boombox");
-         
+   } else if (beamBreak == false) {
+      m_indexerSubsystem.indexerOff();
+      LimelightHelpers.setLEDMode_ForceBlink("limelight-boombox");
+   } else 
+      m_indexerSubsystem.indexerOff();
+      m_intakeSubsystem.intakeOff();
+
   }
+
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
     m_intakeSubsystem.intakeOff();
+    m_indexerSubsystem.indexerOff();
     LimelightHelpers.setLEDMode_ForceOff("limelight-boombox");
   }
 
