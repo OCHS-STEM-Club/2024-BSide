@@ -18,6 +18,7 @@ import com.revrobotics.SparkAbsoluteEncoder.Type;
 
 import edu.wpi.first.wpilibj.DutyCycleEncoder;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -35,7 +36,7 @@ public class ClimberSubsystem extends SubsystemBase {
     climberMotor = new CANSparkMax(Constants.ClimberConstants.kClimberMotorID, MotorType.kBrushless);
     climberEncoder = climberMotor.getEncoder();
     climberMotor.setIdleMode(IdleMode.kBrake);
-    climberMotor.setInverted(false);
+    climberMotor.setInverted(false); //TODO:Check Inversions
     climberMotor.setSmartCurrentLimit(10, 10);
     climberMotor.getEncoder();
     throughBoreEncoder = new DutyCycleEncoder(2);
@@ -44,21 +45,23 @@ public class ClimberSubsystem extends SubsystemBase {
     climberMotor.setPeriodicFramePeriod(PeriodicFrame.kStatus4, 100);
     climberMotor.setPeriodicFramePeriod(PeriodicFrame.kStatus5, 100);
     climberMotor.setPeriodicFramePeriod(PeriodicFrame.kStatus6, 100);
+
+    SmartDashboard.putNumber("Climber Encoder", climberEncoder.getPosition());
     
   }
   @Override
   public void periodic() {
     Logger.recordOutput("Climber Encoder",climberEncoder.getPosition());
   }
-  //TODO:Change Climber Setpoints Accordingly
+
   public void climberDown() {
-    if (climberEncoder.getPosition() <= 0 ) {
+    if (climberEncoder.getPosition() <= 0 ) {   //TODO:Change Climber Setpoints Accordingly
       climberMotor.set(0.98);
    } else climberMotor.set(0);
 }
 
   public void climberUp() {
-   if (climberEncoder.getPosition() >= -23) {
+   if (climberEncoder.getPosition() >= -23) {   //TODO:Change Climber Setpoints Accordingly
       climberMotor.set(-0.98);
     } else climberMotor.set(0);
   }

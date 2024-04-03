@@ -208,8 +208,6 @@ public class RobotContainer
       Commands.runOnce(() -> m_armSubsystem.setReference(25))
     );
 
-    // 
-
     m_buttonBox.button(10).whileTrue(
       m_climberUpCommand
     );

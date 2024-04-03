@@ -25,7 +25,7 @@ public class IndexerSubsystem extends SubsystemBase {
     public IndexerSubsystem() {
         indexerMotor = new CANSparkMax(Constants.IndexerConstants.kIndexerMotorID, MotorType.kBrushless);
         indexerSensor = new DigitalInput(Constants.IndexerConstants.kBeamBreakPort);
-        indexerMotor.setInverted(false);
+        indexerMotor.setInverted(false);//TODO:Check Inversions
 
         
 

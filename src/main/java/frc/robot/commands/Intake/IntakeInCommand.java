@@ -47,6 +47,7 @@ public class IntakeInCommand extends Command {
      LimelightHelpers.setLEDMode_ForceOff("limelight-boombox");
    } else if (beamBreak == false) {
       m_indexerSubsystem.indexerOff();
+      m_intakeSubsystem.intakeOff();
       LimelightHelpers.setLEDMode_ForceBlink("limelight-boombox");
    } else 
       m_indexerSubsystem.indexerOff();
