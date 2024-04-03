@@ -24,7 +24,7 @@ public class IntakeSubsystem extends SubsystemBase {
 
     public IntakeSubsystem() {
         intakeMotor = new CANSparkMax(Constants.IntakeConstants.kIntakeMotorID, MotorType.kBrushless);
-        intakeSensor = new DigitalInput(Constants.IntakeConstants.kBeamBreakPort);
+        // intakeSensor = new DigitalInput(Constants.IntakeConstants.kBeamBreakPort);
         intakeMotor.setInverted(false);//TODO:Check Inversions
 
         

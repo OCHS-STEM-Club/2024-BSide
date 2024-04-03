@@ -62,14 +62,14 @@ public final class Constants
   }
 
   public static class IndexerConstants {
-    public static final int kIndexerMotorID = 24;
+    public static final int kIndexerMotorID = 18;
     public static final double kIndexerInSpeed = 0.4;
     public static final double kIndexerOutSpeed = -0.45;
     public static final int kBeamBreakPort = 0;
   }
 
   public static class IntakeConstants {
-    public static final int kIntakeMotorID = 18;
+    public static final int kIntakeMotorID = 24;
     public static final double kIntakeInSpeed = 0.4;
     public static final double kIntakeOutSpeed = -0.45;
     public static final int kBeamBreakPort = 0;
