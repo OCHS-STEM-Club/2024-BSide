@@ -19,13 +19,13 @@ public class IndexerSubsystem extends SubsystemBase {
   /** Creates a new IndexerSubsystem. */
 
         private CANSparkMax indexerMotor;
-        private DigitalInput indexerSensor;
+      //  private DigitalInput indexerSensor;
         private double speed;
 
     public IndexerSubsystem() {
         indexerMotor = new CANSparkMax(Constants.IndexerConstants.kIndexerMotorID, MotorType.kBrushless);
-        indexerSensor = new DigitalInput(Constants.IndexerConstants.kBeamBreakPort);
-        indexerMotor.setInverted(false);//TODO:Check Inversions
+       // indexerSensor = new DigitalInput(Constants.IndexerConstants.kBeamBreakPort);
+        indexerMotor.setInverted(false);
 
         
 
@@ -43,7 +43,7 @@ public class IndexerSubsystem extends SubsystemBase {
   public void periodic() {
     // This method will be called once per scheduler run
     Logger.recordOutput("Indexer Speed", indexerMotor.get());
-    Logger.recordOutput("Beam Break", beamBreakSensor());
+   // Logger.recordOutput("Beam Break", beamBreakSensor());
     
   }
   //TODO:Add if statement for intaking when arm is down or lower limit switch is pressed
@@ -64,8 +64,8 @@ public class IndexerSubsystem extends SubsystemBase {
     indexerMotor.set(Constants.IndexerConstants.kIndexerOutSpeed);
   }
 
-  public boolean beamBreakSensor() {
-    return indexerSensor.get();
-  }
+  // public boolean beamBreakSensor() {
+  //   return indexerSensor.get();
+  // }
 }
 

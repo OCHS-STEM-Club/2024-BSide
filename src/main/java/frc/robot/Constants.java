@@ -70,7 +70,7 @@ public final class Constants
 
   public static class IntakeConstants {
     public static final int kIntakeMotorID = 24;
-    public static final double kIntakeInSpeed = 0.4;
+    public static final double kIntakeInSpeed = 0.6;
     public static final double kIntakeOutSpeed = -0.45;
     public static final int kBeamBreakPort = 0;
   }

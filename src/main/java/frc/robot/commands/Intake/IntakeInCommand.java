@@ -28,7 +28,7 @@ public class IntakeInCommand extends Command {
 
   armValue = m_armSubsystem.getArmEncoder();
   lowerLimitSwitch = m_armSubsystem.getLowerHardStop();
-  beamBreak = m_indexerSubsystem.beamBreakSensor();
+  //beamBreak = m_indexerSubsystem.beamBreakSensor();
   // m_limelightSubsystem = limelight;
     // Use addRequirements() here to declare subsystem dependencies.
   }
@@ -41,18 +41,21 @@ public class IntakeInCommand extends Command {
   @Override
   public void execute() {
 
-   if (((armValue >= 0 && armValue <= 3) || lowerLimitSwitch == true) && beamBreak == true ) {
-     m_intakeSubsystem.intakeSpeed(Constants.IntakeConstants.kIntakeInSpeed);
-     m_indexerSubsystem.indexerSpeed(Constants.IndexerConstants.kIndexerInSpeed);
-     LimelightHelpers.setLEDMode_ForceOff("limelight-boombox");
-   } else if (beamBreak == false) {
-      m_indexerSubsystem.indexerOff();
-      m_intakeSubsystem.intakeOff();
-      LimelightHelpers.setLEDMode_ForceBlink("limelight-boombox");
-   } else 
-      m_indexerSubsystem.indexerOff();
-      m_intakeSubsystem.intakeOff();
+  //  if (((armValue >= 0 && armValue <= 3) || lowerLimitSwitch == true) && beamBreak == true ) {
+  //    m_intakeSubsystem.intakeSpeed(Constants.IntakeConstants.kIntakeInSpeed);
+  //    m_indexerSubsystem.indexerSpeed(Constants.IndexerConstants.kIndexerInSpeed);
+  //    LimelightHelpers.setLEDMode_ForceOff("limelight-boombox");
+  //  } else if (beamBreak == false) {
+  //     m_indexerSubsystem.indexerOff();
+  //     m_intakeSubsystem.intakeOff();
+  //     LimelightHelpers.setLEDMode_ForceBlink("limelight-boombox");
+  //  } else 
+  //     m_indexerSubsystem.indexerOff();
+  //     m_intakeSubsystem.intakeOff();
 
+  // }
+
+   m_intakeSubsystem.intakeSpeed(Constants.IntakeConstants.kIntakeInSpeed);
   }
 
 
@@ -67,10 +70,11 @@ public class IntakeInCommand extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-   if(m_intakeSubsystem.beamBreakSensor() == true) {
-    return false;
-   }
-   else return true;
+  //  if(m_intakeSubsystem.beamBreakSensor() == true) {
+  //   return false;
+  //  }
+  //  else return true;
+  return false;
   }
 }
 

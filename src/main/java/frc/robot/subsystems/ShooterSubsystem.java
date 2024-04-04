@@ -31,8 +31,8 @@ public class ShooterSubsystem extends SubsystemBase {
     shooterMotorLeft = new TalonFX(ShooterConstants.kShooterMotorLeftID);
     shooterMotorRight = new TalonFX(ShooterConstants.kShooterMotorRightID);
 
-    shooterMotorLeft.setInverted(false);//TODO:Check Inversions
-    shooterMotorRight.setInverted(false);//TODO:Check Inversions
+    shooterMotorLeft.setInverted(false);
+    shooterMotorRight.setInverted(false);
 
     shooterMotorLeft.setNeutralMode(NeutralModeValue.Coast);
     shooterMotorRight.setNeutralMode(NeutralModeValue.Coast);

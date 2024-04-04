@@ -27,12 +27,13 @@ public class IndexerInCommand extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-   if (m_indexerSubsystem.beamBreakSensor() == true) {
-     m_indexerSubsystem.indexerSpeed(Constants.IndexerConstants.kIndexerInSpeed);
-     LimelightHelpers.setLEDMode_ForceOff("limelight-boombox");
-   } else  m_indexerSubsystem.indexerOff();
-        LimelightHelpers.setLEDMode_ForceBlink("limelight-boombox");
+  //  if (m_indexerSubsystem.beamBreakSensor() == true) {
+  //    m_indexerSubsystem.indexerSpeed(Constants.IndexerConstants.kIndexerInSpeed);
+  //    LimelightHelpers.setLEDMode_ForceOff("limelight-boombox");
+  //  } else  m_indexerSubsystem.indexerOff();
+  //       LimelightHelpers.setLEDMode_ForceBlink("limelight-boombox");
          
+  m_indexerSubsystem.indexerSpeed(Constants.IndexerConstants.kIndexerInSpeed);
   }
 
   // Called once the command ends or is interrupted.
@@ -45,10 +46,11 @@ public class IndexerInCommand extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-   if(m_indexerSubsystem.beamBreakSensor() == true) {
-    return false;
-   }
-   else return true;
+  //  if(m_indexerSubsystem.beamBreakSensor() == true) {
+  //   return false;
+  //  }
+  //  else return true;
+  return false;
   }
 }
 

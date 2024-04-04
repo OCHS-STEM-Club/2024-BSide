@@ -19,13 +19,13 @@ public class IntakeSubsystem extends SubsystemBase {
   /** Creates a new IntakeSubsystem. */
 
         private CANSparkMax intakeMotor;
-        private DigitalInput intakeSensor;
+        //private DigitalInput intakeSensor;
         private double speed;
 
     public IntakeSubsystem() {
         intakeMotor = new CANSparkMax(Constants.IntakeConstants.kIntakeMotorID, MotorType.kBrushless);
         // intakeSensor = new DigitalInput(Constants.IntakeConstants.kBeamBreakPort);
-        intakeMotor.setInverted(false);//TODO:Check Inversions
+        intakeMotor.setInverted(false);
 
         
 
@@ -63,8 +63,8 @@ public class IntakeSubsystem extends SubsystemBase {
     intakeMotor.set(Constants.IntakeConstants.kIntakeOutSpeed);
   }
 
-  public boolean beamBreakSensor() {
-    return intakeSensor.get();
-  }
+  // public boolean beamBreakSensor() {
+  //   return intakeSensor.get();
+  // }
 }
 
