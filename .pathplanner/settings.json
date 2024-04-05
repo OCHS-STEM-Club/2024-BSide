@@ -1,19 +1,15 @@
 {
-  "robotWidth": 0.51,
-  "robotLength": 0.51,
+  "robotWidth": 0.9,
+  "robotLength": 0.9,
   "holonomicMode": true,
   "pathFolders": [
-    "Source Side 2 Piece Subwoofer Midfield Auto",
-    "Middle 3 Piece Subwoofer Auto",
-    "Source Side 3 Piece Subwoofer Auto",
-    "Source Side 3 Piece Test",
-    "Middle 4 Piece Subwoofer Auto",
-    "Source Side 4 Piece Shuttle Auto"
+    "New Folder"
   ],
   "autoFolders": [],
-  "defaultMaxVel": 3.81,
-  "defaultMaxAccel": 2.0,
+  "defaultMaxVel": 3.0,
+  "defaultMaxAccel": 3.0,
   "defaultMaxAngVel": 540.0,
   "defaultMaxAngAccel": 720.0,
-  "maxModuleSpeed": 3.81
+  "maxModuleSpeed": 4.5,
+  "choreoProjectPath": null
 }
