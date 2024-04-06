@@ -26,45 +26,6 @@
               "Visuals/Show Outside Circles": false
             }
           },
-          "5,3": {
-            "size": [
-              1,
-              1
-            ],
-            "content": {
-              "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/Arm PID Value",
-              "_title": "Arm PID Value",
-              "_glyph": 148,
-              "_showGlyph": false
-            }
-          },
-          "6,3": {
-            "size": [
-              1,
-              1
-            ],
-            "content": {
-              "_type": "Toggle Button",
-              "_source0": "network_table:///SmartDashboard/Tuning Mode",
-              "_title": "Tuning Mode",
-              "_glyph": 148,
-              "_showGlyph": false
-            }
-          },
-          "3,3": {
-            "size": [
-              2,
-              1
-            ],
-            "content": {
-              "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/Arm Encoder",
-              "_title": "SmartDashboard/Arm Encoder",
-              "_glyph": 148,
-              "_showGlyph": false
-            }
-          },
           "7,3": {
             "size": [
               1,
@@ -73,35 +34,48 @@
             "content": {
               "_type": "Boolean Box",
               "_source0": "network_table:///SmartDashboard/Tuning Mode",
-              "_title": "SmartDashboard/Tuning Mode",
+              "_title": "/SmartDashboard/Tuning Mode",
               "_glyph": 148,
               "_showGlyph": false,
               "Colors/Color when true": "#7CFC00FF",
               "Colors/Color when false": "#8B0000FF"
             }
           },
-          "0,3": {
+          "4,3": {
             "size": [
               2,
               1
             ],
             "content": {
               "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/swerve/robotRotation",
-              "_title": "/SmartDashboard/swerve/robotRotation",
+              "_source0": "network_table:///SmartDashboard/Arm absolute encoder",
+              "_title": "/SmartDashboard/Arm absolute encoder",
               "_glyph": 148,
               "_showGlyph": false
             }
           },
-          "2,3": {
+          "7,2": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Toggle Button",
+              "_source0": "network_table:///SmartDashboard/Tuning Mode",
+              "_title": "SmartDashboard/Tuning Mode",
+              "_glyph": 148,
+              "_showGlyph": false
+            }
+          },
+          "6,2": {
             "size": [
               1,
               1
             ],
             "content": {
               "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/Module[backleft] Raw Absolute Encoder",
-              "_title": "Module[backleft] Raw Absolute Encoder",
+              "_source0": "network_table:///SmartDashboard/Arm Referece Value",
+              "_title": "SmartDashboard/Arm Referece Value",
               "_glyph": 148,
               "_showGlyph": false
             }

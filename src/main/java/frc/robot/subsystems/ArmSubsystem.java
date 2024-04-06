@@ -17,6 +17,7 @@ import com.revrobotics.CANSparkLowLevel.PeriodicFrame;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
+import frc.robot.LimelightHelpers;
 import frc.robot.Constants.ArmConstants;
 
 public class ArmSubsystem extends SubsystemBase {
@@ -34,14 +35,16 @@ public class ArmSubsystem extends SubsystemBase {
     armMotorRight = new CANSparkMax(Constants.ArmConstants.kArmMotorRightID, MotorType.kBrushless);
     armMotorLeft = new CANSparkMax(Constants.ArmConstants.kArmMotorLeftID, MotorType.kBrushless);
     armMotorRight.setIdleMode(IdleMode.kBrake);
+    
     armMotorLeft.setIdleMode(IdleMode.kBrake);
+    
 
     armMotorRight.setSmartCurrentLimit(30, 20);
     armMotorLeft.setSmartCurrentLimit(30, 20);
 
     m_armEncoder = armMotorRight.getAbsoluteEncoder(SparkAbsoluteEncoder.Type.kDutyCycle);
-    m_armEncoder.setPositionConversionFactor(360);
-    m_armEncoder.setZeroOffset(ArmConstants.kEncoderZeroOffset);
+    // m_armEncoder.setPositionConversionFactor(360);
+    // m_armEncoder.setZeroOffset(ArmConstants.kEncoderZeroOffset);
     m_armEncoder.setInverted(true);
 
     m_armPidController = armMotorRight.getPIDController();
@@ -78,6 +81,7 @@ public class ArmSubsystem extends SubsystemBase {
   public void periodic() {
     // This method will be called once per scheduler run
     SmartDashboard.putNumber("Arm absolute encoder", m_armEncoder.getPosition());
+    
 
     double value = SmartDashboard.getNumber("Arm Referece Value", 0);
     boolean tuningMode = SmartDashboard.getBoolean("Tuning Mode", false);
@@ -123,6 +127,11 @@ public class ArmSubsystem extends SubsystemBase {
 
   public void ampSetpoint() {
     m_armPidController.setReference(ArmConstants.kAmpSetpoint, CANSparkMax.ControlType.kPosition);
+  }
+
+
+  public void setReference(double setpoint) {
+    m_armPidController.setReference(setpoint, CANSparkMax.ControlType.kPosition);
   }
 }
 

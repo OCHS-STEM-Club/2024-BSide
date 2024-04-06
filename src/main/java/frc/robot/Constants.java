@@ -47,7 +47,7 @@ public final class Constants
     public static final double LEFT_Y_DEADBAND  = 0.1;
     public static final double RIGHT_X_DEADBAND = 0.2;
 
-    public static final double ROTATION_CONSTANT = 6;
+    public static final double ROTATION_CONSTANT = 1.25;
     public static final double TRANSLATION_X_CONSTANT = 0.9;
     public static final double TRANSLATION_Y_CONSTANT = 0.9;
 
@@ -58,7 +58,7 @@ public final class Constants
   public static class ShooterConstants {
     public static final int kShooterMotorLeftID = 21;
     public static final int kShooterMotorRightID = 22;
-    public static final double kShooterSpeed = 0;
+    public static final double kShooterSpeed = 0.4;
   }
 
   public static class IndexerConstants {
@@ -70,7 +70,7 @@ public final class Constants
 
   public static class IntakeConstants {
     public static final int kIntakeMotorID = 24;
-    public static final double kIntakeInSpeed = 0.4;
+    public static final double kIntakeInSpeed = 0.6;
     public static final double kIntakeOutSpeed = -0.45;
     public static final int kBeamBreakPort = 0;
   }
