@@ -1,7 +1,7 @@
 {
   "tabPane": [
     {
-      "title": "Main",
+      "title": "SmartDashboard",
       "autoPopulate": false,
       "autoPopulatePrefix": " ",
       "widgetPane": {
@@ -18,7 +18,6 @@
             ],
             "content": {
               "_type": "Field",
-              "_source0": "network_table:///SmartDashboard/Field",
               "_title": "Field",
               "_glyph": 148,
               "_showGlyph": false,
@@ -27,54 +26,33 @@
               "Visuals/Show Outside Circles": false
             }
           },
-          "0,3": {
+          "5,3": {
             "size": [
-              2,
-              1
-            ],
-            "content": {
-              "_type": "ComboBox Chooser",
-              "_source0": "network_table:///SmartDashboard/Autos",
-              "_title": "Autos",
-              "_glyph": 148,
-              "_showGlyph": false
-            }
-          },
-          "2,3": {
-            "size": [
-              2,
+              1,
               1
             ],
             "content": {
               "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/swerve/robotRotation",
-              "_title": "Heading",
+              "_source0": "network_table:///SmartDashboard/Arm PID Value",
+              "_title": "Arm PID Value",
               "_glyph": 148,
               "_showGlyph": false
             }
           },
-          "4,0": {
+          "6,3": {
             "size": [
-              6,
-              3
+              1,
+              1
             ],
             "content": {
-              "_type": "Camera Stream",
-              "_source0": "camera_server://limelight-boombox",
-              "_title": "Limelight",
+              "_type": "Toggle Button",
+              "_source0": "network_table:///SmartDashboard/Tuning Mode",
+              "_title": "Tuning Mode",
               "_glyph": 148,
-              "_showGlyph": false,
-              "Crosshair/Show crosshair": false,
-              "Crosshair/Crosshair color": "#FFFFFFFF",
-              "Controls/Show controls": false,
-              "Controls/Rotation": "NONE",
-              "compression": -1.0,
-              "fps": -1,
-              "imageWidth": -1,
-              "imageHeight": -1
+              "_showGlyph": false
             }
           },
-          "4,3": {
+          "3,3": {
             "size": [
               2,
               1
@@ -82,25 +60,12 @@
             "content": {
               "_type": "Text View",
               "_source0": "network_table:///SmartDashboard/Arm Encoder",
-              "_title": "/SmartDashboard/Arm Encoder",
+              "_title": "SmartDashboard/Arm Encoder",
               "_glyph": 148,
               "_showGlyph": false
             }
           },
-          "6,3": {
-            "size": [
-              2,
-              1
-            ],
-            "content": {
-              "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/Arm PID Value",
-              "_title": "SmartDashboard/Arm PID Value",
-              "_glyph": 148,
-              "_showGlyph": false
-            }
-          },
-          "9,3": {
+          "7,3": {
             "size": [
               1,
               1
@@ -115,15 +80,28 @@
               "Colors/Color when false": "#8B0000FF"
             }
           },
-          "8,3": {
+          "0,3": {
+            "size": [
+              2,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/swerve/robotRotation",
+              "_title": "/SmartDashboard/swerve/robotRotation",
+              "_glyph": 148,
+              "_showGlyph": false
+            }
+          },
+          "2,3": {
             "size": [
               1,
               1
             ],
             "content": {
-              "_type": "Toggle Switch",
-              "_source0": "network_table:///SmartDashboard/Tuning Mode",
-              "_title": "SmartDashboard/Tuning Mode",
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/Module[backleft] Raw Absolute Encoder",
+              "_title": "Module[backleft] Raw Absolute Encoder",
               "_glyph": 148,
               "_showGlyph": false
             }

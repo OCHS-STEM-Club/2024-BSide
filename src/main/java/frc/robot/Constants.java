@@ -58,7 +58,7 @@ public final class Constants
   public static class ShooterConstants {
     public static final int kShooterMotorLeftID = 21;
     public static final int kShooterMotorRightID = 22;
-    public static final double kShooterSpeed = 0.45;
+    public static final double kShooterSpeed = 0;
   }
 
   public static class IndexerConstants {
@@ -78,19 +78,19 @@ public final class Constants
   public static class ArmConstants {
     public static final int kArmMotorLeftID = 19;
     public static final int kArmMotorRightID = 20;
-    public static final double kEncoderZeroOffset = 295;//TODO:Set Zero Offset
+    public static final double kEncoderZeroOffset = 164;
 
-    public static final double kP = 0.02;//TODO:Tune P
+    public static final double kP = 0.04;//TODO:Tune P
     public static final double kI = 0;
-    public static final double kD = 0;
+    public static final double kD = 0.01;
     public static final int kIz = 0;
     public static final int kFF = 0;
     public static final int kMaxOutput = 1;
     public static final double kMinOutput = -1;
 
     public static final double kIntakeSetpoint = 0;//TODO:Change Setpoint Accordingly
-    public static final double kShooterSetpoint = 0;//TODO:Change Setpoint Accordingly
-    public static final double kAmpSetpoint = 0;//TODO:Change Setpoint Accordingly
+    public static final double kShooterSetpoint = 25;//TODO:Change Setpoint Accordingly
+    public static final double kAmpSetpoint = 106;//TODO:Change Setpoint Accordingly
 
     public static final double kArmUpSpeed = 0.2;
     public static final double kArmDownSpeed = -0.2;

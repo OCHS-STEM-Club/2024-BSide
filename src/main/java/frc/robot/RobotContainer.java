@@ -17,12 +17,14 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.Drive.AbsoluteDriveAdv;
 import frc.robot.commands.Drive.AbsoluteFieldDrive;
+import frc.robot.commands.Indexer.IndexerInCmd;
 import frc.robot.commands.Indexer.IndexerOverrideCmd;
 import frc.robot.commands.Intake.IntakeInCmd;
 import frc.robot.commands.Intake.IntakeOutCmd;
 import frc.robot.subsystems.ArmSubsystem;
 import frc.robot.subsystems.IndexerSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
+import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.SwerveSubsystem;
 
 import java.io.File;
@@ -40,14 +42,17 @@ public class RobotContainer
   private final ArmSubsystem m_armSubsystem = new ArmSubsystem();
   private final IntakeSubsystem m_intakeSubsystem = new IntakeSubsystem();
   private final IndexerSubsystem m_indexerSubsystem = new IndexerSubsystem();
+  private final ShooterSubsystem m_shooterSubsystem = new ShooterSubsystem();
 
   // Commands
-  IntakeInCmd m_intakeInCmd = new IntakeInCmd(m_intakeSubsystem);
-  IntakeOutCmd m_intakeOutCmd = new IntakeOutCmd(m_intakeSubsystem);
+  IntakeInCmd m_intakeInCmd = new IntakeInCmd(m_intakeSubsystem, m_armSubsystem, m_indexerSubsystem);
+  IntakeOutCmd m_intakeOutCmd = new IntakeOutCmd(m_intakeSubsystem, m_indexerSubsystem);
   IndexerOverrideCmd m_indexerOverrideCmd = new IndexerOverrideCmd(m_indexerSubsystem);
+  IndexerInCmd m_indexerInCmd = new IndexerInCmd(m_indexerSubsystem, m_armSubsystem);
 
   // Replace with CommandPS4Controller or CommandJoystick if needed
-  final CommandXboxController driverXbox = new CommandXboxController(0);
+  final CommandXboxController driverXbox = new CommandXboxController(Constants.OperatorConstants.kDriverControllerPort);
+  final CommandXboxController ButtonBox = new CommandXboxController(Constants.OperatorConstants.kOperatorControllerPort);
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
@@ -104,7 +109,7 @@ public class RobotContainer
     // drivebase.setDefaultCommand(
     //     drivebase.driveCommand(() -> driverXbox.getLeftY(), () -> driverXbox.getLeftX(), () -> driverXbox.getRightX()));
 
-    drivebase.setDefaultCommand(driveFieldOrientedAnglularVelocity);
+    drivebase.setDefaultCommand(!RobotBase.isSimulation() ? driveFieldOrientedAnglularVelocity : driveFieldOrientedDirectAngleSim);
   }
 
   /**
@@ -118,15 +123,21 @@ public class RobotContainer
   {
     // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
 
+    // Xbox Controller Configs
     driverXbox.a().onTrue(
       Commands.runOnce(drivebase::zeroGyro)
       );
-    driverXbox.x().onTrue(
-      Commands.runOnce(m_armSubsystem :: armUp)).onFalse(Commands.runOnce(m_armSubsystem::armoff)
-    );
+    
+    driverXbox.leftTrigger().whileTrue(
+      m_indexerInCmd
+      );
 
     driverXbox.leftTrigger().whileTrue(
       m_intakeInCmd
+      );
+    
+    driverXbox.rightTrigger().whileTrue(
+      Commands.runOnce(m_shooterSubsystem :: shooterOn)).onFalse(Commands.runOnce(m_shooterSubsystem::shooterOff)
       );
 
     driverXbox.b().whileTrue(
@@ -135,7 +146,32 @@ public class RobotContainer
 
     driverXbox.leftBumper().whileTrue(
       m_intakeOutCmd
+
       );
+
+
+      // Button Box Configs
+    ButtonBox.button(3).onTrue(
+      Commands.runOnce(m_armSubsystem :: armUp)).onFalse(Commands.runOnce(m_armSubsystem::armoff)
+    );
+
+    ButtonBox.button(1).onTrue(
+      Commands.runOnce(m_armSubsystem :: armDown)).onFalse(Commands.runOnce(m_armSubsystem::armoff)
+    );
+
+    ButtonBox.button(6).onTrue(
+      Commands.runOnce(m_armSubsystem :: shooterSetpoint)
+    );
+
+
+    ButtonBox.button(4).onTrue(
+      Commands.runOnce(m_armSubsystem :: intakeSetpoint)
+    );
+
+    ButtonBox.button(5).onTrue(
+      Commands.runOnce(m_armSubsystem :: ampSetpoint)
+    );
+    
     
 
     // driverXbox.b().whileTrue(

@@ -5,14 +5,22 @@
 package frc.robot.commands.Intake;
 
 import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.LimelightHelpers;
+import frc.robot.subsystems.ArmSubsystem;
+import frc.robot.subsystems.IndexerSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
 
 public class IntakeInCmd extends Command {
   /** Creates a new IntakeInCmd. */
   private IntakeSubsystem m_intakeSubsystem;
-  public IntakeInCmd(IntakeSubsystem intakeSubsystem) {
+  private ArmSubsystem m_armSubsystem;
+  private IndexerSubsystem m_indexerSubsystem;
+
+  public IntakeInCmd(IntakeSubsystem intakeSubsystem, ArmSubsystem armSubsystem, IndexerSubsystem indexerSubsystem) {
     // Use addRequirements() here to declare subsystem dependencies.
     m_intakeSubsystem = intakeSubsystem;
+    m_armSubsystem = armSubsystem;
+    m_indexerSubsystem = indexerSubsystem;
   }
 
   // Called when the command is initially scheduled.
@@ -22,7 +30,12 @@ public class IntakeInCmd extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_intakeSubsystem.intakeIn();
+    if (m_armSubsystem.getArmEncoderPosition() <= 5 && m_indexerSubsystem.beamBreakSensor() == true) {
+     m_intakeSubsystem.intakeIn();
+
+   } else 
+        m_intakeSubsystem.intakeOff();
+
     
   }
 

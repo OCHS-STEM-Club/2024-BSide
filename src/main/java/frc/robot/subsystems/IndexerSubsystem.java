@@ -40,7 +40,6 @@ public class IndexerSubsystem extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
-    
   }
 
   public void indexerSpeed(double speed){
@@ -55,7 +54,7 @@ public class IndexerSubsystem extends SubsystemBase {
     indexerMotor.set(0);
   }
 
-  public void intakeOut() {
+  public void indexerOut() {
     indexerMotor.set(Constants.IndexerConstants.kIndexerOutSpeed);
   }
 
