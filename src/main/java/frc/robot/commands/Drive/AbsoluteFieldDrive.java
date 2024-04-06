@@ -66,7 +66,6 @@ public class AbsoluteFieldDrive extends Command
     ChassisSpeeds desiredSpeeds = swerve.getTargetSpeeds(vX.getAsDouble(), vY.getAsDouble(),
                                                          new Rotation2d(heading.getAsDouble() * Math.PI));
 
-
     // Limit velocity to prevent tippy
     Translation2d translation = SwerveController.getTranslation2d(desiredSpeeds);
     translation = SwerveMath.limitVelocity(translation, swerve.getFieldVelocity(), swerve.getPose(),
@@ -76,8 +75,7 @@ public class AbsoluteFieldDrive extends Command
     SmartDashboard.putString("Translation", translation.toString());
 
     // Make the robot move
-   // swerve.drive(translation, desiredSpeeds.omegaRadiansPerSecond, true);
-   swerve.drive(translation, heading.getAsDouble(), true);
+    swerve.drive(translation, desiredSpeeds.omegaRadiansPerSecond, true);
 
   }
 

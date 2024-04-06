@@ -4,155 +4,50 @@
 
 package frc.robot.subsystems;
 
-import org.littletonrobotics.junction.Logger;
-
-import com.ctre.phoenix.motorcontrol.LimitSwitchSource;
-import com.revrobotics.AbsoluteEncoder;
+import com.fasterxml.jackson.databind.AnnotationIntrospector.ReferenceProperty.Type;
 import com.revrobotics.CANSparkMax;
-import com.revrobotics.RelativeEncoder;
-import com.revrobotics.SparkAbsoluteEncoder;
-import com.revrobotics.SparkLimitSwitch;
-import com.revrobotics.SparkMaxAbsoluteEncoder;
-import com.revrobotics.SparkPIDController;
-import com.revrobotics.CANSparkBase.ControlType;
-import com.revrobotics.CANSparkBase.IdleMode;
 import com.revrobotics.CANSparkLowLevel.MotorType;
-import com.revrobotics.CANSparkLowLevel.PeriodicFrame;
-import com.revrobotics.SparkLimitSwitch.Type;
 
-import edu.wpi.first.math.controller.PIDController;
-import edu.wpi.first.wpilibj.DigitalInput;
-import edu.wpi.first.wpilibj.DutyCycleEncoder;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
-import frc.robot.Constants.ArmConstants;
 
 public class ArmSubsystem extends SubsystemBase {
-  /** Creates a new ArmSubsystem. */
-  private CANSparkMax armMotorLeft;
   private CANSparkMax armMotorRight;
-  private RelativeEncoder armEncoderLeft;
-  private RelativeEncoder armEncoderRight;
-  private SparkLimitSwitch lowerHardStop;
-  private SparkLimitSwitch upperHardStop;
-  private boolean atshootervalue;
-
-  private SparkPIDController m_pidController;
-  private AbsoluteEncoder m_encoder;
-
-  private double speed;
-  private double value;
-  private double armValue;
-  public boolean tuningMode;
-
+  private CANSparkMax armMotorLeft;
+  /** Creates a new ArmSubsystem. */
   public ArmSubsystem() {
-    armMotorLeft = new CANSparkMax(Constants.ArmConstants.kArmMotorLeftID, MotorType.kBrushless);
     armMotorRight = new CANSparkMax(Constants.ArmConstants.kArmMotorRightID, MotorType.kBrushless);
-    armMotorLeft.setIdleMode(IdleMode.kBrake);
-    armMotorRight.setIdleMode(IdleMode.kBrake);
-    armMotorLeft.setInverted(false);//TODO:Check Arm Motor Inversions
-    armMotorRight.setInverted(false);//TODO:Check Arm Motor Inversions
+    armMotorLeft = new CANSparkMax(Constants.ArmConstants.kArmMotorLeftID, MotorType.kBrushless);
 
-    armMotorRight.setSmartCurrentLimit(30, 20);
-    armMotorLeft.setSmartCurrentLimit(30, 20);
-  
-    lowerHardStop = armMotorRight.getForwardLimitSwitch(Type.kNormallyOpen);
 
-    m_encoder = armMotorRight.getAbsoluteEncoder(SparkAbsoluteEncoder.Type.kDutyCycle);
-    m_encoder.setPositionConversionFactor(360);
-    m_encoder.setZeroOffset(ArmConstants.kEncoderZeroOffset);//TODO:Change Zero Offset
+    // armMotorLeft.follow(armMotorRight);
 
-    m_pidController = armMotorRight.getPIDController();
+    // armMotorLeft.setInverted(false);
+    // armMotorRight.setInverted(true);
 
-    m_pidController.setP(ArmConstants.kP);//TODO:Arm P Value Tune
-    m_pidController.setI(ArmConstants.kI);
-    m_pidController.setD(ArmConstants.kD);
-    m_pidController.setIZone(ArmConstants.kIz);
-    m_pidController.setFF(ArmConstants.kFF);
-    m_pidController.setOutputRange(ArmConstants.kMinOutput, ArmConstants.kMaxOutput);
-    m_pidController.setFeedbackDevice(m_encoder);
-    
 
-    armMotorRight.setPeriodicFramePeriod(PeriodicFrame.kStatus3, 100);
-    armMotorRight.setPeriodicFramePeriod(PeriodicFrame.kStatus4, 100);
-    armMotorRight.setPeriodicFramePeriod(PeriodicFrame.kStatus5, 100);
-    armMotorRight.setPeriodicFramePeriod(PeriodicFrame.kStatus6, 100);
-
-    armMotorLeft.setPeriodicFramePeriod(PeriodicFrame.kStatus3, 100);
-    armMotorLeft.setPeriodicFramePeriod(PeriodicFrame.kStatus4, 100);
-    armMotorLeft.setPeriodicFramePeriod(PeriodicFrame.kStatus5, 100);
-    armMotorLeft.setPeriodicFramePeriod(PeriodicFrame.kStatus6, 100);
-
-    armMotorLeft.follow(armMotorRight);
-
-    armValue = 0;
-    tuningMode = false;
-
-    SmartDashboard.putNumber("Arm PID Value", armValue);
-    SmartDashboard.putBoolean("Tuning Mode", tuningMode);
   }
 
   @Override
   public void periodic() {
-
     // This method will be called once per scheduler run
-    Logger.recordOutput("Left Arm Motor", armMotorLeft.get());
-    Logger.recordOutput("Right Arm Motor", armMotorRight.get());
-    Logger.recordOutput("Arm Encoder", m_encoder.getPosition());
-
-    SmartDashboard.putNumber("Arm Encoder", m_encoder.getPosition());
-
-    double value = SmartDashboard.getNumber("Arm PID Value", 0);
-    boolean tuningMode = SmartDashboard.getBoolean("Tuning Mode", false);
-    if((value != 0 && tuningMode == true)) { m_pidController.setReference(value,CANSparkMax.ControlType.kPosition); armValue = value; }
 
   }
-
 
   public void armUp() {
-    armMotorLeft.set(Constants.ArmConstants.kArmUpSpeed);
-    armMotorRight.set(Constants.ArmConstants.kArmUpSpeed);
+    armMotorRight.set(0.2);  
+    armMotorLeft.set(0.2);  
   }
-  public void armDown() {
-    armMotorLeft.set(Constants.ArmConstants.kArmDownSpeed);
-    armMotorRight.set(Constants.ArmConstants.kArmDownSpeed);
-  }
-  public void armOff() {
-    armMotorLeft.set(0);
-    armMotorRight.set(0);
-  }
-  public void set(double speed) {
-      armMotorLeft.set(speed);
-      armMotorRight.set(speed);
+  public void armRightUp() {
+    armMotorRight.set(0.2);  
   }
 
-  public void intakeSetpoint() {
-    m_pidController.setReference(Constants.ArmConstants.kIntakeSetpoint, CANSparkMax.ControlType.kPosition);//TODO:Change Arm Setpoints Accordingly
+  public void armLeftUp() {
+    armMotorLeft.set(-0.2);  
   }
 
-  public void shooterSetpoint() {
-    m_pidController.setReference(Constants.ArmConstants.kShooterSetpoint, CANSparkMax.ControlType.kPosition);//TODO:Change Arm Setpoints Accordingly
+  public void armoff() {
+    armMotorRight.set(0);  
+    armMotorLeft.set(0);  
   }
-
-  public void ampSetpoint() {
-    m_pidController.setReference(Constants.ArmConstants.kAmpSetpoint, CANSparkMax.ControlType.kPosition);//TODO:Change Arm Setpoints Accordingly
-  }
-
-  public void setReference(double pidReference) {
-    m_pidController.setReference(pidReference,CANSparkMax.ControlType.kPosition);
-  }
-
-  public double getArmEncoder() {
-    return m_encoder.getPosition();
-  }
-
-  public boolean getLowerHardStop() {
-    return lowerHardStop.isPressed();
-  }
-
-  //TODO:Add Safe spot shooting setpoints
-
-
-
 }

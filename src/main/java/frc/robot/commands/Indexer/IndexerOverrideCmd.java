@@ -7,10 +7,10 @@ package frc.robot.commands.Indexer;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.IndexerSubsystem;
 
-public class IndexerOverrideCommand extends Command {
-  /** Creates a new IntakeOverrideCommand. */
+public class IndexerOverrideCmd extends Command {
+  /** Creates a new IndexerOverrideCommand. */
   IndexerSubsystem m_indexerSubsystem;
-  public IndexerOverrideCommand(IndexerSubsystem indexerSubsystem) {
+  public IndexerOverrideCmd(IndexerSubsystem indexerSubsystem) {
     // Use addRequirements() here to declare subsystem dependencies.
     m_indexerSubsystem = indexerSubsystem;
   }

@@ -15,9 +15,16 @@ import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.Constants.OperatorConstants;
-import frc.robot.commands.swervedrive.drivebase.AbsoluteDriveAdv;
-import frc.robot.commands.swervedrive.drivebase.AbsoluteFieldDrive;
-import frc.robot.subsystems.swervedrive.SwerveSubsystem;
+import frc.robot.commands.Drive.AbsoluteDriveAdv;
+import frc.robot.commands.Drive.AbsoluteFieldDrive;
+import frc.robot.commands.Indexer.IndexerOverrideCmd;
+import frc.robot.commands.Intake.IntakeInCmd;
+import frc.robot.commands.Intake.IntakeOutCmd;
+import frc.robot.subsystems.ArmSubsystem;
+import frc.robot.subsystems.IndexerSubsystem;
+import frc.robot.subsystems.IntakeSubsystem;
+import frc.robot.subsystems.SwerveSubsystem;
+
 import java.io.File;
 
 /**
@@ -29,8 +36,15 @@ public class RobotContainer
 {
 
   // The robot's subsystems and commands are defined here...
-  private final SwerveSubsystem drivebase = new SwerveSubsystem(new File(Filesystem.getDeployDirectory(),
-                                                                         "swerve/neo"));
+  private final SwerveSubsystem drivebase = new SwerveSubsystem(new File(Filesystem.getDeployDirectory(), "swerve/neo"));
+  private final ArmSubsystem m_armSubsystem = new ArmSubsystem();
+  private final IntakeSubsystem m_intakeSubsystem = new IntakeSubsystem();
+  private final IndexerSubsystem m_indexerSubsystem = new IndexerSubsystem();
+
+  // Commands
+  IntakeInCmd m_intakeInCmd = new IntakeInCmd(m_intakeSubsystem);
+  IntakeOutCmd m_intakeOutCmd = new IntakeOutCmd(m_intakeSubsystem);
+  IndexerOverrideCmd m_indexerOverrideCmd = new IndexerOverrideCmd(m_indexerSubsystem);
 
   // Replace with CommandPS4Controller or CommandJoystick if needed
   final CommandXboxController driverXbox = new CommandXboxController(0);
@@ -86,18 +100,11 @@ public class RobotContainer
         () -> MathUtil.applyDeadband(-driverXbox.getLeftY()*0.9, OperatorConstants.LEFT_Y_DEADBAND),
         () -> MathUtil.applyDeadband(-driverXbox.getLeftX()*0.9, OperatorConstants.LEFT_X_DEADBAND),
         () -> MathUtil.applyDeadband(-driverXbox.getRightX()*6, OperatorConstants.RIGHT_X_DEADBAND));
-    
-
-    AbsoluteFieldDrive absoluteFieldDrive = new AbsoluteFieldDrive(drivebase,
-        () -> MathUtil.applyDeadband(driverXbox.getLeftY(), OperatorConstants.LEFT_Y_DEADBAND),
-        () -> MathUtil.applyDeadband(driverXbox.getLeftX(), OperatorConstants.LEFT_X_DEADBAND),
-        () -> driverXbox.getRightX() * 6);
 
     // drivebase.setDefaultCommand(
-    //     !RobotBase.isSimulation() ? absoluteFieldDrive : driveFieldOrientedDirectAngleSim);
+    //     drivebase.driveCommand(() -> driverXbox.getLeftY(), () -> driverXbox.getLeftX(), () -> driverXbox.getRightX()));
 
-    drivebase.setDefaultCommand(
-        drivebase.driveCommand(() -> driverXbox.getLeftY(), () -> driverXbox.getLeftX(), () -> driverXbox.getRightX()));
+    drivebase.setDefaultCommand(driveFieldOrientedAnglularVelocity);
   }
 
   /**
@@ -111,12 +118,32 @@ public class RobotContainer
   {
     // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
 
-    driverXbox.a().onTrue((Commands.runOnce(drivebase::zeroGyro)));
-    driverXbox.x().onTrue(Commands.runOnce(drivebase::addFakeVisionReading));
+    driverXbox.a().onTrue(
+      Commands.runOnce(drivebase::zeroGyro)
+      );
+    driverXbox.x().onTrue(
+      Commands.runOnce(m_armSubsystem :: armUp)).onFalse(Commands.runOnce(m_armSubsystem::armoff)
+    );
+
+    driverXbox.leftTrigger().whileTrue(
+      m_intakeInCmd
+      );
+
     driverXbox.b().whileTrue(
-        Commands.deferredProxy(() -> drivebase.driveToPose(
-                                   new Pose2d(new Translation2d(4, 4), Rotation2d.fromDegrees(0)))
-                              ));
+      m_indexerOverrideCmd
+      );
+
+    driverXbox.leftBumper().whileTrue(
+      m_intakeOutCmd
+      );
+    
+
+    // driverXbox.b().whileTrue(
+    //     Commands.deferredProxy(() -> drivebase.driveToPose(
+    //                                new Pose2d(new Translation2d(4, 4), Rotation2d.fromDegrees(0)))
+    //                           ));
+
+    
     // driverXbox.x().whileTrue(Commands.runOnce(drivebase::lock, drivebase).repeatedly());
   }
 

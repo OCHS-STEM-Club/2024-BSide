@@ -4,8 +4,6 @@
 
 package frc.robot.subsystems;
 
-import org.littletonrobotics.junction.Logger;
-
 // import com.ctre.phoenix.Logger;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkLowLevel.MotorType;
@@ -16,15 +14,15 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 public class IndexerSubsystem extends SubsystemBase {
-  /** Creates a new IndexerSubsystem. */
+  /** Creates a new IntakeSubsystem. */
 
         private CANSparkMax indexerMotor;
-      //  private DigitalInput indexerSensor;
+        private DigitalInput indexerSensor;
         private double speed;
 
     public IndexerSubsystem() {
         indexerMotor = new CANSparkMax(Constants.IndexerConstants.kIndexerMotorID, MotorType.kBrushless);
-       // indexerSensor = new DigitalInput(Constants.IndexerConstants.kBeamBreakPort);
+        indexerSensor = new DigitalInput(Constants.IndexerConstants.kBeamBreakPort);
         indexerMotor.setInverted(false);
 
         
@@ -42,11 +40,8 @@ public class IndexerSubsystem extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
-    Logger.recordOutput("Indexer Speed", indexerMotor.get());
-   // Logger.recordOutput("Beam Break", beamBreakSensor());
     
   }
-  //TODO:Add if statement for intaking when arm is down or lower limit switch is pressed
 
   public void indexerSpeed(double speed){
     indexerMotor.set(speed);
@@ -60,12 +55,12 @@ public class IndexerSubsystem extends SubsystemBase {
     indexerMotor.set(0);
   }
 
-  public void indexerOut() {
+  public void intakeOut() {
     indexerMotor.set(Constants.IndexerConstants.kIndexerOutSpeed);
   }
 
-  // public boolean beamBreakSensor() {
-  //   return indexerSensor.get();
-  // }
+  public boolean beamBreakSensor() {
+    return indexerSensor.get();
+  }
 }
 

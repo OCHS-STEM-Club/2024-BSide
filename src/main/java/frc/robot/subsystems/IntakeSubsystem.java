@@ -4,8 +4,6 @@
 
 package frc.robot.subsystems;
 
-import org.littletonrobotics.junction.Logger;
-
 // import com.ctre.phoenix.Logger;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkLowLevel.MotorType;
@@ -19,12 +17,11 @@ public class IntakeSubsystem extends SubsystemBase {
   /** Creates a new IntakeSubsystem. */
 
         private CANSparkMax intakeMotor;
-        //private DigitalInput intakeSensor;
+        private DigitalInput intakeSensor;
         private double speed;
 
     public IntakeSubsystem() {
         intakeMotor = new CANSparkMax(Constants.IntakeConstants.kIntakeMotorID, MotorType.kBrushless);
-        // intakeSensor = new DigitalInput(Constants.IntakeConstants.kBeamBreakPort);
         intakeMotor.setInverted(false);
 
         
@@ -42,10 +39,8 @@ public class IntakeSubsystem extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
-    Logger.recordOutput("Intake Speed", intakeMotor.get());
     
   }
-  //TODO:Add if statement for intaking when arm is down or lower limit switch is pressed
 
   public void intakeSpeed(double speed){
     intakeMotor.set(speed);
@@ -63,8 +58,8 @@ public class IntakeSubsystem extends SubsystemBase {
     intakeMotor.set(Constants.IntakeConstants.kIntakeOutSpeed);
   }
 
-  // public boolean beamBreakSensor() {
-  //   return intakeSensor.get();
-  // }
+  public boolean beamBreakSensor() {
+    return intakeSensor.get();
+  }
 }
 
