@@ -39,7 +39,7 @@
         {
           "type": "named",
           "data": {
-            "name": "Intake in Override"
+            "name": "Indexer in Override"
           }
         },
         {
@@ -73,7 +73,7 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "Intake in BB"
+                  "name": "Intake in"
                 }
               }
             ]
@@ -82,7 +82,7 @@
         {
           "type": "named",
           "data": {
-            "name": "Intake in BB"
+            "name": "Intake in"
           }
         },
         {
@@ -113,7 +113,7 @@
         {
           "type": "named",
           "data": {
-            "name": "Intake in Override"
+            "name": "Indexer in Override"
           }
         },
         {

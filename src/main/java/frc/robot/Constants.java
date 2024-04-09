@@ -70,7 +70,7 @@ public final class Constants
 
   public static class IntakeConstants {
     public static final int kIntakeMotorID = 24;
-    public static final double kIntakeInSpeed = 0.6;
+    public static final double kIntakeInSpeed = 1;
     public static final double kIntakeOutSpeed = -0.45;
     public static final int kBeamBreakPort = 0;
   }
@@ -80,7 +80,7 @@ public final class Constants
     public static final int kArmMotorRightID = 20;
     public static final double kEncoderZeroOffset = 164;
 
-    public static final double kP = 0.04;//TODO:Tune P
+    public static final double kP = 0.04;
     public static final double kI = 0;
     public static final double kD = 0.01;
     public static final int kIz = 0;
@@ -88,9 +88,9 @@ public final class Constants
     public static final int kMaxOutput = 1;
     public static final double kMinOutput = -1;
 
-    public static final double kIntakeSetpoint = 0;//TODO:Change Setpoint Accordingly
-    public static final double kShooterSetpoint = 25;//TODO:Change Setpoint Accordingly
-    public static final double kAmpSetpoint = 106;//TODO:Change Setpoint Accordingly
+    public static final double kIntakeSetpoint = 0;
+    public static final double kShooterSetpoint = 25;
+    public static final double kAmpSetpoint = 106;
 
     public static final double kArmUpSpeed = 0.2;
     public static final double kArmDownSpeed = -0.2;

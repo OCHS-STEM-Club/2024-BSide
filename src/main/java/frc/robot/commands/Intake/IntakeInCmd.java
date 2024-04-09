@@ -48,6 +48,9 @@ public class IntakeInCmd extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    if(m_indexerSubsystem.beamBreakSensor() == true) {
+      return false;
+     }
+     else return true;
   }
 }
