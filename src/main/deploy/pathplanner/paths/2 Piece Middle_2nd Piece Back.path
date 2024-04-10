@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 8.4,
-        "y": 0.77
+        "x": 2.8,
+        "y": 5.550936522700434
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.5905008158090483,
-        "y": 0.6206743369264197
+        "x": 2.949429204713762,
+        "y": 5.537863161288286
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 8.3,
-        "y": 2.4272679314589416
+        "x": 1.1,
+        "y": 5.550936522700434
       },
       "prevControl": {
-        "x": 5.846113375536308,
-        "y": 2.599805713163495
+        "x": 0.9500000000000002,
+        "y": 5.550936522700434
       },
       "nextControl": null,
       "isLocked": false,
@@ -43,7 +43,7 @@
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "4 Piece Shuttle",
+  "folder": "2 Piece Middle",
   "previewStartingState": {
     "rotation": 0,
     "velocity": 0

@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.63,
-      "y": 4.55
+      "x": 1.15,
+      "y": 5.55
     },
-    "rotation": -60.0
+    "rotation": 0
   },
   "command": {
     "type": "sequential",
@@ -18,19 +18,13 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "Arm to Shooter Midlfield 2 piece"
+                  "name": "Shooter On"
                 }
               },
               {
                 "type": "named",
                 "data": {
-                  "name": "Shooter On"
-                }
-              },
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "2 Piece Source_1st Piece"
+                  "name": "Arm to Shooter Subwoofer"
                 }
               }
             ]
@@ -39,7 +33,7 @@
         {
           "type": "wait",
           "data": {
-            "waitTime": 1.0
+            "waitTime": 1.5
           }
         },
         {
@@ -55,22 +49,15 @@
           }
         },
         {
-          "type": "parallel",
+          "type": "named",
           "data": {
-            "commands": [
-              {
-                "type": "named",
-                "data": {
-                  "name": "Arm to Intake"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "Arm to Shooter Midlfield 2 piece"
-                }
-              }
-            ]
+            "name": "Arm to Intake"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 0.5
           }
         },
         {
@@ -80,7 +67,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "2 Piece Source_2nd Piece"
+                  "pathName": "3 Piece Middle_2nd Piece_Tag Alignemnt"
                 }
               },
               {
@@ -99,15 +86,94 @@
           }
         },
         {
+          "type": "wait",
+          "data": {
+            "waitTime": 0.5
+          }
+        },
+        {
           "type": "named",
           "data": {
-            "name": "Arm to Shooter Midlfield 2 piece"
+            "name": "April Tag Alignment"
           }
         },
         {
           "type": "wait",
           "data": {
-            "waitTime": 1.5
+            "waitTime": 2.5
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Indexer in Override"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 0.5
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Arm to Intake"
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "3 Piece Middle_3rd Piece_Tag Alignment"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Intake in"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Indexer in"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 0.5
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "3 Piece Middle_3rd Piece Back_Tag Alignment"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 0.5
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "April Tag Alignment"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 2.0
           }
         },
         {
@@ -133,16 +199,10 @@
           "data": {
             "name": "Intake Off"
           }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "Indexer Off"
-          }
         }
       ]
     }
   },
-  "folder": null,
+  "folder": "3 Piece Subwoofer Middle",
   "choreoAuto": false
 }

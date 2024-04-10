@@ -8,8 +8,8 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 7.300000000000001,
-        "y": 2.43
+        "x": 2.60221165235483,
+        "y": -0.5855418272890752
       },
       "isLocked": false,
       "linkedName": null
@@ -20,8 +20,8 @@
         "y": 4.1046482092964185
       },
       "prevControl": {
-        "x": 6.15873077900002,
-        "y": 4.745999491998984
+        "x": 5.401101586796611,
+        "y": 1.0188427794829902
       },
       "nextControl": null,
       "isLocked": false,
@@ -43,7 +43,7 @@
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "4 Piece Shuttle_ILLEGAL",
+  "folder": "4 Piece Shuttle",
   "previewStartingState": {
     "rotation": 0,
     "velocity": 0

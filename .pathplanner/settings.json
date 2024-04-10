@@ -3,14 +3,21 @@
   "robotLength": 0.51,
   "holonomicMode": true,
   "pathFolders": [
+    "2 Piece Middle",
+    "2 Piece Middle Tag Alignment",
     "2 Piece Source",
     "3 Piece Middle",
+    "3 Piece Middle Tag Alignment",
     "3 Piece Source",
-    "3 Piece Source Test",
     "4 Piece Middle",
-    "4 Piece Shuttle_ILLEGAL"
+    "4 Piece Middle Tag Alignment",
+    "4 Piece Shuttle"
   ],
-  "autoFolders": [],
+  "autoFolders": [
+    "2 Piece Subwoofer Middle",
+    "3 Piece Subwoofer Middle",
+    "4 Piece Subwoofer Middle"
+  ],
   "defaultMaxVel": 3.0,
   "defaultMaxAccel": 3.0,
   "defaultMaxAngVel": 540.0,

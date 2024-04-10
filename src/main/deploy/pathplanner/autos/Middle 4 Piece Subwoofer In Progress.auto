@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.58,
-      "y": 3.22
+      "x": 1.15,
+      "y": 5.55
     },
-    "rotation": 0
+    "rotation": 0.0
   },
   "command": {
     "type": "sequential",
@@ -18,19 +18,13 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "Arm to Shooter Side Source 1st Piece Test"
+                  "name": "Shooter On"
                 }
               },
               {
                 "type": "named",
                 "data": {
-                  "name": "Shooter On"
-                }
-              },
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "3 Piece Source Test_1st Piece"
+                  "name": "Arm to Shooter Subwoofer"
                 }
               }
             ]
@@ -63,7 +57,7 @@
         {
           "type": "wait",
           "data": {
-            "waitTime": 1.0
+            "waitTime": 0.5
           }
         },
         {
@@ -71,21 +65,15 @@
           "data": {
             "commands": [
               {
+                "type": "path",
+                "data": {
+                  "pathName": "4 Piece Middle_2nd Piece"
+                }
+              },
+              {
                 "type": "named",
                 "data": {
                   "name": "Intake in"
-                }
-              },
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "3 Piece Source Test_2nd Piece"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "Arm to Intake"
                 }
               }
             ]
@@ -94,26 +82,13 @@
         {
           "type": "named",
           "data": {
-            "name": "Intake in"
+            "name": "Shooter On 4 Piece"
           }
         },
         {
-          "type": "parallel",
+          "type": "named",
           "data": {
-            "commands": [
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "3 Piece Source Test_2nd Piece Back"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "Arm to Shooter Side Source 1st Piece Test"
-                }
-              }
-            ]
+            "name": "Arm to Shooter 4 Piece 1st"
           }
         },
         {
@@ -137,18 +112,62 @@
         {
           "type": "named",
           "data": {
-            "name": "Intake Off"
+            "name": "Arm to Intake"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 0.5
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "4 Piece Middle_3rd Piece"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Intake in"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "Arm to Shooter 4 Piece"
+                }
+              },
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "4 Piece Middle_3rd Piece Back"
+                }
+              }
+            ]
           }
         },
         {
           "type": "named",
           "data": {
-            "name": "Shooter Off"
+            "name": "Indexer in Override"
           }
         }
       ]
     }
   },
-  "folder": null,
+  "folder": "4 Piece Subwoofer Middle",
   "choreoAuto": false
 }

@@ -18,6 +18,7 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.AprilTag.TagAlignmentCmd;
+import frc.robot.commands.AprilTag.TagAlignmentAutoCmd;
 import frc.robot.commands.Drive.AbsoluteDriveAdv;
 import frc.robot.commands.Drive.AbsoluteFieldDrive;
 import frc.robot.commands.Indexer.IndexerInCmd;
@@ -99,6 +100,9 @@ public class RobotContainer
     NamedCommands.registerCommand("Arm to Shooter Side Source 1st Piece Test", Commands.runOnce(() -> m_armSubsystem.setReference(23)));
 
 
+    NamedCommands.registerCommand("April Tag Alignment", new TagAlignmentAutoCmd(m_swerveSubsystem, m_shooterSubsystem, m_armSubsystem).withTimeout(2));
+
+
     autoChooser = AutoBuilder.buildAutoChooser();
     // Configure the trigger bindings
     configureBindings();
@@ -122,9 +126,9 @@ public class RobotContainer
     // left stick controls translation
     // right stick controls the angular velocity of the robot
     Command driveFieldOrientedAnglularVelocity = m_swerveSubsystem.driveCommand(
-        () -> MathUtil.applyDeadband(driverXbox.getLeftY() * OperatorConstants.TRANSLATION_Y_CONSTANT, OperatorConstants.LEFT_Y_DEADBAND),
-        () -> MathUtil.applyDeadband(driverXbox.getLeftX() * OperatorConstants.TRANSLATION_X_CONSTANT, OperatorConstants.LEFT_X_DEADBAND),
-        () -> driverXbox.getRightX() * OperatorConstants.ROTATION_CONSTANT);
+        () -> MathUtil.applyDeadband(-driverXbox.getLeftY() * OperatorConstants.TRANSLATION_Y_CONSTANT, OperatorConstants.LEFT_Y_DEADBAND),
+        () -> MathUtil.applyDeadband(-driverXbox.getLeftX() * OperatorConstants.TRANSLATION_X_CONSTANT, OperatorConstants.LEFT_X_DEADBAND),
+        () -> -driverXbox.getRightX() * OperatorConstants.ROTATION_CONSTANT);
 
     Command driveFieldOrientedDirectAngleSim = m_swerveSubsystem.simDriveCommand(
         () -> MathUtil.applyDeadband(driverXbox.getLeftY(), OperatorConstants.LEFT_Y_DEADBAND),

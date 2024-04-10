@@ -19,7 +19,7 @@ import frc.robot.subsystems.ArmSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.SwerveSubsystem;
 
-public class TagAlignmentCmd extends Command {
+public class TagAlignmentAutoCmd extends Command {
   private final SwerveSubsystem m_swerveSubsystem;
   private final ShooterSubsystem m_shooterSubsystem;
   private final ArmSubsystem m_armSubsystem;
@@ -27,7 +27,7 @@ public class TagAlignmentCmd extends Command {
 
   final CommandXboxController driverXbox = new CommandXboxController(Constants.OperatorConstants.kDriverControllerPort);
   /** Creates a new TestAprilTag. */
-  public TagAlignmentCmd(SwerveSubsystem swerveSubsystem, ShooterSubsystem shooterSubsystem, ArmSubsystem armSubsystem) {
+  public TagAlignmentAutoCmd(SwerveSubsystem swerveSubsystem, ShooterSubsystem shooterSubsystem, ArmSubsystem armSubsystem) {
     // Use addRequirements() here to declare subsystem dependencies.
     // m_limelightTable = m_inst.getTable("limelight-boombox");
     m_swerveSubsystem = swerveSubsystem;
@@ -118,7 +118,7 @@ public class TagAlignmentCmd extends Command {
       m_armSubsystem.setReference(42);
     }
     if(YValue < -14 && YValue > -15) {
-      m_shooterSubsystem.shooterSpeed(0.425);
+      m_shooterSubsystem.shooterSpeed(0.5);
       m_armSubsystem.setReference(42);
     }
     if(YValue < -15 && YValue > -16) {
@@ -126,8 +126,8 @@ public class TagAlignmentCmd extends Command {
       m_armSubsystem.setReference(42.5);
     }
     if(YValue < -16 && YValue > -17) {
-      m_shooterSubsystem.shooterSpeed(0.5);
-      m_armSubsystem.setReference(46);
+      m_shooterSubsystem.shooterSpeed(0.6);
+      m_armSubsystem.setReference(44);
     }
     if(YValue < -17 && YValue > -18) {
       m_shooterSubsystem.shooterSpeed(0.5);
@@ -136,7 +136,8 @@ public class TagAlignmentCmd extends Command {
     if(YValue < -18 && YValue > -19) {
       m_shooterSubsystem.shooterSpeed(0.5);
       m_armSubsystem.setReference(46);
-    }
+    }else 
+      m_shooterSubsystem.shooterOn();
 
 
   }
@@ -144,7 +145,7 @@ public class TagAlignmentCmd extends Command {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    m_shooterSubsystem.shooterOff();
+    //m_shooterSubsystem.shooterOff();
   }
 
   // Returns true when the command should end.

@@ -5,7 +5,7 @@
       "x": 1.15,
       "y": 5.55
     },
-    "rotation": 0.0
+    "rotation": 0
   },
   "command": {
     "type": "sequential",
@@ -67,7 +67,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "4 Piece Middle_2nd Piece"
+                  "pathName": "4 Piece Middle_2nd Piece_Tag Alignemnt"
                 }
               },
               {
@@ -75,20 +75,160 @@
                 "data": {
                   "name": "Intake in"
                 }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Indexer in"
+                }
               }
             ]
           }
         },
         {
-          "type": "named",
+          "type": "wait",
           "data": {
-            "name": "Shooter On 4 Piece"
+            "waitTime": 0.5
           }
         },
         {
           "type": "named",
           "data": {
-            "name": "Arm to Shooter 4 Piece 1st"
+            "name": "April Tag Alignment"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 2.5
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Indexer in Override"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 0.5
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Arm to Intake"
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "4 Piece Middle_3rd Piece_Tag Alignment"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Intake in"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Indexer in"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 0.5
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "4 Piece Middle_3rd Piece Back_Tag Alignment"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 0.5
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "April Tag Alignment"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 2.0
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Indexer in Override"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 0.5
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "4 Piece Middle_4th Piece_Tag Alignment"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Intake in"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Indexer in"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 0.5
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "4 Piece Middle_4th Piece Back_Tag Alignment"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "April Tag Alignment"
           }
         },
         {
@@ -112,62 +252,24 @@
         {
           "type": "named",
           "data": {
-            "name": "Arm to Intake"
-          }
-        },
-        {
-          "type": "wait",
-          "data": {
-            "waitTime": 0.5
-          }
-        },
-        {
-          "type": "parallel",
-          "data": {
-            "commands": [
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "4 Piece Middle_3rd Piece"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "Intake in"
-                }
-              }
-            ]
-          }
-        },
-        {
-          "type": "parallel",
-          "data": {
-            "commands": [
-              {
-                "type": "named",
-                "data": {
-                  "name": "Arm to Shooter 4 Piece"
-                }
-              },
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "4 Piece Middle_3rd Piece Back"
-                }
-              }
-            ]
+            "name": "Intake Off"
           }
         },
         {
           "type": "named",
           "data": {
-            "name": "Indexer in Override"
+            "name": "Indexer Off"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Shooter Off"
           }
         }
       ]
     }
   },
-  "folder": null,
+  "folder": "4 Piece Subwoofer Middle",
   "choreoAuto": false
 }

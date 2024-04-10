@@ -40,12 +40,6 @@
           "data": {
             "commands": [
               {
-                "type": "named",
-                "data": {
-                  "name": "Intake in"
-                }
-              },
-              {
                 "type": "path",
                 "data": {
                   "pathName": "4 Piece Shuttle_2nd Piece"
@@ -56,63 +50,26 @@
                 "data": {
                   "name": "Arm to Intake"
                 }
-              }
-            ]
-          }
-        },
-        {
-          "type": "wait",
-          "data": {
-            "waitTime": 0.25
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "Arm to Shooter Shuttle"
-          }
-        },
-        {
-          "type": "wait",
-          "data": {
-            "waitTime": 0.75
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "Indexer in Override"
-          }
-        },
-        {
-          "type": "wait",
-          "data": {
-            "waitTime": 0.25
-          }
-        },
-        {
-          "type": "parallel",
-          "data": {
-            "commands": [
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "4 Piece Shuttle_3rd Piece"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "Arm to Intake"
-                }
               },
               {
                 "type": "named",
                 "data": {
                   "name": "Intake in"
                 }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Indexer in"
+                }
               }
             ]
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 0.5
           }
         },
         {
@@ -143,6 +100,12 @@
           "type": "wait",
           "data": {
             "waitTime": 0.5
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "4 Piece Shuttle_3rd Piece"
           }
         },
         {
