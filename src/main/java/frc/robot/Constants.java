@@ -88,7 +88,7 @@ public final class Constants
     public static final int kMaxOutput = 1;
     public static final double kMinOutput = -1;
 
-    public static final double kIntakeSetpoint = 0;
+    public static final double kIntakeSetpoint = 0.5;
     public static final double kShooterSetpoint = 25;
     public static final double kAmpSetpoint = 106;
 

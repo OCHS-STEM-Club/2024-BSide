@@ -17,7 +17,11 @@ import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.Constants.OperatorConstants;
-import frc.robot.commands.AprilTag.TagAlignmentCmd;
+import frc.robot.commands.AprilTag.TagAlignmentTeleopCmd;
+import frc.robot.commands.Climber.ClimberDownCommand;
+import frc.robot.commands.Climber.ClimberDownOverrideCmd;
+import frc.robot.commands.Climber.ClimberUpCommand;
+import frc.robot.commands.Climber.ClimberUpOverrideCmd;
 import frc.robot.commands.AprilTag.TagAlignmentAutoCmd;
 import frc.robot.commands.Drive.AbsoluteDriveAdv;
 import frc.robot.commands.Drive.AbsoluteFieldDrive;
@@ -26,6 +30,7 @@ import frc.robot.commands.Indexer.IndexerOverrideCmd;
 import frc.robot.commands.Intake.IntakeInCmd;
 import frc.robot.commands.Intake.IntakeOutCmd;
 import frc.robot.subsystems.ArmSubsystem;
+import frc.robot.subsystems.ClimberSubsystem;
 import frc.robot.subsystems.IndexerSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.LimelightSubsystem;
@@ -56,13 +61,18 @@ public class RobotContainer
   private final IndexerSubsystem m_indexerSubsystem = new IndexerSubsystem();
   private final ShooterSubsystem m_shooterSubsystem = new ShooterSubsystem();
   private final LimelightSubsystem m_limelightSubsystem = new LimelightSubsystem();
+  private final ClimberSubsystem m_climberSubsystem = new ClimberSubsystem();
 
   // Commands
   IntakeInCmd m_intakeInCmd = new IntakeInCmd(m_intakeSubsystem, m_armSubsystem, m_indexerSubsystem);
   IntakeOutCmd m_intakeOutCmd = new IntakeOutCmd(m_intakeSubsystem, m_indexerSubsystem);
   IndexerOverrideCmd m_indexerOverrideCmd = new IndexerOverrideCmd(m_indexerSubsystem);
   IndexerInCmd m_indexerInCmd = new IndexerInCmd(m_indexerSubsystem, m_armSubsystem);
-  TagAlignmentCmd m_tagAlignmentCmd = new TagAlignmentCmd(m_swerveSubsystem, m_shooterSubsystem, m_armSubsystem);
+  TagAlignmentTeleopCmd m_tagAlignmentCmd = new TagAlignmentTeleopCmd(m_swerveSubsystem, m_shooterSubsystem, m_armSubsystem);
+  ClimberDownOverrideCmd m_climberDownOverrideCmd = new ClimberDownOverrideCmd(m_climberSubsystem);
+  ClimberUpOverrideCmd m_climberUpOverrideCmd = new ClimberUpOverrideCmd(m_climberSubsystem);
+  ClimberDownCommand m_climberDownCommand = new ClimberDownCommand(m_climberSubsystem);
+  ClimberUpCommand m_climberUpCommand = new ClimberUpCommand(m_climberSubsystem);
 
   // Replace with CommandPS4Controller or CommandJoystick if needed
   final CommandXboxController driverXbox = new CommandXboxController(Constants.OperatorConstants.kDriverControllerPort);
@@ -141,8 +151,6 @@ public class RobotContainer
         () -> MathUtil.applyDeadband(-driverXbox.getLeftX()*0.9, OperatorConstants.LEFT_X_DEADBAND),
         () -> MathUtil.applyDeadband(-driverXbox.getRightX()*6, OperatorConstants.RIGHT_X_DEADBAND));
 
-    // m_swerveSubsystem.setDefaultCommand(
-    //     m_swerveSubsystem.driveCommand(() -> driverXbox.getLeftY(), () -> driverXbox.getLeftX(), () -> driverXbox.getRightX()));
 
     m_swerveSubsystem.setDefaultCommand(!RobotBase.isSimulation() ? driveFieldOrientedAnglularVelocity : driveFieldOrientedDirectAngleSim);
 
@@ -180,9 +188,6 @@ public class RobotContainer
     driverXbox.b().whileTrue(
       m_indexerOverrideCmd
       );
-    // driverXbox.y().whileTrue(
-    //   m_armAlignmentCmd
-    //   );
     driverXbox.leftBumper().whileTrue(
       m_intakeOutCmd
 
@@ -210,6 +215,23 @@ public class RobotContainer
     ButtonBox.button(5).onTrue(
       Commands.runOnce(m_armSubsystem :: ampSetpoint)
     );
+
+    ButtonBox.pov(0).whileTrue(
+      m_climberUpCommand
+    );
+
+    ButtonBox.pov(180).whileTrue(
+      m_climberDownCommand
+    );
+
+    ButtonBox.button(10).whileTrue(
+      m_climberUpOverrideCmd
+    );
+
+    ButtonBox.button(9).whileTrue(
+      m_climberDownOverrideCmd
+    );
+    
     
     
 
@@ -241,5 +263,10 @@ public class RobotContainer
   public void setMotorBrake(boolean brake)
   {
     m_swerveSubsystem.setMotorBrake(brake);
+  }
+
+  public void climberEncoderZero()
+  {
+    m_climberSubsystem.climberEncoderZero();
   }
 }

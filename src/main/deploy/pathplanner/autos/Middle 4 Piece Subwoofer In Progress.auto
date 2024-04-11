@@ -67,13 +67,50 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "4 Piece Middle_2nd Piece"
+                  "pathName": "3 Piece Middle_2nd Piece"
                 }
               },
               {
                 "type": "named",
                 "data": {
                   "name": "Intake in"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Indexer in"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "3 Piece Middle_2nd Piece Back"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Arm to Shooter Subwoofer"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Intake in"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Indexer in"
                 }
               }
             ]
@@ -82,19 +119,143 @@
         {
           "type": "named",
           "data": {
-            "name": "Shooter On 4 Piece"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "Arm to Shooter 4 Piece 1st"
+            "name": "Indexer in Override"
           }
         },
         {
           "type": "wait",
           "data": {
-            "waitTime": 1.0
+            "waitTime": 0.5
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "Arm to Intake"
+                }
+              },
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "3 Piece Middle_3rd Piece"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Intake in"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Indexer in"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "Arm to Shooter Subwoofer"
+                }
+              },
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "3 Piece Middle_3rd Piece Back"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Intake in"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Indexer in"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Indexer in Override"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 0.5
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "Arm to Intake"
+                }
+              },
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "New Path"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Intake in"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Indexer in"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "New New Path"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Intake in"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Indexer in"
+                }
+              }
+            ]
           }
         },
         {
@@ -112,57 +273,13 @@
         {
           "type": "named",
           "data": {
-            "name": "Arm to Intake"
-          }
-        },
-        {
-          "type": "wait",
-          "data": {
-            "waitTime": 0.5
-          }
-        },
-        {
-          "type": "parallel",
-          "data": {
-            "commands": [
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "4 Piece Middle_3rd Piece"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "Intake in"
-                }
-              }
-            ]
-          }
-        },
-        {
-          "type": "parallel",
-          "data": {
-            "commands": [
-              {
-                "type": "named",
-                "data": {
-                  "name": "Arm to Shooter 4 Piece"
-                }
-              },
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "4 Piece Middle_3rd Piece Back"
-                }
-              }
-            ]
+            "name": "Shooter Off"
           }
         },
         {
           "type": "named",
           "data": {
-            "name": "Indexer in Override"
+            "name": "Intake Off"
           }
         }
       ]

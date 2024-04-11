@@ -75,6 +75,12 @@
                 "data": {
                   "name": "Intake in"
                 }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Indexer in"
+                }
               }
             ]
           }
@@ -131,6 +137,12 @@
                 "data": {
                   "name": "Intake in"
                 }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Indexer in"
+                }
               }
             ]
           }
@@ -155,6 +167,12 @@
                 "type": "named",
                 "data": {
                   "name": "Intake in"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Indexer in"
                 }
               }
             ]

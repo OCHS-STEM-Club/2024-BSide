@@ -19,7 +19,7 @@ import frc.robot.subsystems.ArmSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.SwerveSubsystem;
 
-public class TagAlignmentCmd extends Command {
+public class TagAlignmentTeleopCmd extends Command {
   private final SwerveSubsystem m_swerveSubsystem;
   private final ShooterSubsystem m_shooterSubsystem;
   private final ArmSubsystem m_armSubsystem;
@@ -27,7 +27,7 @@ public class TagAlignmentCmd extends Command {
 
   final CommandXboxController driverXbox = new CommandXboxController(Constants.OperatorConstants.kDriverControllerPort);
   /** Creates a new TestAprilTag. */
-  public TagAlignmentCmd(SwerveSubsystem swerveSubsystem, ShooterSubsystem shooterSubsystem, ArmSubsystem armSubsystem) {
+  public TagAlignmentTeleopCmd(SwerveSubsystem swerveSubsystem, ShooterSubsystem shooterSubsystem, ArmSubsystem armSubsystem) {
     // Use addRequirements() here to declare subsystem dependencies.
     // m_limelightTable = m_inst.getTable("limelight-boombox");
     m_swerveSubsystem = swerveSubsystem;
@@ -136,7 +136,8 @@ public class TagAlignmentCmd extends Command {
     if(YValue < -18 && YValue > -19) {
       m_shooterSubsystem.shooterSpeed(0.5);
       m_armSubsystem.setReference(46);
-    }
+    }else 
+    m_shooterSubsystem.shooterOn();
 
 
   }
