@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.4966666704633864,
-        "y": 3.349981946600665
+        "x": 8.3,
+        "y": 4.1
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.159300462098683,
-        "y": 1.9234786451635695
+        "x": 7.915029590276105,
+        "y": 3.7809423506056996
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 8.4,
-        "y": 0.7
+        "x": 5.113542783139378,
+        "y": 0.8651052279683041
       },
       "prevControl": {
-        "x": 7.4,
-        "y": 0.7
+        "x": 5.905022034259317,
+        "y": 1.4817227840733729
       },
       "nextControl": null,
       "isLocked": false,
@@ -30,7 +30,25 @@
   ],
   "rotationTargets": [],
   "constraintZones": [],
-  "eventMarkers": [],
+  "eventMarkers": [
+    {
+      "name": "Shoot",
+      "waypointRelativePos": 0.75,
+      "command": {
+        "type": "sequential",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "Indexer in Override"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
   "globalConstraints": {
     "maxVelocity": 3.0,
     "maxAcceleration": 3.0,
@@ -38,14 +56,14 @@
     "maxAngularAcceleration": 720.0
   },
   "goalEndState": {
-    "velocity": 0.0,
-    "rotation": 0.0,
+    "velocity": 0,
+    "rotation": 180.0,
     "rotateFast": false
   },
   "reversed": false,
   "folder": "Source Side Midfield 4 Piece Shuttle",
   "previewStartingState": {
-    "rotation": 0.0,
+    "rotation": 43.501167870779994,
     "velocity": 0
   },
   "useDefaultConstraints": true

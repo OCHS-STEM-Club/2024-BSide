@@ -2,44 +2,19 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.63,
-      "y": 4.55
+      "x": 1.5,
+      "y": 3.35
     },
-    "rotation": -60.0
+    "rotation": 0.0
   },
   "command": {
     "type": "sequential",
     "data": {
       "commands": [
         {
-          "type": "parallel",
+          "type": "named",
           "data": {
-            "commands": [
-              {
-                "type": "named",
-                "data": {
-                  "name": "Arm to Shooter Midfield 2 piece"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "Shooter On"
-                }
-              },
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "2 Piece Source Side_1st Piece"
-                }
-              }
-            ]
-          }
-        },
-        {
-          "type": "wait",
-          "data": {
-            "waitTime": 0.5
+            "name": "Shooter On"
           }
         },
         {
@@ -57,13 +32,7 @@
         {
           "type": "named",
           "data": {
-            "name": "Arm to Intake"
-          }
-        },
-        {
-          "type": "wait",
-          "data": {
-            "waitTime": 0.75
+            "name": "Intake Off"
           }
         },
         {
@@ -73,7 +42,13 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "2 Piece Source Side_2nd Piece"
+                  "pathName": "4 Piece Shuttle_2nd Piece"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Arm to Intake"
                 }
               },
               {
@@ -92,21 +67,39 @@
           }
         },
         {
-          "type": "wait",
+          "type": "named",
           "data": {
-            "waitTime": 0.5
+            "name": "Arm to Shooter Shuttle"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "4 Piece Shuttle_3rd Piece"
           }
         },
         {
           "type": "named",
           "data": {
-            "name": "Indexer in Override"
+            "name": "Arm to Shooter Shuttle"
           }
         },
         {
-          "type": "wait",
+          "type": "path",
           "data": {
-            "waitTime": 0.5
+            "pathName": "4 Piece Shuttle_4th Piece"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Arm to Shooter Shuttle"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "4 Piece Shuttle_4th Piece Back"
           }
         },
         {
@@ -120,16 +113,10 @@
           "data": {
             "name": "Intake Off"
           }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "Indexer Off"
-          }
         }
       ]
     }
   },
-  "folder": "Source Side Autos",
+  "folder": null,
   "choreoAuto": false
 }

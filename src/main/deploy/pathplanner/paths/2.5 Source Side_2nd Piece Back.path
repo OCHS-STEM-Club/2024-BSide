@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 0.631561442495083,
-        "y": 4.546404070386616
+        "x": 2.89,
+        "y": 4.1
       },
       "prevControl": null,
       "nextControl": {
-        "x": 0.6815614424950827,
-        "y": 4.459801530008173
+        "x": 1.592342158047545,
+        "y": 4.302471436333007
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 1.5334796588875692,
-        "y": 4.031022232448053
+        "x": 0.71,
+        "y": 4.61
       },
       "prevControl": {
-        "x": 1.4627689807689142,
-        "y": 4.101732910566708
+        "x": 2.0962443535948716,
+        "y": 4.238556944942051
       },
       "nextControl": null,
       "isLocked": false,
@@ -39,13 +39,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -40.0,
+    "rotation": -59.83606351117759,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "2 Piece Source",
+  "folder": "Source Side Midfield 2.5 Piece ",
   "previewStartingState": {
-    "rotation": -60.642246457208685,
+    "rotation": 0,
     "velocity": 0
   },
   "useDefaultConstraints": true

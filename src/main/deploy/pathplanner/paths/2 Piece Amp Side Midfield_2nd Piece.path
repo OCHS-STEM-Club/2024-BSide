@@ -3,25 +3,41 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.07,
-        "y": 5.55
+        "x": 0.7284778050297884,
+        "y": 6.417538427088266
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.2821320343559643,
-        "y": 5.7621320343559645
+        "x": 1.2320437764983934,
+        "y": 7.811127976036266
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 2.8955602305823454,
-        "y": 6.985264553488749
+        "x": 2.8,
+        "y": 7.73
       },
       "prevControl": {
-        "x": 2.7027239476763834,
-        "y": 6.755451220553056
+        "x": 1.9295294941090075,
+        "y": 7.73
+      },
+      "nextControl": {
+        "x": 3.936192579830875,
+        "y": 7.73
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 8.29367821360825,
+        "y": 7.448092043112856
+      },
+      "prevControl": {
+        "x": 7.3451004533999456,
+        "y": 7.694019610574268
       },
       "nextControl": null,
       "isLocked": false,
@@ -30,8 +46,8 @@
   ],
   "rotationTargets": [
     {
-      "waypointRelativePos": 0.4,
-      "rotationDegrees": 45.0,
+      "waypointRelativePos": 1.0,
+      "rotationDegrees": 0,
       "rotateFast": false
     }
   ],
@@ -44,14 +60,14 @@
     "maxAngularAcceleration": 720.0
   },
   "goalEndState": {
-    "velocity": 0.0,
-    "rotation": 50.0,
+    "velocity": 0,
+    "rotation": 0,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "Middle 3 Piece",
+  "folder": "Amp Side Midfield 2 Piece",
   "previewStartingState": {
-    "rotation": 0,
+    "rotation": 60.0,
     "velocity": 0
   },
   "useDefaultConstraints": true

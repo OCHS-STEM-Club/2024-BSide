@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.15,
+      "x": 1.1,
       "y": 5.55
     },
-    "rotation": 0.0
+    "rotation": 0
   },
   "command": {
     "type": "sequential",
@@ -67,7 +67,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "3 Piece Middle_2nd Piece"
+                  "pathName": "4 Piece Middle Side_2nd Piece"
                 }
               },
               {
@@ -92,25 +92,13 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "3 Piece Middle_2nd Piece Back"
+                  "pathName": "4 Piece Middle Side_2nd Piece Back"
                 }
               },
               {
                 "type": "named",
                 "data": {
                   "name": "Arm to Shooter Subwoofer"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "Intake in"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "Indexer in"
                 }
               }
             ]
@@ -125,7 +113,7 @@
         {
           "type": "wait",
           "data": {
-            "waitTime": 0.5
+            "waitTime": 0.25
           }
         },
         {
@@ -141,7 +129,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "3 Piece Middle_3rd Piece"
+                  "pathName": "4 Piece Middle Side_3rd Piece"
                 }
               },
               {
@@ -172,7 +160,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "3 Piece Middle_3rd Piece Back"
+                  "pathName": "4 Piece Middle Side_3rd Piece Back"
                 }
               },
               {
@@ -199,7 +187,7 @@
         {
           "type": "wait",
           "data": {
-            "waitTime": 0.5
+            "waitTime": 0.25
           }
         },
         {
@@ -215,7 +203,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "New Path"
+                  "pathName": "4 Piece Middle Side_4th Piece"
                 }
               },
               {
@@ -238,9 +226,15 @@
           "data": {
             "commands": [
               {
+                "type": "named",
+                "data": {
+                  "name": "Arm to Shooter Subwoofer"
+                }
+              },
+              {
                 "type": "path",
                 "data": {
-                  "pathName": "New New Path"
+                  "pathName": "4 Piece Middle Side_4th Piece Back"
                 }
               },
               {
@@ -267,13 +261,7 @@
         {
           "type": "wait",
           "data": {
-            "waitTime": 0.5
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "Shooter Off"
+            "waitTime": 0.25
           }
         },
         {
@@ -281,10 +269,22 @@
           "data": {
             "name": "Intake Off"
           }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Indexer Off"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Shooter Off"
+          }
         }
       ]
     }
   },
-  "folder": "4 Piece Subwoofer Middle",
+  "folder": "Middle Autos",
   "choreoAuto": false
 }

@@ -25,9 +25,6 @@ public class ClimberSubsystem extends SubsystemBase {
   private RelativeEncoder climberEncoder;
   public boolean climberbool;
   public DutyCycleEncoder throughBoreEncoder;
-  // public RelativeEncoder throughboreEncoder;
-  // public int kCPR = 8192;
-  // public SparkMaxAlternateEncoder.Type kType = SparkMaxAlternateEncoder.Type.kQuadrature;
 
   public ClimberSubsystem() {
     climberMotor = new CANSparkMax(Constants.ClimberConstants.kClimberMotorID, MotorType.kBrushless);

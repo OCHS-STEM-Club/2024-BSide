@@ -37,7 +37,7 @@ public class ShooterSubsystem extends SubsystemBase {
 
     var TalonFXConfigsLeft = new TalonFXConfiguration();
 
-    //in init function, set slot 0 gaind
+    //Shooter Ramp Rates
     var slot0ConfigsLeft = TalonFXConfigsLeft.Slot0;
     slot0ConfigsLeft.kP = 0.1; // An error of 0.5 rotations results in 12 V output
     slot0ConfigsLeft.kI = 0; // no output for integrated error

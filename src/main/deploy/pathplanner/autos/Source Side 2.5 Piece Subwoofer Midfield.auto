@@ -2,19 +2,38 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.5,
-      "y": 3.35
+      "x": 0.71,
+      "y": 4.61
     },
-    "rotation": 0.0
+    "rotation": -60.0
   },
   "command": {
     "type": "sequential",
     "data": {
       "commands": [
         {
-          "type": "named",
+          "type": "parallel",
           "data": {
-            "name": "Shooter On"
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "Arm to Shooter Subwoofer"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Shooter On"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 1.5
           }
         },
         {
@@ -30,25 +49,19 @@
           }
         },
         {
-          "type": "named",
-          "data": {
-            "name": "Intake Off"
-          }
-        },
-        {
           "type": "parallel",
           "data": {
             "commands": [
               {
-                "type": "path",
-                "data": {
-                  "pathName": "4 Piece Shuttle_2nd Piece"
-                }
-              },
-              {
                 "type": "named",
                 "data": {
                   "name": "Arm to Intake"
+                }
+              },
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "2.5 Source Side_2nd Piece"
                 }
               },
               {
@@ -67,21 +80,28 @@
           }
         },
         {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "2.5 Source Side_2nd Piece Back"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Arm to Shooter Subwoofer"
+                }
+              }
+            ]
+          }
+        },
+        {
           "type": "wait",
           "data": {
             "waitTime": 0.5
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "Arm to Shooter Shuttle"
-          }
-        },
-        {
-          "type": "wait",
-          "data": {
-            "waitTime": 0.75
           }
         },
         {
@@ -97,9 +117,34 @@
           }
         },
         {
-          "type": "path",
+          "type": "parallel",
           "data": {
-            "pathName": "4 Piece Shuttle_3rd Piece"
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "Arm to Intake"
+                }
+              },
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "2.5 Source Side_3rd Piece"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Intake in"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Indexer in"
+                }
+              }
+            ]
           }
         },
         {
@@ -109,13 +154,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "4 Piece Shuttle_4th Piece"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "Arm to Intake"
+                  "pathName": "2.5 Source Side_3rd Piece Back"
                 }
               },
               {
@@ -123,38 +162,14 @@
                 "data": {
                   "name": "Intake in"
                 }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Indexer in"
+                }
               }
             ]
-          }
-        },
-        {
-          "type": "wait",
-          "data": {
-            "waitTime": 0.25
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "Arm to Shooter Shuttle"
-          }
-        },
-        {
-          "type": "wait",
-          "data": {
-            "waitTime": 0.75
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "Indexer in Override"
-          }
-        },
-        {
-          "type": "wait",
-          "data": {
-            "waitTime": 0.5
           }
         },
         {
@@ -168,10 +183,16 @@
           "data": {
             "name": "Intake Off"
           }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Indexer Off"
+          }
         }
       ]
     }
   },
-  "folder": null,
+  "folder": "Source Side Autos",
   "choreoAuto": false
 }

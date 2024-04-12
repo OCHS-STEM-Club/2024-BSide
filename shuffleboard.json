@@ -135,7 +135,7 @@
             "content": {
               "_type": "ComboBox Chooser",
               "_source0": "network_table:///SmartDashboard/Autos",
-              "_title": "SmartDashboard/Autos",
+              "_title": "/SmartDashboard/Autos",
               "_glyph": 148,
               "_showGlyph": false
             }

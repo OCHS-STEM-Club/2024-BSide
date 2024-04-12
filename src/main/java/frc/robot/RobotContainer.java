@@ -52,9 +52,10 @@ public class RobotContainer
   private double rot;
   private double rot_limelight;
 
+  // Auto Builder Sendable Chooser 
   private final SendableChooser<Command> autoChooser;
 
-  // The robot's subsystems and commands are defined here...
+  // All Subsystems
   private final SwerveSubsystem m_swerveSubsystem = new SwerveSubsystem(new File(Filesystem.getDeployDirectory(), "swerve/neo"));
   private final ArmSubsystem m_armSubsystem = new ArmSubsystem();
   private final IntakeSubsystem m_intakeSubsystem = new IntakeSubsystem();
@@ -63,78 +64,69 @@ public class RobotContainer
   private final LimelightSubsystem m_limelightSubsystem = new LimelightSubsystem();
   private final ClimberSubsystem m_climberSubsystem = new ClimberSubsystem();
 
-  // Commands
+  // Intake Cmd
   IntakeInCmd m_intakeInCmd = new IntakeInCmd(m_intakeSubsystem, m_armSubsystem, m_indexerSubsystem);
   IntakeOutCmd m_intakeOutCmd = new IntakeOutCmd(m_intakeSubsystem, m_indexerSubsystem);
+  // Indexer Cmd
   IndexerOverrideCmd m_indexerOverrideCmd = new IndexerOverrideCmd(m_indexerSubsystem);
   IndexerInCmd m_indexerInCmd = new IndexerInCmd(m_indexerSubsystem, m_armSubsystem);
   TagAlignmentTeleopCmd m_tagAlignmentCmd = new TagAlignmentTeleopCmd(m_swerveSubsystem, m_shooterSubsystem, m_armSubsystem);
+  // Climber Cmd
   ClimberDownOverrideCmd m_climberDownOverrideCmd = new ClimberDownOverrideCmd(m_climberSubsystem);
   ClimberUpOverrideCmd m_climberUpOverrideCmd = new ClimberUpOverrideCmd(m_climberSubsystem);
   ClimberDownCommand m_climberDownCommand = new ClimberDownCommand(m_climberSubsystem);
   ClimberUpCommand m_climberUpCommand = new ClimberUpCommand(m_climberSubsystem);
 
-  // Replace with CommandPS4Controller or CommandJoystick if needed
+  // Controllers
   final CommandXboxController driverXbox = new CommandXboxController(Constants.OperatorConstants.kDriverControllerPort);
   final CommandXboxController ButtonBox = new CommandXboxController(Constants.OperatorConstants.kOperatorControllerPort);
 
-  /**
-   * The container for the robot. Contains subsystems, OI devices, and commands.
-   */
+
   public RobotContainer()
   {
-
+    // Indexer
     NamedCommands.registerCommand("Indexer in Override", Commands.runOnce(m_indexerSubsystem::indexerIn));
-    NamedCommands.registerCommand("Intake & Indexer Out", new IntakeOutCmd(m_intakeSubsystem, m_indexerSubsystem));
-    NamedCommands.registerCommand("Intake in", new IntakeInCmd(m_intakeSubsystem, m_armSubsystem, m_indexerSubsystem));
     NamedCommands.registerCommand("Indexer in", new IndexerInCmd(m_indexerSubsystem, m_armSubsystem));
-    NamedCommands.registerCommand("Intake Off", Commands.runOnce(m_intakeSubsystem::intakeOff));
     NamedCommands.registerCommand("Indexer Off", Commands.runOnce(m_indexerSubsystem::indexerOff));
 
+    // Intake
+    NamedCommands.registerCommand("Intake & Indexer Out", new IntakeOutCmd(m_intakeSubsystem, m_indexerSubsystem));
+    NamedCommands.registerCommand("Intake in", new IntakeInCmd(m_intakeSubsystem, m_armSubsystem, m_indexerSubsystem));
+    NamedCommands.registerCommand("Intake Off", Commands.runOnce(m_intakeSubsystem::intakeOff));
+    
     // Shooter
     NamedCommands.registerCommand("Shooter On", Commands.runOnce(() -> m_shooterSubsystem.shooterSpeed(0.4)));
     NamedCommands.registerCommand("Shooter On 4 Piece", Commands.runOnce(() -> m_shooterSubsystem.shooterSpeed(0.45)));
     NamedCommands.registerCommand("Shooter Off", Commands.runOnce(m_shooterSubsystem::shooterOff));
-    
-    // Arm
+
+    // Arm Normal Setpoints
+    NamedCommands.registerCommand("Arm to Intake", Commands.runOnce(m_armSubsystem::intakeSetpoint));
+    NamedCommands.registerCommand("Arm to Amp", Commands.runOnce(m_armSubsystem::ampSetpoint));
+    NamedCommands.registerCommand("Arm to Shooter Subwoofer", Commands.runOnce(m_armSubsystem::shooterSetpoint));
+
     NamedCommands.registerCommand("Arm to Shooter 1st Piece Middle", Commands.runOnce(() -> m_armSubsystem.setReference(27)));
     NamedCommands.registerCommand("Arm to Shooter Shuttle", Commands.runOnce(() -> m_armSubsystem.setReference(27)));
     NamedCommands.registerCommand("Arm to Shooter 4 Piece", Commands.runOnce(() -> m_armSubsystem.setReference(31)));
     NamedCommands.registerCommand("Arm to Shooter 4 Piece 1st", Commands.runOnce(() -> m_armSubsystem.setReference(37)));
     NamedCommands.registerCommand("Arm to Shooter Sides", Commands.runOnce(() -> m_armSubsystem.setReference(7)));
-    NamedCommands.registerCommand("Arm to Shooter Midlfield 2 piece", Commands.runOnce(() -> m_armSubsystem.setReference(25)));
-    NamedCommands.registerCommand("Arm to Intake", Commands.runOnce(m_armSubsystem::intakeSetpoint));
-    NamedCommands.registerCommand("Arm to Amp", Commands.runOnce(m_armSubsystem::ampSetpoint));
-    NamedCommands.registerCommand("Arm to Shooter Subwoofer", Commands.runOnce(m_armSubsystem::shooterSetpoint));
+
+    // In Use
+    NamedCommands.registerCommand("Arm to Shooter Midfield 2 piece", Commands.runOnce(() -> m_armSubsystem.setReference(25)));
+    // 
     NamedCommands.registerCommand("Arm to Shooter Side Source 1st Piece", Commands.runOnce(() -> m_armSubsystem.setReference(26.5)));
     NamedCommands.registerCommand("Arm to Shooter Side Source 1st Piece Test", Commands.runOnce(() -> m_armSubsystem.setReference(23)));
-
-
+    // Tag Alignment
     NamedCommands.registerCommand("April Tag Alignment", new TagAlignmentAutoCmd(m_swerveSubsystem, m_shooterSubsystem, m_armSubsystem).withTimeout(2));
 
 
+
+
+    // Auto Chooser builder
     autoChooser = AutoBuilder.buildAutoChooser();
+
     // Configure the trigger bindings
     configureBindings();
 
-
-    AbsoluteDriveAdv closedAbsoluteDriveAdv = new AbsoluteDriveAdv(m_swerveSubsystem,
-                                                                   () -> -MathUtil.applyDeadband(driverXbox.getLeftY(),
-                                                                                                OperatorConstants.LEFT_Y_DEADBAND),
-                                                                   () -> -MathUtil.applyDeadband(driverXbox.getLeftX(),
-                                                                                                OperatorConstants.LEFT_X_DEADBAND),
-                                                                   () -> -MathUtil.applyDeadband(driverXbox.getRightX(),
-                                                                                                OperatorConstants.RIGHT_X_DEADBAND),
-                                                                   driverXbox.getHID()::getYButtonPressed,
-                                                                   driverXbox.getHID()::getAButtonPressed,
-                                                                   driverXbox.getHID()::getXButtonPressed,
-                                                                   driverXbox.getHID()::getBButtonPressed);
-
-    // Applies deadbands and inverts controls because joysticks
-    // are back-right positive while robot
-    // controls are front-left positive
-    // left stick controls translation
-    // right stick controls the angular velocity of the robot
     Command driveFieldOrientedAnglularVelocity = m_swerveSubsystem.driveCommand(
         () -> MathUtil.applyDeadband(-driverXbox.getLeftY() * OperatorConstants.TRANSLATION_Y_CONSTANT, OperatorConstants.LEFT_Y_DEADBAND),
         () -> MathUtil.applyDeadband(-driverXbox.getLeftX() * OperatorConstants.TRANSLATION_X_CONSTANT, OperatorConstants.LEFT_X_DEADBAND),
@@ -145,15 +137,10 @@ public class RobotContainer
         () -> MathUtil.applyDeadband(driverXbox.getLeftX(), OperatorConstants.LEFT_X_DEADBAND),
         () -> driverXbox.getRawAxis(2));
 
-      AbsoluteFieldDrive AbsoluteFieldDrive = new AbsoluteFieldDrive(
-        m_swerveSubsystem, 
-        () -> MathUtil.applyDeadband(-driverXbox.getLeftY()*0.9, OperatorConstants.LEFT_Y_DEADBAND),
-        () -> MathUtil.applyDeadband(-driverXbox.getLeftX()*0.9, OperatorConstants.LEFT_X_DEADBAND),
-        () -> MathUtil.applyDeadband(-driverXbox.getRightX()*6, OperatorConstants.RIGHT_X_DEADBAND));
-
 
     m_swerveSubsystem.setDefaultCommand(!RobotBase.isSimulation() ? driveFieldOrientedAnglularVelocity : driveFieldOrientedDirectAngleSim);
 
+    // Auto Chooser Smart Dashboard
     SmartDashboard.putData("Autos", autoChooser);
   }
 
@@ -166,7 +153,6 @@ public class RobotContainer
    */
   private void configureBindings()
   {
-    // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
 
     // Xbox Controller Configs
     driverXbox.a().onTrue(
@@ -233,8 +219,6 @@ public class RobotContainer
     );
     
     
-    
-
     // driverXbox.b().whileTrue(
     //     Commands.deferredProxy(() -> m_swerveSubsystem.driveToPose(
     //                                new Pose2d(new Translation2d(4, 4), Rotation2d.fromDegrees(0)))

@@ -3,20 +3,24 @@
   "robotLength": 0.51,
   "holonomicMode": true,
   "pathFolders": [
-    "2 Piece Middle",
-    "2 Piece Middle Tag Alignment",
-    "2 Piece Source",
-    "3 Piece Middle",
-    "3 Piece Middle Tag Alignment",
-    "3 Piece Source",
-    "4 Piece Middle",
-    "4 Piece Middle Tag Alignment",
-    "4 Piece Shuttle"
+    "Amp Side Midfield 2 Piece",
+    "Amp Side Midfield 2.5 Piece",
+    "Amp Side Midfield 3 Piece",
+    "Middle 2 Piece",
+    "Middle 2 Piece Tag Alignment",
+    "Middle 3 Piece",
+    "Middle 3 Piece Tag Alignment",
+    "Middle 4 Piece",
+    "Middle 4 Piece Tag Alignment",
+    "Source Side Midfield 2 Piece",
+    "Source Side Midfield 2.5 Piece ",
+    "Source Side Midfield 4 Piece Shuttle"
   ],
   "autoFolders": [
-    "2 Piece Subwoofer Middle",
-    "3 Piece Subwoofer Middle",
-    "4 Piece Subwoofer Middle"
+    "Amp Side Autos",
+    "Middle Autos",
+    "Source Side Autos",
+    "Tag Alignment Autos"
   ],
   "defaultMaxVel": 3.0,
   "defaultMaxAccel": 3.0,

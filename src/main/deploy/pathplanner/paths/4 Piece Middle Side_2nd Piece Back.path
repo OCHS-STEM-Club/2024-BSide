@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.8,
-        "y": 5.55
+        "x": 2.88,
+        "y": 5.550936522700434
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.8113496550437564,
-        "y": 5.849785232008496
+        "x": 2.73003528501529,
+        "y": 5.547683176798954
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 2.8,
-        "y": 7.114110012973389
+        "x": 1.1,
+        "y": 5.550936522700434
       },
       "prevControl": {
-        "x": 2.7786258850036276,
-        "y": 6.814872403024168
+        "x": 1.249447878477461,
+        "y": 5.538078388365076
       },
       "nextControl": null,
       "isLocked": false,
@@ -32,18 +32,18 @@
   "constraintZones": [],
   "eventMarkers": [],
   "globalConstraints": {
-    "maxVelocity": 2.0,
-    "maxAcceleration": 2.0,
+    "maxVelocity": 3.0,
+    "maxAcceleration": 3.0,
     "maxAngularVelocity": 540.0,
-    "maxAngularAcceleration": 720.0
+    "maxAngularAcceleration": 620.0
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 92.0,
-    "rotateFast": true
+    "rotation": 0,
+    "rotateFast": false
   },
   "reversed": false,
-  "folder": "4 Piece Middle",
+  "folder": "Middle 4 Piece",
   "previewStartingState": {
     "rotation": 0,
     "velocity": 0

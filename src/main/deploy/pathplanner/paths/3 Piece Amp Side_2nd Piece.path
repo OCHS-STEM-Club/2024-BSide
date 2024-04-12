@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.08,
-        "y": 5.25
+        "x": 0.7604069019797239,
+        "y": 6.442272974232047
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.618501382509183,
-        "y": 4.871708003045107
+        "x": 1.717544601008485,
+        "y": 6.699963893201328
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 2.6607658350837373,
-        "y": 4.087081954477746
+        "x": 2.8863569834762997,
+        "y": 6.994467800594795
       },
       "prevControl": {
-        "x": 1.7824530941501249,
-        "y": 4.602358762492133
+        "x": 2.1224874736744996,
+        "y": 6.782793117155741
       },
       "nextControl": null,
       "isLocked": false,
@@ -39,13 +39,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0,
+    "rotation": 39.559667968994326,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "4 Piece Middle",
+  "folder": "Amp Side Midfield 3 Piece",
   "previewStartingState": {
-    "rotation": 0,
+    "rotation": 60.0,
     "velocity": 0
   },
   "useDefaultConstraints": true

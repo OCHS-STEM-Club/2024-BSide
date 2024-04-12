@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.4966666704633864,
-        "y": 3.349981946600665
+        "x": 0.71,
+        "y": 4.61
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.159300462098683,
-        "y": 1.9234786451635695
+        "x": 1.7083413539024395,
+        "y": 3.690502089524358
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 8.4,
-        "y": 0.7
+        "x": 8.288663034725174,
+        "y": 0.763869509801799
       },
       "prevControl": {
-        "x": 7.4,
-        "y": 0.7
+        "x": 7.055427922515039,
+        "y": 1.0031539345589902
       },
       "nextControl": null,
       "isLocked": false,
@@ -38,14 +38,14 @@
     "maxAngularAcceleration": 720.0
   },
   "goalEndState": {
-    "velocity": 0.0,
-    "rotation": 0.0,
+    "velocity": 0,
+    "rotation": 0,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "Source Side Midfield 4 Piece Shuttle",
+  "folder": "Source Side Midfield 2.5 Piece ",
   "previewStartingState": {
-    "rotation": 0.0,
+    "rotation": -58.855285609197516,
     "velocity": 0
   },
   "useDefaultConstraints": true

@@ -8,8 +8,8 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.245931804182766,
-        "y": 6.315931804182766
+        "x": 2.697867965644036,
+        "y": 6.767867965644037
       },
       "isLocked": false,
       "linkedName": null
@@ -30,7 +30,7 @@
   ],
   "rotationTargets": [
     {
-      "waypointRelativePos": 0.4,
+      "waypointRelativePos": 0.45,
       "rotationDegrees": 0.0,
       "rotateFast": false
     }
@@ -49,9 +49,9 @@
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "3 Piece Middle",
+  "folder": "Middle 3 Piece",
   "previewStartingState": {
-    "rotation": 0,
+    "rotation": 47.85026598403378,
     "velocity": 0
   },
   "useDefaultConstraints": true

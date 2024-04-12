@@ -2,8 +2,8 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.63,
-      "y": 4.55
+      "x": 0.71,
+      "y": 4.61
     },
     "rotation": -60.0
   },
@@ -18,7 +18,7 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "Arm to Shooter Midfield 2 piece"
+                  "name": "Arm to Shooter Subwoofer"
                 }
               },
               {
@@ -26,14 +26,69 @@
                 "data": {
                   "name": "Shooter On"
                 }
+              }
+            ]
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 1.5
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Indexer in Override"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 0.5
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "Arm to Intake"
+                }
               },
               {
                 "type": "path",
                 "data": {
-                  "pathName": "2 Piece Source Side_1st Piece"
+                  "pathName": "2.5 Piece Amp Side_2nd Piece"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Intake in"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Indexer in"
                 }
               }
             ]
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 0.5
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Arm to Shooter Subwoofer"
           }
         },
         {
@@ -63,7 +118,7 @@
         {
           "type": "wait",
           "data": {
-            "waitTime": 0.75
+            "waitTime": 0.5
           }
         },
         {
@@ -73,7 +128,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "2 Piece Source Side_2nd Piece"
+                  "pathName": "2.5 Piece Amp Side_3rd Piece"
                 }
               },
               {
@@ -89,24 +144,6 @@
                 }
               }
             ]
-          }
-        },
-        {
-          "type": "wait",
-          "data": {
-            "waitTime": 0.5
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "Indexer in Override"
-          }
-        },
-        {
-          "type": "wait",
-          "data": {
-            "waitTime": 0.5
           }
         },
         {
@@ -130,6 +167,6 @@
       ]
     }
   },
-  "folder": "Source Side Autos",
+  "folder": "Amp Side Autos",
   "choreoAuto": false
 }

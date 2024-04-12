@@ -5,7 +5,7 @@
       "x": 0.71,
       "y": 4.61
     },
-    "rotation": -58.0
+    "rotation": -60.0
   },
   "command": {
     "type": "sequential",
@@ -18,13 +18,13 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "Shooter On"
+                  "name": "Arm to Shooter Subwoofer"
                 }
               },
               {
                 "type": "named",
                 "data": {
-                  "name": "Arm to Shooter Sides"
+                  "name": "Shooter On"
                 }
               }
             ]
@@ -33,7 +33,68 @@
         {
           "type": "wait",
           "data": {
-            "waitTime": 2.0
+            "waitTime": 1.5
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Indexer in Override"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 0.5
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "Arm to Intake"
+                }
+              },
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "3 Piece Amp Side_2nd Piece"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Intake in"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Indexer in"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 0.5
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Arm to Shooter Subwoofer"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 0.5
           }
         },
         {
@@ -67,7 +128,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "3 Piece Source_2nd Piece"
+                  "pathName": "3 Piece Amp Side_3rd Piece"
                 }
               },
               {
@@ -75,30 +136,11 @@
                 "data": {
                   "name": "Intake in"
                 }
-              }
-            ]
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "Intake in"
-          }
-        },
-        {
-          "type": "parallel",
-          "data": {
-            "commands": [
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "3 Piece Source_2nd Piece Back"
-                }
               },
               {
                 "type": "named",
                 "data": {
-                  "name": "Arm to Shooter Side Source 1st Piece"
+                  "name": "Indexer in"
                 }
               }
             ]
@@ -133,10 +175,16 @@
           "data": {
             "name": "Intake Off"
           }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Indexer Off"
+          }
         }
       ]
     }
   },
-  "folder": null,
+  "folder": "Amp Side Autos",
   "choreoAuto": false
 }

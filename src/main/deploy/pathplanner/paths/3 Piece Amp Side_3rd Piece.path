@@ -1,0 +1,92 @@
+{
+  "version": 1.0,
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 2.89,
+        "y": 6.99
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 3.751462211444603,
+        "y": 7.325784696412442
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 8.546353953694455,
+        "y": 7.436223661684991
+      },
+      "prevControl": {
+        "x": 8.846353953694456,
+        "y": 7.436223661684991
+      },
+      "nextControl": {
+        "x": 8.246353953694454,
+        "y": 7.436223661684991
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 2.89,
+        "y": 6.99
+      },
+      "prevControl": {
+        "x": 3.4661615511571853,
+        "y": 7.381004179048716
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": null
+    }
+  ],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.95,
+      "rotationDegrees": 0.0,
+      "rotateFast": false
+    }
+  ],
+  "constraintZones": [],
+  "eventMarkers": [
+    {
+      "name": "Arm to shoot",
+      "waypointRelativePos": 1.3,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "Arm to Shooter Subwoofer"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "globalConstraints": {
+    "maxVelocity": 3.0,
+    "maxAcceleration": 3.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": 33.690067525979885,
+    "rotateFast": false
+  },
+  "reversed": false,
+  "folder": "Amp Side Midfield 3 Piece",
+  "previewStartingState": {
+    "rotation": 34.209045221379725,
+    "velocity": 0
+  },
+  "useDefaultConstraints": true
+}

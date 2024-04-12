@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.63,
-      "y": 4.55
+      "x": 0.73,
+      "y": 6.42
     },
-    "rotation": -60.0
+    "rotation": 60.0
   },
   "command": {
     "type": "sequential",
@@ -18,19 +18,13 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "Arm to Shooter Midfield 2 piece"
+                  "name": "Arm to Shooter Subwoofer"
                 }
               },
               {
                 "type": "named",
                 "data": {
                   "name": "Shooter On"
-                }
-              },
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "2 Piece Source Side_1st Piece"
                 }
               }
             ]
@@ -39,7 +33,7 @@
         {
           "type": "wait",
           "data": {
-            "waitTime": 0.5
+            "waitTime": 1.0
           }
         },
         {
@@ -55,25 +49,19 @@
           }
         },
         {
-          "type": "named",
-          "data": {
-            "name": "Arm to Intake"
-          }
-        },
-        {
-          "type": "wait",
-          "data": {
-            "waitTime": 0.75
-          }
-        },
-        {
           "type": "parallel",
           "data": {
             "commands": [
               {
                 "type": "path",
                 "data": {
-                  "pathName": "2 Piece Source Side_2nd Piece"
+                  "pathName": "2 Piece Amp Side Midfield_2nd Piece"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Arm to Intake"
                 }
               },
               {
@@ -92,6 +80,25 @@
           }
         },
         {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "2 Piece Amp Side Midfield_2nd Piece Back"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Arm to Shooter Subwoofer"
+                }
+              }
+            ]
+          }
+        },
+        {
           "type": "wait",
           "data": {
             "waitTime": 0.5
@@ -112,12 +119,6 @@
         {
           "type": "named",
           "data": {
-            "name": "Shooter Off"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
             "name": "Intake Off"
           }
         },
@@ -126,10 +127,16 @@
           "data": {
             "name": "Indexer Off"
           }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Shooter Off"
+          }
         }
       ]
     }
   },
-  "folder": "Source Side Autos",
+  "folder": "Amp Side Autos",
   "choreoAuto": false
 }
