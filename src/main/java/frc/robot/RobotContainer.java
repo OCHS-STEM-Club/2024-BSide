@@ -18,9 +18,9 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.AprilTag.TagAlignmentTeleopCmd;
-import frc.robot.commands.Climber.ClimberDownCommand;
+import frc.robot.commands.Climber.ClimberDownCmd;
 import frc.robot.commands.Climber.ClimberDownOverrideCmd;
-import frc.robot.commands.Climber.ClimberUpCommand;
+import frc.robot.commands.Climber.ClimberUpCmd;
 import frc.robot.commands.Climber.ClimberUpOverrideCmd;
 import frc.robot.commands.AprilTag.TagAlignmentAutoCmd;
 import frc.robot.commands.Drive.AbsoluteDriveAdv;
@@ -74,8 +74,8 @@ public class RobotContainer
   // Climber Cmd
   ClimberDownOverrideCmd m_climberDownOverrideCmd = new ClimberDownOverrideCmd(m_climberSubsystem);
   ClimberUpOverrideCmd m_climberUpOverrideCmd = new ClimberUpOverrideCmd(m_climberSubsystem);
-  ClimberDownCommand m_climberDownCommand = new ClimberDownCommand(m_climberSubsystem);
-  ClimberUpCommand m_climberUpCommand = new ClimberUpCommand(m_climberSubsystem);
+  ClimberDownCmd m_climberDownCommand = new ClimberDownCmd(m_climberSubsystem);
+  ClimberUpCmd m_climberUpCommand = new ClimberUpCmd(m_climberSubsystem);
 
   // Controllers
   final CommandXboxController driverXbox = new CommandXboxController(Constants.OperatorConstants.kDriverControllerPort);
