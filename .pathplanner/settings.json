@@ -21,8 +21,7 @@
   "autoFolders": [
     "Amp Side Autos",
     "Middle Autos",
-    "Source Side Autos",
-    "Tag Alignment Autos"
+    "Source Side Autos"
   ],
   "defaultMaxVel": 3.0,
   "defaultMaxAccel": 3.0,
