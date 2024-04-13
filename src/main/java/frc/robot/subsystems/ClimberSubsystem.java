@@ -44,7 +44,7 @@ public class ClimberSubsystem extends SubsystemBase {
   @Override
   public void periodic() {
 
-    System.out.println(climberEncoder.getPosition());
+    // System.out.println(climberEncoder.getPosition());
   }
 
   public void climberDown() {

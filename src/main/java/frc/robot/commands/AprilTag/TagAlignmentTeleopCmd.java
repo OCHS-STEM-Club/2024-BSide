@@ -11,6 +11,7 @@ import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.button.CommandJoystick;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.Constants;
 import frc.robot.LimelightHelpers;
@@ -25,7 +26,11 @@ public class TagAlignmentTeleopCmd extends Command {
   private final ArmSubsystem m_armSubsystem;
   private final PIDController m_yawPidController = new PIDController(0.05, 0, 0);
 
-  final CommandXboxController driverXbox = new CommandXboxController(Constants.OperatorConstants.kDriverControllerPort);
+
+  final CommandXboxController driverXbox = new CommandXboxController(Constants.OperatorConstants.kDriveJoystickPort);
+
+  final CommandJoystick driveJoystick = new CommandJoystick(Constants.OperatorConstants.kDriveJoystickPort);
+  final CommandJoystick rotJoystick = new CommandJoystick(Constants.OperatorConstants.kRotJoystickPort);
   /** Creates a new TestAprilTag. */
   public TagAlignmentTeleopCmd(SwerveSubsystem swerveSubsystem, ShooterSubsystem shooterSubsystem, ArmSubsystem armSubsystem) {
     // Use addRequirements() here to declare subsystem dependencies.
@@ -41,7 +46,6 @@ public class TagAlignmentTeleopCmd extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    // SmartDashboard.putNumber("tx", targetX);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -51,94 +55,110 @@ public class TagAlignmentTeleopCmd extends Command {
     double YValue = LimelightHelpers.getTY("limelight-bside");
 
 
-    m_swerveSubsystem.drive(new Translation2d(MathUtil.applyDeadband(-driverXbox.getLeftY()*2, OperatorConstants.LEFT_Y_DEADBAND), MathUtil.applyDeadband(-driverXbox.getLeftX()*2, OperatorConstants.LEFT_X_DEADBAND)), m_yawPidController.calculate(targetAngularVelocity,0)*2,true);
+    // m_swerveSubsystem.drive(new Translation2d(MathUtil.applyDeadband(-driveJoystick.getRawAxis(1)*2,
+    //  OperatorConstants.LEFT_Y_DEADBAND), MathUtil.applyDeadband(-driveJoystick.getRawAxis(0)*2,
+    //   OperatorConstants.LEFT_X_DEADBAND)), m_yawPidController.calculate(targetAngularVelocity,0)*2,true);
 
+
+  m_swerveSubsystem.drive(new Translation2d(MathUtil.applyDeadband(-driverXbox.getLeftX()*2,
+    OperatorConstants.LEFT_Y_DEADBAND), MathUtil.applyDeadband(-driverXbox.getLeftX()*2,
+     OperatorConstants.LEFT_X_DEADBAND)), m_yawPidController.calculate(targetAngularVelocity,0)*2,true);
     if(YValue <= 7.5 && YValue >= 5.5) {
       m_shooterSubsystem.shooterSpeed(0.4);
-      m_armSubsystem.setReference(23);
+      m_armSubsystem.setReference(28);
     } 
     if(YValue < 5.5 && YValue > 3.5) {
       m_shooterSubsystem.shooterSpeed(0.4);
-      m_armSubsystem.setReference(25);
+      m_armSubsystem.setReference(30);
     } 
     if(YValue < 3.5 && YValue > 1.5) {
       m_shooterSubsystem.shooterSpeed(0.4);
-      m_armSubsystem.setReference(27);
+      m_armSubsystem.setReference(32);
     } 
     if(YValue < 1.5 && YValue > 0) {
       m_shooterSubsystem.shooterSpeed(0.4);
-      m_armSubsystem.setReference(29);
+      m_armSubsystem.setReference(34);
     }
     if(YValue < 0 && YValue > -1) {
       m_shooterSubsystem.shooterSpeed(0.4);
-      m_armSubsystem.setReference(29);
+      m_armSubsystem.setReference(34);
     }
     if(YValue < -1 && YValue > -2) {
       m_shooterSubsystem.shooterSpeed(0.4);
-      m_armSubsystem.setReference(31);
+      m_armSubsystem.setReference(36);
     }
     if(YValue < -2 && YValue > -3) {
       m_shooterSubsystem.shooterSpeed(0.4);
-      m_armSubsystem.setReference(33);
+      m_armSubsystem.setReference(38);
     }
     if(YValue < -3 && YValue > -4) {
       m_shooterSubsystem.shooterSpeed(0.4);
-      m_armSubsystem.setReference(35);
+      m_armSubsystem.setReference(40);
     } 
     if(YValue < -4 && YValue > -5) {
       m_shooterSubsystem.shooterSpeed(0.4);
-      m_armSubsystem.setReference(36);
+      m_armSubsystem.setReference(41);
     } 
     if(YValue < -5 && YValue > -6) {
       m_shooterSubsystem.shooterSpeed(0.4);
-      m_armSubsystem.setReference(38);
+      m_armSubsystem.setReference(43);
     }
     if(YValue < -6 && YValue > -7) {
       m_shooterSubsystem.shooterSpeed(0.4);
-      m_armSubsystem.setReference(35);
+      m_armSubsystem.setReference(40);
     }
     if(YValue < -7 && YValue > -8) {
       m_shooterSubsystem.shooterSpeed(0.4);
-      m_armSubsystem.setReference(37);
+      m_armSubsystem.setReference(42);
     }
-    if(YValue < -8 && YValue > -11) {
+    if(YValue < -8 && YValue > -9) {
       m_shooterSubsystem.shooterSpeed(0.4);
-      m_armSubsystem.setReference(39);
+      m_armSubsystem.setReference(43);
+    }
+    if(YValue < -9 && YValue > -10) {
+      m_shooterSubsystem.shooterSpeed(0.4);
+      m_armSubsystem.setReference(44);
+    }
+    if(YValue < -10 && YValue > -11) {
+      m_shooterSubsystem.shooterSpeed(0.4);
+      m_armSubsystem.setReference(45);
     }
     if(YValue < -11 && YValue > -12) {
       m_shooterSubsystem.shooterSpeed(0.4);
-      m_armSubsystem.setReference(41);
+      m_armSubsystem.setReference(48);
     }
+
     if(YValue < -12 && YValue > -13) {
-      m_shooterSubsystem.shooterSpeed(0.375);
-      m_armSubsystem.setReference(40);
+      m_shooterSubsystem.shooterSpeed(0.4);
+      m_armSubsystem.setReference(45);
     }
     if(YValue < -13 && YValue > -14) {
-      m_shooterSubsystem.shooterSpeed(0.425);
-      m_armSubsystem.setReference(42);
+      m_shooterSubsystem.shooterSpeed(0.475);
+      m_armSubsystem.setReference(47);
     }
     if(YValue < -14 && YValue > -15) {
       m_shooterSubsystem.shooterSpeed(0.425);
-      m_armSubsystem.setReference(42);
+      m_armSubsystem.setReference(47);
     }
     if(YValue < -15 && YValue > -16) {
       m_shooterSubsystem.shooterSpeed(0.6);
-      m_armSubsystem.setReference(42.5);
+      m_armSubsystem.setReference(47.5);
     }
     if(YValue < -16 && YValue > -17) {
       m_shooterSubsystem.shooterSpeed(0.5);
-      m_armSubsystem.setReference(46);
+      m_armSubsystem.setReference(51);
     }
     if(YValue < -17 && YValue > -18) {
       m_shooterSubsystem.shooterSpeed(0.5);
-      m_armSubsystem.setReference(45);
+      m_armSubsystem.setReference(50);
     }
     if(YValue < -18 && YValue > -19) {
       m_shooterSubsystem.shooterSpeed(0.5);
-      m_armSubsystem.setReference(46);
-    }else 
-    m_shooterSubsystem.shooterOn();
-
+      m_armSubsystem.setReference(51);
+    }
+    if(YValue == 0) {
+      m_shooterSubsystem.shooterOn();
+    }
 
   }
 

@@ -8,6 +8,7 @@ import com.fasterxml.jackson.databind.AnnotationIntrospector.ReferenceProperty.T
 import com.revrobotics.AbsoluteEncoder;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.SparkAbsoluteEncoder;
+import com.revrobotics.SparkLimitSwitch;
 import com.revrobotics.SparkPIDController;
 import com.revrobotics.CANSparkBase.ControlType;
 import com.revrobotics.CANSparkBase.IdleMode;
@@ -85,7 +86,9 @@ public class ArmSubsystem extends SubsystemBase {
 
     double value = SmartDashboard.getNumber("Arm Referece Value", 0);
     boolean tuningMode = SmartDashboard.getBoolean("Tuning Mode", false);
-    if((tuningMode == true)) { m_armPidController.setReference(value,CANSparkMax.ControlType.kPosition); armValue = value; }
+    if((tuningMode == true)) { 
+      m_armPidController.setReference(value,CANSparkMax.ControlType.kPosition); armValue = value; 
+    }
 
 
   }
@@ -127,6 +130,10 @@ public class ArmSubsystem extends SubsystemBase {
 
   public void ampSetpoint() {
     m_armPidController.setReference(ArmConstants.kAmpSetpoint, CANSparkMax.ControlType.kPosition);
+  }
+
+  public void climberSetpoint() {
+    m_armPidController.setReference(ArmConstants.kClimberSetpoint, CANSparkMax.ControlType.kPosition);
   }
 
 

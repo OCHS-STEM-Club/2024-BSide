@@ -33,7 +33,7 @@ public class IndexerInCmd extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-   if (m_indexerSubsystem.beamBreakSensor() == true && m_armSubsystem.getArmEncoderPosition() <= 5) {
+   if (m_indexerSubsystem.beamBreakSensor() == true && m_armSubsystem.getArmEncoderPosition() <= 10) {
      m_indexerSubsystem.indexerIn();
      
    } else if (m_indexerSubsystem.beamBreakSensor() == false)

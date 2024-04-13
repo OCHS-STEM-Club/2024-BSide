@@ -30,7 +30,7 @@ public class IntakeInCmd extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if (m_armSubsystem.getArmEncoderPosition() <= 5 && m_indexerSubsystem.beamBreakSensor() == true) {
+    if (m_armSubsystem.getArmEncoderPosition() <= 10 && m_indexerSubsystem.beamBreakSensor() == true) {
      m_intakeSubsystem.intakeIn();
 
    } else 

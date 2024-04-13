@@ -52,7 +52,9 @@ public final class Constants
     public static final double TRANSLATION_Y_CONSTANT = 0.9;
 
     public static final int kOperatorControllerPort = 2;
-    public static final int kDriverControllerPort = 0;
+    public static final int kDriveJoystickPort = 0;
+    public static final int kDriveXboxPort = 0;
+    public static final int kRotJoystickPort = 1;
   }
 
   public static class ShooterConstants {
@@ -70,7 +72,7 @@ public final class Constants
 
   public static class IntakeConstants {
     public static final int kIntakeMotorID = 24;
-    public static final double kIntakeInSpeed = 1;
+    public static final double kIntakeInSpeed = 0.90;
     public static final double kIntakeOutSpeed = -0.45;
     public static final int kBeamBreakPort = 0;
   }
@@ -88,9 +90,10 @@ public final class Constants
     public static final int kMaxOutput = 1;
     public static final double kMinOutput = -1;
 
-    public static final double kIntakeSetpoint = 0.5;
-    public static final double kShooterSetpoint = 25;
-    public static final double kAmpSetpoint = 106;
+    public static final double kIntakeSetpoint = 5.25;
+    public static final double kShooterSetpoint = 30;
+    public static final double kAmpSetpoint = 59.3;
+    public static final double kClimberSetpoint = 101;
 
     public static final double kArmUpSpeed = 0.2;
     public static final double kArmDownSpeed = -0.2;

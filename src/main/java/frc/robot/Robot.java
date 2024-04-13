@@ -4,6 +4,7 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.DataLogManager;
 import edu.wpi.first.wpilibj.Filesystem;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.Timer;
@@ -56,6 +57,8 @@ public class Robot extends TimedRobot
     disabledTimer = new Timer();
 
     m_robotContainer.climberEncoderZero();
+    
+    DataLogManager.start();
   }
 
   /**
