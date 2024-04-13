@@ -67,19 +67,6 @@
               "_showGlyph": false
             }
           },
-          "6,3": {
-            "size": [
-              2,
-              1
-            ],
-            "content": {
-              "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/Arm Referece Value",
-              "_title": "SmartDashboard/Arm Referece Value",
-              "_glyph": 148,
-              "_showGlyph": false
-            }
-          },
           "4,0": {
             "size": [
               6,
@@ -136,6 +123,32 @@
               "_type": "ComboBox Chooser",
               "_source0": "network_table:///SmartDashboard/Autos",
               "_title": "/SmartDashboard/Autos",
+              "_glyph": 148,
+              "_showGlyph": false
+            }
+          },
+          "6,3": {
+            "size": [
+              2,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/Arm Referece Value",
+              "_title": "/SmartDashboard/Arm Referece Value",
+              "_glyph": 148,
+              "_showGlyph": false
+            }
+          },
+          "3,4": {
+            "size": [
+              2,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/Intake Current",
+              "_title": "/SmartDashboard/Intake Current",
               "_glyph": 148,
               "_showGlyph": false
             }

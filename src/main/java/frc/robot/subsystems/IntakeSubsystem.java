@@ -10,6 +10,7 @@ import com.revrobotics.CANSparkLowLevel.MotorType;
 import com.revrobotics.CANSparkLowLevel.PeriodicFrame;
 
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -26,7 +27,7 @@ public class IntakeSubsystem extends SubsystemBase {
 
         
 
-        intakeMotor.setSmartCurrentLimit(30,30);
+        intakeMotor.setSmartCurrentLimit(35,35);
 
         intakeMotor.setPeriodicFramePeriod(PeriodicFrame.kStatus3, 100);
         intakeMotor.setPeriodicFramePeriod(PeriodicFrame.kStatus4, 100);
@@ -39,6 +40,7 @@ public class IntakeSubsystem extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
+    SmartDashboard.putNumber("Intake Current", intakeMotor.getOutputCurrent());
     
   }
 

@@ -101,7 +101,7 @@ public class TagAlignmentTeleopCmd extends Command {
     } 
     if(YValue < -5 && YValue > -6) {
       m_shooterSubsystem.shooterSpeed(0.4);
-      m_armSubsystem.setReference(43);
+      m_armSubsystem.setReference(38);
     }
     if(YValue < -6 && YValue > -7) {
       m_shooterSubsystem.shooterSpeed(0.4);
@@ -117,11 +117,11 @@ public class TagAlignmentTeleopCmd extends Command {
     }
     if(YValue < -9 && YValue > -10) {
       m_shooterSubsystem.shooterSpeed(0.4);
-      m_armSubsystem.setReference(44);
+      m_armSubsystem.setReference(42);
     }
     if(YValue < -10 && YValue > -11) {
       m_shooterSubsystem.shooterSpeed(0.4);
-      m_armSubsystem.setReference(45);
+      m_armSubsystem.setReference(43);
     }
     if(YValue < -11 && YValue > -12) {
       m_shooterSubsystem.shooterSpeed(0.4);
@@ -129,7 +129,7 @@ public class TagAlignmentTeleopCmd extends Command {
     }
 
     if(YValue < -12 && YValue > -13) {
-      m_shooterSubsystem.shooterSpeed(0.4);
+      m_shooterSubsystem.shooterSpeed(0.425);
       m_armSubsystem.setReference(45);
     }
     if(YValue < -13 && YValue > -14) {
@@ -137,24 +137,24 @@ public class TagAlignmentTeleopCmd extends Command {
       m_armSubsystem.setReference(47);
     }
     if(YValue < -14 && YValue > -15) {
-      m_shooterSubsystem.shooterSpeed(0.425);
+      m_shooterSubsystem.shooterSpeed(0.45);
       m_armSubsystem.setReference(47);
     }
     if(YValue < -15 && YValue > -16) {
       m_shooterSubsystem.shooterSpeed(0.6);
-      m_armSubsystem.setReference(47.5);
+      m_armSubsystem.setReference(49.5);
     }
     if(YValue < -16 && YValue > -17) {
-      m_shooterSubsystem.shooterSpeed(0.5);
-      m_armSubsystem.setReference(51);
+      m_shooterSubsystem.shooterSpeed(0.6);
+      m_armSubsystem.setReference(53);
     }
     if(YValue < -17 && YValue > -18) {
-      m_shooterSubsystem.shooterSpeed(0.5);
-      m_armSubsystem.setReference(50);
+      m_shooterSubsystem.shooterSpeed(0.6);
+      m_armSubsystem.setReference(52);
     }
     if(YValue < -18 && YValue > -19) {
-      m_shooterSubsystem.shooterSpeed(0.5);
-      m_armSubsystem.setReference(51);
+      m_shooterSubsystem.shooterSpeed(0.6);
+      m_armSubsystem.setReference(54);
     }
     if(YValue == 0) {
       m_shooterSubsystem.shooterOn();

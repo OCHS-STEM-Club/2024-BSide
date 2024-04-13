@@ -8,20 +8,20 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.7175446010084852,
-        "y": 6.699963893201328
+        "x": 0.9989095154412946,
+        "y": 6.8553716184854485
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 2.8863569834762997,
-        "y": 6.994467800594795
+        "x": 2.9418259121824937,
+        "y": 7.260718658384535
       },
       "prevControl": {
-        "x": 2.1224874736744996,
-        "y": 6.782793117155741
+        "x": 1.4748113399760976,
+        "y": 7.260718658384535
       },
       "nextControl": null,
       "isLocked": false,
@@ -39,8 +39,8 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 39.559667968994326,
-    "rotateFast": false
+    "rotation": 5.0,
+    "rotateFast": true
   },
   "reversed": false,
   "folder": "Amp Side Midfield 2.5 Piece",

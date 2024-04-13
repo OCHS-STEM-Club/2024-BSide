@@ -121,7 +121,7 @@ public class RobotContainer
     NamedCommands.registerCommand("Arm to Shooter Side Source 1st Piece", Commands.runOnce(() -> m_armSubsystem.setReference(26.5)));
     NamedCommands.registerCommand("Arm to Shooter Side Source 1st Piece Test", Commands.runOnce(() -> m_armSubsystem.setReference(23)));
     // Tag Alignment
-    NamedCommands.registerCommand("April Tag Alignment", new TagAlignmentAutoCmd(m_swerveSubsystem, m_shooterSubsystem, m_armSubsystem).withTimeout(2));
+    NamedCommands.registerCommand("April Tag Alignment", new TagAlignmentAutoCmd(m_swerveSubsystem, m_shooterSubsystem, m_armSubsystem).withTimeout(0.75));
 
 
 

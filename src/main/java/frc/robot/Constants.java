@@ -48,8 +48,8 @@ public final class Constants
     public static final double RIGHT_X_DEADBAND = 0.2;
 
     public static final double ROTATION_CONSTANT = 1.25;
-    public static final double TRANSLATION_X_CONSTANT = 0.9;
-    public static final double TRANSLATION_Y_CONSTANT = 0.9;
+    public static final double TRANSLATION_X_CONSTANT = 1.5;
+    public static final double TRANSLATION_Y_CONSTANT = 1.5;
 
     public static final int kOperatorControllerPort = 2;
     public static final int kDriveJoystickPort = 0;
@@ -66,7 +66,7 @@ public final class Constants
   public static class IndexerConstants {
     public static final int kIndexerMotorID = 18;
     public static final double kIndexerInSpeed = 0.4;
-    public static final double kIndexerOutSpeed = -0.45;
+    public static final double kIndexerOutSpeed = -0.35; //-0.45
     public static final int kBeamBreakPort = 0;
   }
 
@@ -90,7 +90,7 @@ public final class Constants
     public static final int kMaxOutput = 1;
     public static final double kMinOutput = -1;
 
-    public static final double kIntakeSetpoint = 5.25;
+    public static final double kIntakeSetpoint = 4.85;
     public static final double kShooterSetpoint = 30;
     public static final double kAmpSetpoint = 59.3;
     public static final double kClimberSetpoint = 101;
