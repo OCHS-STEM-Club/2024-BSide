@@ -71,6 +71,11 @@ public class ShooterSubsystem extends SubsystemBase {
     shooterMotorRight.set(speed);
   }
 
+    public void shooterSpeedShuttle() {
+    shooterMotorLeft.set(ShooterConstants.kShooterSpeedShuttle);
+    shooterMotorRight.set(ShooterConstants.kShooterSpeedShuttle);
+  }
+
   public void shooterOn() {
     shooterMotorLeft.set(ShooterConstants.kShooterSpeed);
     shooterMotorRight.set(ShooterConstants.kShooterSpeed);

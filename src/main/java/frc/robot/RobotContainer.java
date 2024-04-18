@@ -23,6 +23,7 @@ import frc.robot.commands.Climber.ClimberDownCmd;
 import frc.robot.commands.Climber.ClimberDownOverrideCmd;
 import frc.robot.commands.Climber.ClimberUpCmd;
 import frc.robot.commands.Climber.ClimberUpOverrideCmd;
+import frc.robot.commands.ShooterShuttleCmd;
 import frc.robot.commands.AprilTag.TagAlignmentAutoCmd;
 import frc.robot.commands.Drive.AbsoluteDriveAdv;
 import frc.robot.commands.Drive.AbsoluteFieldDrive;
@@ -78,6 +79,9 @@ public class RobotContainer
   ClimberDownCmd m_climberDownCommand = new ClimberDownCmd(m_climberSubsystem);
   ClimberUpCmd m_climberUpCommand = new ClimberUpCmd(m_climberSubsystem);
 
+  //Shooter Cmd
+  ShooterShuttleCmd m_shooterShuttle = new ShooterShuttleCmd(m_shooterSubsystem);
+  
   // Controllers
   final CommandXboxController driverXbox = new CommandXboxController(Constants.OperatorConstants.kDriveJoystickPort);
   final CommandXboxController ButtonBox = new CommandXboxController(Constants.OperatorConstants.kOperatorControllerPort);
@@ -176,6 +180,10 @@ public class RobotContainer
 
       driverXbox.leftTrigger().whileTrue(
         m_indexerInCmd
+      );
+
+      driverXbox.rightBumper().whileTrue(
+        m_shooterShuttle
       );
 
       driverXbox.leftTrigger().whileTrue(
