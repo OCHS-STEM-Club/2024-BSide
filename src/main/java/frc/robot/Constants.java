@@ -47,7 +47,7 @@ public final class Constants
     public static final double LEFT_Y_DEADBAND  = 0.1;
     public static final double RIGHT_X_DEADBAND = 0.2;
 
-    public static final double ROTATION_CONSTANT = 1;
+    public static final double ROTATION_CONSTANT = 1.25;
     public static final double TRANSLATION_X_CONSTANT = 1.5;
     public static final double TRANSLATION_Y_CONSTANT = 1.5;
 

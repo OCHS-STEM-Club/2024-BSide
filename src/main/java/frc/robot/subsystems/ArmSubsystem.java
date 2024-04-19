@@ -82,6 +82,11 @@ public class ArmSubsystem extends SubsystemBase {
   public void periodic() {
     // This method will be called once per scheduler run
     SmartDashboard.putNumber("Arm absolute encoder", m_armEncoder.getPosition());
+    SmartDashboard.putNumber("Arm Motor Right Current", armMotorRight.getOutputCurrent());
+    SmartDashboard.putNumber("Arm Motor Left Current", armMotorLeft.getOutputCurrent());
+    SmartDashboard.putNumber("Arm Motor Right Speed", armMotorRight.get());
+    SmartDashboard.putNumber("Arm Motor Left Speed", armMotorLeft.get());
+
     
 
     double value = SmartDashboard.getNumber("Arm Referece Value", 0);

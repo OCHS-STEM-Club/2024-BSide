@@ -71,8 +71,8 @@
               "_title": "SmartDashboard/Beam Brake",
               "_glyph": 148,
               "_showGlyph": false,
-              "Colors/Color when true": "#7CFC00FF",
-              "Colors/Color when false": "#8B0000FF"
+              "Colors/Color when true": "#FF0000FF",
+              "Colors/Color when false": "#00FF00FF"
             }
           }
         }

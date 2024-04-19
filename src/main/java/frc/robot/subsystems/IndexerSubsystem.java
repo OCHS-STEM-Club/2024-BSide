@@ -45,6 +45,8 @@ public class IndexerSubsystem extends SubsystemBase {
   public void periodic() {
     // This method will be called once per scheduler run
     SmartDashboard.putBoolean(("Beam Brake"), beamBreakSensor());
+    SmartDashboard.putNumber("Indexer Motor Speed", indexerMotor.get());
+    SmartDashboard.putNumber("Indexer Motor current", indexerMotor.getOutputCurrent());
   }
 
   public void indexerSpeed(double speed){
