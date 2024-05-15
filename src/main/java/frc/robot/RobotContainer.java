@@ -83,12 +83,12 @@ public class RobotContainer
   ShooterShuttleCmd m_shooterShuttle = new ShooterShuttleCmd(m_shooterSubsystem);
   
   // Controllers
-  // final CommandXboxController driverXbox = new CommandXboxController(Constants.OperatorConstants.kDriveJoystickPort);
-  // final CommandXboxController ButtonBox = new CommandXboxController(Constants.OperatorConstants.kOperatorControllerPort);
-
-  final CommandJoystick driveJoystick = new CommandJoystick(Constants.OperatorConstants.kDriveJoystickPort);
-  final CommandJoystick rotJoystick = new CommandJoystick(Constants.OperatorConstants.kRotJoystickPort);
+  final CommandXboxController driverXbox = new CommandXboxController(Constants.OperatorConstants.kDriveJoystickPort);
   final CommandXboxController ButtonBox = new CommandXboxController(Constants.OperatorConstants.kOperatorControllerPort);
+
+  // final CommandJoystick driveJoystick = new CommandJoystick(Constants.OperatorConstants.kDriveJoystickPort);
+  // final CommandJoystick rotJoystick = new CommandJoystick(Constants.OperatorConstants.kRotJoystickPort);
+  // final CommandXboxController ButtonBox = new CommandXboxController(Constants.OperatorConstants.kOperatorControllerPort);
 
 
   public RobotContainer()
@@ -136,25 +136,25 @@ public class RobotContainer
     // Configure the trigger bindings
     configureBindings();
 
-    Command driveFieldOrientedAnglularVelocity = m_swerveSubsystem.driveCommand(
-        () -> MathUtil.applyDeadband(-driveJoystick.getRawAxis(1) * OperatorConstants.TRANSLATION_Y_CONSTANT, OperatorConstants.LEFT_Y_DEADBAND),
-        () -> MathUtil.applyDeadband(-driveJoystick.getRawAxis(0) * OperatorConstants.TRANSLATION_X_CONSTANT, OperatorConstants.LEFT_X_DEADBAND),
-        () -> -rotJoystick.getRawAxis(0) * OperatorConstants.ROTATION_CONSTANT);
-
-    Command driveFieldOrientedDirectAngleSim = m_swerveSubsystem.simDriveCommand(
-        () -> MathUtil.applyDeadband(driveJoystick.getRawAxis(1) , OperatorConstants.LEFT_Y_DEADBAND),
-        () -> MathUtil.applyDeadband(driveJoystick.getRawAxis(0) , OperatorConstants.LEFT_X_DEADBAND),
-        () -> rotJoystick.getRawAxis(0));
-
-    //     Command driveFieldOrientedAnglularVelocity = m_swerveSubsystem.driveCommand(
-    //     () -> MathUtil.applyDeadband(-driverXbox.getLeftY() * OperatorConstants.TRANSLATION_Y_CONSTANT, OperatorConstants.LEFT_Y_DEADBAND),
-    //     () -> MathUtil.applyDeadband(-driverXbox.getLeftX() * OperatorConstants.TRANSLATION_X_CONSTANT, OperatorConstants.LEFT_X_DEADBAND),
-    //     () -> -driverXbox.getRightX() * OperatorConstants.ROTATION_CONSTANT);
+    // Command driveFieldOrientedAnglularVelocity = m_swerveSubsystem.driveCommand(
+    //     () -> MathUtil.applyDeadband(-driveJoystick.getRawAxis(1) * OperatorConstants.TRANSLATION_Y_CONSTANT, OperatorConstants.LEFT_Y_DEADBAND),
+    //     () -> MathUtil.applyDeadband(-driveJoystick.getRawAxis(0) * OperatorConstants.TRANSLATION_X_CONSTANT, OperatorConstants.LEFT_X_DEADBAND),
+    //     () -> -rotJoystick.getRawAxis(0) * OperatorConstants.ROTATION_CONSTANT);
 
     // Command driveFieldOrientedDirectAngleSim = m_swerveSubsystem.simDriveCommand(
-    //     () -> MathUtil.applyDeadband(driverXbox.getRightY() , OperatorConstants.LEFT_Y_DEADBAND),
-    //     () -> MathUtil.applyDeadband(driverXbox.getRightX() , OperatorConstants.LEFT_X_DEADBAND),
-    //     () -> driverXbox.getRawAxis(0));
+    //     () -> MathUtil.applyDeadband(driveJoystick.getRawAxis(1) , OperatorConstants.LEFT_Y_DEADBAND),
+    //     () -> MathUtil.applyDeadband(driveJoystick.getRawAxis(0) , OperatorConstants.LEFT_X_DEADBAND),
+    //     () -> rotJoystick.getRawAxis(0));
+
+        Command driveFieldOrientedAnglularVelocity = m_swerveSubsystem.driveCommand(
+        () -> MathUtil.applyDeadband(-driverXbox.getLeftY() * OperatorConstants.TRANSLATION_Y_CONSTANT, OperatorConstants.LEFT_Y_DEADBAND),
+        () -> MathUtil.applyDeadband(-driverXbox.getLeftX() * OperatorConstants.TRANSLATION_X_CONSTANT, OperatorConstants.LEFT_X_DEADBAND),
+        () -> -driverXbox.getRightX() * OperatorConstants.ROTATION_CONSTANT);
+
+    Command driveFieldOrientedDirectAngleSim = m_swerveSubsystem.simDriveCommand(
+        () -> MathUtil.applyDeadband(driverXbox.getRightY() , OperatorConstants.LEFT_Y_DEADBAND),
+        () -> MathUtil.applyDeadband(driverXbox.getRightX() , OperatorConstants.LEFT_X_DEADBAND),
+        () -> driverXbox.getRawAxis(0));
 
 
     m_swerveSubsystem.setDefaultCommand(!RobotBase.isSimulation() ? driveFieldOrientedAnglularVelocity : driveFieldOrientedDirectAngleSim);
@@ -174,64 +174,64 @@ public class RobotContainer
   {
 
     // Xbox Controller Configs
-      // driverXbox.a().onTrue(
-      //   Commands.runOnce(m_swerveSubsystem::zeroGyro)
-      // );
-
-      // driverXbox.leftTrigger().whileTrue(
-      //   m_indexerInCmd
-      // );
-
-      // driverXbox.rightBumper().whileTrue(
-      //   m_shooterShuttle
-      // );
-
-      // driverXbox.leftTrigger().whileTrue(
-      //   m_intakeInCmd
-      // );
-
-      // driverXbox.rightTrigger().whileTrue(
-      //   m_tagAlignmentCmd
-      // );
-
-      // driverXbox.b().whileTrue(
-      //   m_indexerOverrideCmd
-      // );
-
-      // driverXbox.leftBumper().whileTrue(
-      // m_intakeOutCmd
-      // );
-
-  // Joystick Button Configs
-
-    rotJoystick.button(11).onTrue(
-       Commands.runOnce(m_swerveSubsystem::zeroGyro)
+      driverXbox.a().onTrue(
+        Commands.runOnce(m_swerveSubsystem::zeroGyro)
       );
 
-    driveJoystick.button(1).whileTrue(
-      m_indexerInCmd
+      driverXbox.leftTrigger().whileTrue(
+        m_indexerInCmd
       );
 
-    driveJoystick.button(1).whileTrue(
-      m_intakeInCmd
+      driverXbox.rightBumper().whileTrue(
+        m_shooterShuttle
       );
 
-    rotJoystick.button(1).whileTrue(
-      m_tagAlignmentCmd
+      driverXbox.leftTrigger().whileTrue(
+        m_intakeInCmd
       );
 
-
-    rotJoystick.button(3).whileTrue(
-      m_indexerOverrideCmd
+      driverXbox.rightTrigger().whileTrue(
+        m_tagAlignmentCmd
       );
 
-    driveJoystick.button(3).whileTrue(
+      driverXbox.b().whileTrue(
+        m_indexerOverrideCmd
+      );
+
+      driverXbox.leftBumper().whileTrue(
       m_intakeOutCmd
       );
 
-    rotJoystick.button(4).whileTrue(
-        m_shooterShuttle
-      );
+  // Joystick Button Configs
+
+    // rotJoystick.button(11).onTrue(
+    //    Commands.runOnce(m_swerveSubsystem::zeroGyro)
+    //   );
+
+    // driveJoystick.button(1).whileTrue(
+    //   m_indexerInCmd
+    //   );
+
+    // driveJoystick.button(1).whileTrue(
+    //   m_intakeInCmd
+    //   );
+
+    // rotJoystick.button(1).whileTrue(
+    //   m_tagAlignmentCmd
+    //   );
+
+
+    // rotJoystick.button(3).whileTrue(
+    //   m_indexerOverrideCmd
+    //   );
+
+    // driveJoystick.button(3).whileTrue(
+    //   m_intakeOutCmd
+    //   );
+
+    // rotJoystick.button(4).whileTrue(
+    //     m_shooterShuttle
+    //   );
 
 
 

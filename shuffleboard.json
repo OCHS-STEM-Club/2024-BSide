@@ -26,27 +26,6 @@
               "Visuals/Show Outside Circles": false
             }
           },
-          "4,0": {
-            "size": [
-              6,
-              4
-            ],
-            "content": {
-              "_type": "Camera Stream",
-              "_source0": "camera_server://limelight-bside",
-              "_title": "limelight-bside",
-              "_glyph": 148,
-              "_showGlyph": false,
-              "Crosshair/Show crosshair": false,
-              "Crosshair/Crosshair color": "#FFFFFFFF",
-              "Controls/Show controls": false,
-              "Controls/Rotation": "NONE",
-              "compression": -1.0,
-              "fps": -1,
-              "imageWidth": -1,
-              "imageHeight": -1
-            }
-          },
           "0,2": {
             "size": [
               4,
@@ -67,12 +46,33 @@
             ],
             "content": {
               "_type": "Boolean Box",
-              "_source0": "network_table:///SmartDashboard/Beam Brake",
-              "_title": "SmartDashboard/Beam Brake",
+              "_source0": "network_table:///AdvantageKit/RealOutputs/Beam Break",
+              "_title": "/AdvantageKit/RealOutputs/Beam Break",
               "_glyph": 148,
               "_showGlyph": false,
               "Colors/Color when true": "#FF0000FF",
               "Colors/Color when false": "#00FF00FF"
+            }
+          },
+          "4,0": {
+            "size": [
+              6,
+              3
+            ],
+            "content": {
+              "_type": "Camera Stream",
+              "_source0": "camera_server://limelight",
+              "_title": "limelight",
+              "_glyph": 148,
+              "_showGlyph": false,
+              "Crosshair/Show crosshair": false,
+              "Crosshair/Crosshair color": "#FFFFFFFF",
+              "Controls/Show controls": false,
+              "Controls/Rotation": "NONE",
+              "compression": -1.0,
+              "fps": -1,
+              "imageWidth": -1,
+              "imageHeight": -1
             }
           }
         }

@@ -27,10 +27,10 @@ public class TagAlignmentAutoCmd extends Command {
   private final PIDController m_yawPidController = new PIDController(0.05, 0, 0);
 
 
-  // final CommandXboxController driverXbox = new CommandXboxController(Constants.OperatorConstants.kDriveJoystickPort);
+  final CommandXboxController driverXbox = new CommandXboxController(Constants.OperatorConstants.kDriveJoystickPort);
   
-  final CommandJoystick driveJoystick = new CommandJoystick(Constants.OperatorConstants.kDriveJoystickPort);
-  final CommandJoystick rotJoystick = new CommandJoystick(Constants.OperatorConstants.kRotJoystickPort);
+  // final CommandJoystick driveJoystick = new CommandJoystick(Constants.OperatorConstants.kDriveJoystickPort);
+  // final CommandJoystick rotJoystick = new CommandJoystick(Constants.OperatorConstants.kRotJoystickPort);
   /** Creates a new TestAprilTag. */
   public TagAlignmentAutoCmd(SwerveSubsystem swerveSubsystem, ShooterSubsystem shooterSubsystem, ArmSubsystem armSubsystem) {
     // Use addRequirements() here to declare subsystem dependencies.
@@ -57,14 +57,14 @@ public class TagAlignmentAutoCmd extends Command {
 
 
 
-      m_swerveSubsystem.drive(new Translation2d(MathUtil.applyDeadband(-driveJoystick.getRawAxis(1)*2,
-     OperatorConstants.LEFT_Y_DEADBAND), MathUtil.applyDeadband(-driveJoystick.getRawAxis(0)*2,
-      OperatorConstants.LEFT_X_DEADBAND)), m_yawPidController.calculate(targetAngularVelocity,0)*2,true);
+    //   m_swerveSubsystem.drive(new Translation2d(MathUtil.applyDeadband(-driveJoystick.getRawAxis(1)*2,
+    //  OperatorConstants.LEFT_Y_DEADBAND), MathUtil.applyDeadband(-driveJoystick.getRawAxis(0)*2,
+    //   OperatorConstants.LEFT_X_DEADBAND)), m_yawPidController.calculate(targetAngularVelocity,0)*2,true);
 
     
-    // m_swerveSubsystem.drive(new Translation2d(MathUtil.applyDeadband(-driverXbox.getLeftX()*2,
-    //  OperatorConstants.LEFT_Y_DEADBAND), MathUtil.applyDeadband(-driverXbox.getLeftX()*2,
-    //   OperatorConstants.LEFT_X_DEADBAND)), m_yawPidController.calculate(targetAngularVelocity,0)*2,true);
+    m_swerveSubsystem.drive(new Translation2d(MathUtil.applyDeadband(-driverXbox.getLeftX()*2,
+     OperatorConstants.LEFT_Y_DEADBAND), MathUtil.applyDeadband(-driverXbox.getLeftX()*2,
+      OperatorConstants.LEFT_X_DEADBAND)), m_yawPidController.calculate(targetAngularVelocity,0)*2,true);
 
     if(YValue <= 7.5 && YValue >= 5.5) {
       m_shooterSubsystem.shooterSpeed(0.4);
