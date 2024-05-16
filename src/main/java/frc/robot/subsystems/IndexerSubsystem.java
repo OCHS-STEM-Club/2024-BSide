@@ -4,8 +4,6 @@
 
 package frc.robot.subsystems;
 
-import com.fasterxml.jackson.databind.AnnotationIntrospector.ReferenceProperty.Type;
-// import com.ctre.phoenix.Logger;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkBase.IdleMode;
 import com.revrobotics.CANSparkLowLevel.MotorType;
@@ -21,7 +19,6 @@ public class IndexerSubsystem extends SubsystemBase {
 
         private CANSparkMax indexerMotor;
         private DigitalInput indexerSensor;
-        private double speed;
 
     public IndexerSubsystem() {
         indexerMotor = new CANSparkMax(Constants.IndexerConstants.kIndexerMotorID, MotorType.kBrushless);

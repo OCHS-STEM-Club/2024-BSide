@@ -4,7 +4,6 @@
 
 package frc.robot.subsystems;
 
-// import com.ctre.phoenix.Logger;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkLowLevel.MotorType;
 import com.revrobotics.CANSparkLowLevel.PeriodicFrame;
@@ -19,7 +18,6 @@ public class IntakeSubsystem extends SubsystemBase {
 
         private CANSparkMax intakeMotor;
         private DigitalInput intakeSensor;
-        private double speed;
 
     public IntakeSubsystem() {
         intakeMotor = new CANSparkMax(Constants.IntakeConstants.kIntakeMotorID, MotorType.kBrushless);
