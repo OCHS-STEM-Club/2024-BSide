@@ -86,8 +86,8 @@ public class ArmSubsystem extends SubsystemBase {
     SmartDashboard.putNumber("Arm Motor Left Speed", armMotorLeft.get());
 
    
-    System.out.println(m_magLimitSwitch.get());
-    
+    // System.out.println(m_magLimitSwitch.get());
+    SmartDashboard.putBoolean("Mag Limit Switch", m_magLimitSwitch.get());
 
     double value = SmartDashboard.getNumber("Arm Referece Value", 0);
     boolean tuningMode = SmartDashboard.getBoolean("Tuning Mode", false);
@@ -107,6 +107,9 @@ public class ArmSubsystem extends SubsystemBase {
     if (m_magLimitSwitch.get() == false ) {//TODO:Not tested yet
       armMotorRight.set(-0.2);
       armMotorLeft.set(-0.2);
+    }
+    if (m_magLimitSwitch.get() == true) {
+      this.armoff();
     }
   }
 

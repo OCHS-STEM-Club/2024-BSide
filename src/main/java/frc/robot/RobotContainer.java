@@ -15,6 +15,8 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.AprilTag.TagAlignmentTeleopCmd;
+import frc.robot.commands.Arm.ArmDownCmd;
+import frc.robot.commands.Arm.IntakeSetpointCmd;
 import frc.robot.commands.Climber.ClimberDownCmd;
 import frc.robot.commands.Climber.ClimberDownOverrideCmd;
 import frc.robot.commands.Climber.ClimberUpCmd;
@@ -67,6 +69,10 @@ public class RobotContainer
   ClimberUpOverrideCmd m_climberUpOverrideCmd = new ClimberUpOverrideCmd(m_climberSubsystem);
   ClimberDownCmd m_climberDownCommand = new ClimberDownCmd(m_climberSubsystem);
   ClimberUpCmd m_climberUpCommand = new ClimberUpCmd(m_climberSubsystem);
+
+  // Arm Cmd
+  ArmDownCmd m_armDownCmd = new ArmDownCmd(m_armSubsystem);
+  IntakeSetpointCmd m_intakeSetpointCmd = new IntakeSetpointCmd(m_armSubsystem);
 
   //Shooter Cmd
   ShooterShuttleCmd m_shooterShuttle = new ShooterShuttleCmd(m_shooterSubsystem);
@@ -230,8 +236,8 @@ public class RobotContainer
       Commands.runOnce(m_armSubsystem :: armUp)).onFalse(Commands.runOnce(m_armSubsystem::armoff)
     );
 
-    ButtonBox.button(1).onTrue(
-      Commands.runOnce(m_armSubsystem :: armDown)).onFalse(Commands.runOnce(m_armSubsystem::armoff)
+    ButtonBox.button(1).whileTrue(
+      m_armDownCmd
     );
 
     ButtonBox.button(6).onTrue(
@@ -239,7 +245,7 @@ public class RobotContainer
     );
 
     ButtonBox.button(4).onTrue(
-      Commands.runOnce(m_armSubsystem :: intakeSetpoint)
+      m_intakeSetpointCmd
     );
 
     ButtonBox.button(5).onTrue(
