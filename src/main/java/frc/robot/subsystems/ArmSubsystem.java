@@ -36,6 +36,7 @@ public class ArmSubsystem extends SubsystemBase {
     
     armMotorLeft.setIdleMode(IdleMode.kBrake);
 
+    // Works
     m_magLimitSwitch = new DigitalInput(9);
     
     armMotorRight.setSmartCurrentLimit(30, 20);
