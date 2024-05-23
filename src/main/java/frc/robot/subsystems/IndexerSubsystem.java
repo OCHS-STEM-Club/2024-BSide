@@ -12,7 +12,6 @@ import com.revrobotics.CANSparkLowLevel.MotorType;
 import com.revrobotics.CANSparkLowLevel.PeriodicFrame;
 
 import edu.wpi.first.wpilibj.DigitalInput;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -44,9 +43,6 @@ public class IndexerSubsystem extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
-    SmartDashboard.putBoolean(("Beam Brake"), beamBreakSensor());
-    SmartDashboard.putNumber("Indexer Motor Speed", indexerMotor.get());
-    SmartDashboard.putNumber("Indexer Motor current", indexerMotor.getOutputCurrent());
   }
 
   public void indexerSpeed(double speed){

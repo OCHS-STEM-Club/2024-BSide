@@ -3,7 +3,6 @@
   "robotLength": 0.51,
   "holonomicMode": true,
   "pathFolders": [
-    "4 Piece Test",
     "Amp Side Midfield 2 Piece",
     "Amp Side Midfield 2.5 Piece",
     "Amp Side Midfield 3 Piece",
@@ -13,7 +12,6 @@
     "Middle 3 Piece Tag Alignment",
     "Middle 4 Piece",
     "Middle 4 Piece Tag Alignment",
-    "Amp Side Shoot Mobility",
     "Source Side Midfield 2 Piece",
     "Source Side Midfield 2.5 Piece ",
     "Source Side Midfield 4 Piece Shuttle"
@@ -21,7 +19,8 @@
   "autoFolders": [
     "Amp Side Autos",
     "Middle Autos",
-    "Source Side Autos"
+    "Source Side Autos",
+    "Tag Alignment Autos"
   ],
   "defaultMaxVel": 3.0,
   "defaultMaxAccel": 3.0,

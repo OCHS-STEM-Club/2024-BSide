@@ -4,19 +4,16 @@
 
 package frc.robot.subsystems;
 
-import com.ctre.phoenix.motorcontrol.LimitSwitchNormal;
 import com.fasterxml.jackson.databind.AnnotationIntrospector.ReferenceProperty.Type;
 import com.revrobotics.AbsoluteEncoder;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.SparkAbsoluteEncoder;
-import com.revrobotics.SparkLimitSwitch;
 import com.revrobotics.SparkPIDController;
 import com.revrobotics.CANSparkBase.ControlType;
 import com.revrobotics.CANSparkBase.IdleMode;
 import com.revrobotics.CANSparkLowLevel.MotorType;
 import com.revrobotics.CANSparkLowLevel.PeriodicFrame;
 
-import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
@@ -30,8 +27,6 @@ public class ArmSubsystem extends SubsystemBase {
   private SparkPIDController m_armPidController;
   private SparkAbsoluteEncoder m_armEncoder;
 
-  private DigitalInput m_magLimitSwitch;
-
   private double armValue;
   public boolean tuningMode;
   private double armPValue;
@@ -42,9 +37,8 @@ public class ArmSubsystem extends SubsystemBase {
     armMotorRight.setIdleMode(IdleMode.kBrake);
     
     armMotorLeft.setIdleMode(IdleMode.kBrake);
-
-    m_magLimitSwitch = new DigitalInput(9);
     
+
     armMotorRight.setSmartCurrentLimit(30, 20);
     armMotorLeft.setSmartCurrentLimit(30, 20);
 
@@ -87,20 +81,11 @@ public class ArmSubsystem extends SubsystemBase {
   public void periodic() {
     // This method will be called once per scheduler run
     SmartDashboard.putNumber("Arm absolute encoder", m_armEncoder.getPosition());
-    SmartDashboard.putNumber("Arm Motor Right Current", armMotorRight.getOutputCurrent());
-    SmartDashboard.putNumber("Arm Motor Left Current", armMotorLeft.getOutputCurrent());
-    SmartDashboard.putNumber("Arm Motor Right Speed", armMotorRight.get());
-    SmartDashboard.putNumber("Arm Motor Left Speed", armMotorLeft.get());
-
-   
-    System.out.println(m_magLimitSwitch.get());
     
 
     double value = SmartDashboard.getNumber("Arm Referece Value", 0);
     boolean tuningMode = SmartDashboard.getBoolean("Tuning Mode", false);
-    if((tuningMode == true)) { 
-      m_armPidController.setReference(value,CANSparkMax.ControlType.kPosition); armValue = value; 
-    }
+    if((tuningMode == true)) { m_armPidController.setReference(value,CANSparkMax.ControlType.kPosition); armValue = value; }
 
 
   }
@@ -144,17 +129,9 @@ public class ArmSubsystem extends SubsystemBase {
     m_armPidController.setReference(ArmConstants.kAmpSetpoint, CANSparkMax.ControlType.kPosition);
   }
 
-  public void climberSetpoint() {
-    m_armPidController.setReference(ArmConstants.kClimberSetpoint, CANSparkMax.ControlType.kPosition);
-  }
-
 
   public void setReference(double setpoint) {
     m_armPidController.setReference(setpoint, CANSparkMax.ControlType.kPosition);
-  }
-
-  public boolean getMagLimitSwitch() {
-    return m_magLimitSwitch.get();
   }
 }
 

@@ -33,9 +33,8 @@ public class IndexerInCmd extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-   if (m_indexerSubsystem.beamBreakSensor() == true && m_armSubsystem.getArmEncoderPosition() <= 10) {
+   if (m_indexerSubsystem.beamBreakSensor() == true && m_armSubsystem.getArmEncoderPosition() <= 5) {
      m_indexerSubsystem.indexerIn();
-     
      
    } else if (m_indexerSubsystem.beamBreakSensor() == false)
           m_indexerSubsystem.indexerOff();
@@ -51,12 +50,8 @@ public class IndexerInCmd extends Command {
   @Override
   public boolean isFinished() {
    if(m_indexerSubsystem.beamBreakSensor() == true) {
-      LimelightHelpers.setLEDMode_ForceBlink("limelight-bside");
-      
-      return false;
+    return false;
    }
-   else 
-   LimelightHelpers.setLEDMode_ForceOff("limelight-bside");
-  return true;
+   else return true;
   }
 }

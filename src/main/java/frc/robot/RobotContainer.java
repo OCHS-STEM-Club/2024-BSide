@@ -14,7 +14,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
-import edu.wpi.first.wpilibj2.command.button.CommandJoystick;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.Constants.OperatorConstants;
@@ -23,7 +22,6 @@ import frc.robot.commands.Climber.ClimberDownCmd;
 import frc.robot.commands.Climber.ClimberDownOverrideCmd;
 import frc.robot.commands.Climber.ClimberUpCmd;
 import frc.robot.commands.Climber.ClimberUpOverrideCmd;
-import frc.robot.commands.ArmDownCmd;
 import frc.robot.commands.AprilTag.TagAlignmentAutoCmd;
 import frc.robot.commands.Drive.AbsoluteDriveAdv;
 import frc.robot.commands.Drive.AbsoluteFieldDrive;
@@ -31,7 +29,6 @@ import frc.robot.commands.Indexer.IndexerInCmd;
 import frc.robot.commands.Indexer.IndexerOverrideCmd;
 import frc.robot.commands.Intake.IntakeInCmd;
 import frc.robot.commands.Intake.IntakeOutCmd;
-import frc.robot.commands.Shooter.ShooterShuttleCmd;
 import frc.robot.subsystems.ArmSubsystem;
 import frc.robot.subsystems.ClimberSubsystem;
 import frc.robot.subsystems.IndexerSubsystem;
@@ -80,19 +77,9 @@ public class RobotContainer
   ClimberDownCmd m_climberDownCommand = new ClimberDownCmd(m_climberSubsystem);
   ClimberUpCmd m_climberUpCommand = new ClimberUpCmd(m_climberSubsystem);
 
-  // Arm Cmd
-  ArmDownCmd m_armDownCmd = new ArmDownCmd(m_armSubsystem);
-
-  //Shooter Cmd
-  ShooterShuttleCmd m_shooterShuttle = new ShooterShuttleCmd(m_shooterSubsystem);
-  
   // Controllers
-  final CommandXboxController driverXbox = new CommandXboxController(Constants.OperatorConstants.kDriveJoystickPort);
+  final CommandXboxController driverXbox = new CommandXboxController(Constants.OperatorConstants.kDriverControllerPort);
   final CommandXboxController ButtonBox = new CommandXboxController(Constants.OperatorConstants.kOperatorControllerPort);
-
-  // final CommandJoystick driveJoystick = new CommandJoystick(Constants.OperatorConstants.kDriveJoystickPort);
-  // final CommandJoystick rotJoystick = new CommandJoystick(Constants.OperatorConstants.kRotJoystickPort);
-  // final CommandXboxController ButtonBox = new CommandXboxController(Constants.OperatorConstants.kOperatorControllerPort);
 
 
   public RobotContainer()
@@ -129,7 +116,7 @@ public class RobotContainer
     NamedCommands.registerCommand("Arm to Shooter Side Source 1st Piece", Commands.runOnce(() -> m_armSubsystem.setReference(26.5)));
     NamedCommands.registerCommand("Arm to Shooter Side Source 1st Piece Test", Commands.runOnce(() -> m_armSubsystem.setReference(23)));
     // Tag Alignment
-    NamedCommands.registerCommand("April Tag Alignment", new TagAlignmentAutoCmd(m_swerveSubsystem, m_shooterSubsystem, m_armSubsystem).withTimeout(0.75));
+    NamedCommands.registerCommand("April Tag Alignment", new TagAlignmentAutoCmd(m_swerveSubsystem, m_shooterSubsystem, m_armSubsystem).withTimeout(2));
 
 
 
@@ -140,25 +127,15 @@ public class RobotContainer
     // Configure the trigger bindings
     configureBindings();
 
-    // Command driveFieldOrientedAnglularVelocity = m_swerveSubsystem.driveCommand(
-    //     () -> MathUtil.applyDeadband(-driveJoystick.getRawAxis(1) * OperatorConstants.TRANSLATION_Y_CONSTANT, OperatorConstants.LEFT_Y_DEADBAND),
-    //     () -> MathUtil.applyDeadband(-driveJoystick.getRawAxis(0) * OperatorConstants.TRANSLATION_X_CONSTANT, OperatorConstants.LEFT_X_DEADBAND),
-    //     () -> -rotJoystick.getRawAxis(0) * OperatorConstants.ROTATION_CONSTANT);
-
-    // Command driveFieldOrientedDirectAngleSim = m_swerveSubsystem.simDriveCommand(
-    //     () -> MathUtil.applyDeadband(driveJoystick.getRawAxis(1) , OperatorConstants.LEFT_Y_DEADBAND),
-    //     () -> MathUtil.applyDeadband(driveJoystick.getRawAxis(0) , OperatorConstants.LEFT_X_DEADBAND),
-    //     () -> rotJoystick.getRawAxis(0));
-
-        Command driveFieldOrientedAnglularVelocity = m_swerveSubsystem.driveCommand(
+    Command driveFieldOrientedAnglularVelocity = m_swerveSubsystem.driveCommand(
         () -> MathUtil.applyDeadband(-driverXbox.getLeftY() * OperatorConstants.TRANSLATION_Y_CONSTANT, OperatorConstants.LEFT_Y_DEADBAND),
         () -> MathUtil.applyDeadband(-driverXbox.getLeftX() * OperatorConstants.TRANSLATION_X_CONSTANT, OperatorConstants.LEFT_X_DEADBAND),
         () -> -driverXbox.getRightX() * OperatorConstants.ROTATION_CONSTANT);
 
     Command driveFieldOrientedDirectAngleSim = m_swerveSubsystem.simDriveCommand(
-        () -> MathUtil.applyDeadband(driverXbox.getRightY() , OperatorConstants.LEFT_Y_DEADBAND),
-        () -> MathUtil.applyDeadband(driverXbox.getRightX() , OperatorConstants.LEFT_X_DEADBAND),
-        () -> driverXbox.getRawAxis(0));
+        () -> MathUtil.applyDeadband(driverXbox.getLeftY(), OperatorConstants.LEFT_Y_DEADBAND),
+        () -> MathUtil.applyDeadband(driverXbox.getLeftX(), OperatorConstants.LEFT_X_DEADBAND),
+        () -> driverXbox.getRawAxis(2));
 
 
     m_swerveSubsystem.setDefaultCommand(!RobotBase.isSimulation() ? driveFieldOrientedAnglularVelocity : driveFieldOrientedDirectAngleSim);
@@ -178,66 +155,29 @@ public class RobotContainer
   {
 
     // Xbox Controller Configs
-      driverXbox.a().onTrue(
-        Commands.runOnce(m_swerveSubsystem::zeroGyro)
+    driverXbox.a().onTrue(
+      Commands.runOnce(m_swerveSubsystem::zeroGyro)
+      );
+    
+    driverXbox.leftTrigger().whileTrue(
+      m_indexerInCmd
       );
 
-      driverXbox.leftTrigger().whileTrue(
-        m_indexerInCmd
+    driverXbox.leftTrigger().whileTrue(
+      m_intakeInCmd
+      );
+    
+    driverXbox.rightTrigger().whileTrue(
+      m_tagAlignmentCmd
       );
 
-      driverXbox.rightBumper().whileTrue(
-        m_shooterShuttle
+    driverXbox.b().whileTrue(
+      m_indexerOverrideCmd
       );
-
-      driverXbox.leftTrigger().whileTrue(
-        m_intakeInCmd
-      );
-
-      driverXbox.rightTrigger().whileTrue(
-        m_tagAlignmentCmd
-      );
-
-      driverXbox.b().whileTrue(
-        m_indexerOverrideCmd
-      );
-
-      driverXbox.leftBumper().whileTrue(
+    driverXbox.leftBumper().whileTrue(
       m_intakeOutCmd
+
       );
-
-  // Joystick Button Configs
-
-    // rotJoystick.button(11).onTrue(
-    //    Commands.runOnce(m_swerveSubsystem::zeroGyro)
-    //   );
-
-    // driveJoystick.button(1).whileTrue(
-    //   m_indexerInCmd
-    //   );
-
-    // driveJoystick.button(1).whileTrue(
-    //   m_intakeInCmd
-    //   );
-
-    // rotJoystick.button(1).whileTrue(
-    //   m_tagAlignmentCmd
-    //   );
-
-
-    // rotJoystick.button(3).whileTrue(
-    //   m_indexerOverrideCmd
-    //   );
-
-    // driveJoystick.button(3).whileTrue(
-    //   m_intakeOutCmd
-    //   );
-
-    // rotJoystick.button(4).whileTrue(
-    //     m_shooterShuttle
-    //   );
-
-
 
 
       // Button Box Configs
@@ -245,13 +185,14 @@ public class RobotContainer
       Commands.runOnce(m_armSubsystem :: armUp)).onFalse(Commands.runOnce(m_armSubsystem::armoff)
     );
 
-    ButtonBox.button(1).whileTrue(
-      m_armDownCmd
+    ButtonBox.button(1).onTrue(
+      Commands.runOnce(m_armSubsystem :: armDown)).onFalse(Commands.runOnce(m_armSubsystem::armoff)
     );
 
     ButtonBox.button(6).onTrue(
       Commands.runOnce(m_armSubsystem :: shooterSetpoint)
     );
+
 
     ButtonBox.button(4).onTrue(
       Commands.runOnce(m_armSubsystem :: intakeSetpoint)
@@ -275,10 +216,6 @@ public class RobotContainer
 
     ButtonBox.button(9).whileTrue(
       m_climberDownOverrideCmd
-    );
-
-    ButtonBox.leftTrigger().whileTrue(
-      Commands.runOnce(m_armSubsystem :: climberSetpoint)
     );
     
     

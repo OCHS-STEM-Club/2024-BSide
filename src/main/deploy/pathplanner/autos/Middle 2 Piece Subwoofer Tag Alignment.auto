@@ -2,89 +2,15 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.76,
-      "y": 6.44
+      "x": 1.15,
+      "y": 5.55
     },
-    "rotation": 60.0
+    "rotation": 0
   },
   "command": {
     "type": "sequential",
     "data": {
       "commands": [
-        {
-          "type": "parallel",
-          "data": {
-            "commands": [
-              {
-                "type": "named",
-                "data": {
-                  "name": "Arm to Shooter Subwoofer"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "Shooter On"
-                }
-              }
-            ]
-          }
-        },
-        {
-          "type": "wait",
-          "data": {
-            "waitTime": 1.5
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "Indexer in Override"
-          }
-        },
-        {
-          "type": "wait",
-          "data": {
-            "waitTime": 0.5
-          }
-        },
-        {
-          "type": "parallel",
-          "data": {
-            "commands": [
-              {
-                "type": "named",
-                "data": {
-                  "name": "Arm to Intake"
-                }
-              },
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "3 Piece Amp Side_2nd Piece"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "Intake in"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "Indexer in"
-                }
-              }
-            ]
-          }
-        },
-        {
-          "type": "wait",
-          "data": {
-            "waitTime": 0.5
-          }
-        },
         {
           "type": "named",
           "data": {
@@ -92,9 +18,15 @@
           }
         },
         {
+          "type": "named",
+          "data": {
+            "name": "Shooter On"
+          }
+        },
+        {
           "type": "wait",
           "data": {
-            "waitTime": 0.5
+            "waitTime": 2.0
           }
         },
         {
@@ -106,7 +38,7 @@
         {
           "type": "wait",
           "data": {
-            "waitTime": 0.5
+            "waitTime": 1.0
           }
         },
         {
@@ -118,7 +50,7 @@
         {
           "type": "wait",
           "data": {
-            "waitTime": 0.5
+            "waitTime": 1.0
           }
         },
         {
@@ -128,7 +60,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "3 Piece Amp Side_3rd Piece"
+                  "pathName": "2 Piece Middle_2nd Piece_Tag Alignment"
                 }
               },
               {
@@ -153,6 +85,25 @@
           }
         },
         {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "April Tag Alignment"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 2.5
+          }
+        },
+        {
           "type": "named",
           "data": {
             "name": "Indexer in Override"
@@ -161,7 +112,7 @@
         {
           "type": "wait",
           "data": {
-            "waitTime": 0.5
+            "waitTime": 1.0
           }
         },
         {
@@ -185,6 +136,6 @@
       ]
     }
   },
-  "folder": "Amp Side Autos",
+  "folder": "Tag Alignment Autos",
   "choreoAuto": false
 }

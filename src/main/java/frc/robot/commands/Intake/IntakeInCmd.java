@@ -30,13 +30,11 @@ public class IntakeInCmd extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if (m_armSubsystem.getArmEncoderPosition() <= 10 && m_indexerSubsystem.beamBreakSensor() == true) {
+    if (m_armSubsystem.getArmEncoderPosition() <= 5 && m_indexerSubsystem.beamBreakSensor() == true) {
      m_intakeSubsystem.intakeIn();
-     LimelightHelpers.setLEDMode_ForceBlink(("limelight-bside"));
 
-   } else if (m_indexerSubsystem.beamBreakSensor() == false)
+   } else 
         m_intakeSubsystem.intakeOff();
-        LimelightHelpers.setLEDMode_ForceOff("limelight-bside");
 
     
   }
@@ -45,18 +43,14 @@ public class IntakeInCmd extends Command {
   @Override
   public void end(boolean interrupted) {
     m_intakeSubsystem.intakeOff();
-    LimelightHelpers.setLEDMode_ForceOff("limelight-bside");
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
     if(m_indexerSubsystem.beamBreakSensor() == true) {
-      // LimelightHelpers.setLEDMode_ForceBlink("limelight-bside");
       return false;
-   }
-   else 
-  //  LimelightHelpers.setLEDMode_ForceOff("limelight-bside");
-    return true;
+     }
+     else return true;
   }
 }

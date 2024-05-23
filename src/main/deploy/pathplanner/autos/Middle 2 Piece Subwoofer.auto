@@ -89,15 +89,15 @@
           "data": {
             "commands": [
               {
-                "type": "path",
-                "data": {
-                  "pathName": "2 Piece Middle_2nd Piece Back"
-                }
-              },
-              {
                 "type": "named",
                 "data": {
                   "name": "Arm to Shooter Subwoofer"
+                }
+              },
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "2 Piece Middle_2nd Piece Back"
                 }
               }
             ]

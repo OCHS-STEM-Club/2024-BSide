@@ -11,7 +11,6 @@ import com.ctre.phoenix6.controls.VelocityVoltage;
 import com.ctre.phoenix6.hardware.TalonFX;
 import com.ctre.phoenix6.signals.NeutralModeValue;
 
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.ShooterConstants;
@@ -62,19 +61,14 @@ public class ShooterSubsystem extends SubsystemBase {
   public void periodic() {
     // This method will be called once per scheduler run
     m_velocity.Slot = 0;
-    SmartDashboard.putNumber("Shooter Motor Left Speed", shooterMotorLeft.get());
-    SmartDashboard.putNumber("Shooter Motor Right Speed", shooterMotorRight.get());
+    // Logger.recordOutput("Left Shooter Velocity", shooterMotorLeft.getVelocity().getValueAsDouble());
+    // Logger.recordOutput("Right Shooter Velocity", shooterMotorRight.getVelocity().getValueAsDouble());
 
   }
 
   public void shooterSpeed(double speed) {
     shooterMotorLeft.set(speed);
     shooterMotorRight.set(speed);
-  }
-
-    public void shooterSpeedShuttle() {
-    shooterMotorLeft.set(ShooterConstants.kShooterSpeedShuttle);
-    shooterMotorRight.set(ShooterConstants.kShooterSpeedShuttle);
   }
 
   public void shooterOn() {
