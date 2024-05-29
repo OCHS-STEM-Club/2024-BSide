@@ -94,14 +94,20 @@
                 "data": {
                   "pathName": "3 Piece Middle_2nd Piece Back"
                 }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "Arm to Shooter Subwoofer"
-                }
               }
             ]
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "April Tag Alignment"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 0.5
           }
         },
         {

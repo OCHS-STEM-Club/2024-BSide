@@ -3,41 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 9.0,
-        "y": 7.45
+        "x": 0.67,
+        "y": 4.63
       },
       "prevControl": null,
       "nextControl": {
-        "x": 7.5244345952315275,
-        "y": 7.731060077098757
+        "x": 1.2630606778721267,
+        "y": 3.602788773954237
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 2.91,
-        "y": 7.57
+        "x": 2.9418259121824937,
+        "y": 1.346746202764874
       },
       "prevControl": {
-        "x": 3.9099999999999957,
-        "y": 7.57
-      },
-      "nextControl": {
-        "x": 1.28202522761135,
-        "y": 7.57
-      },
-      "isLocked": false,
-      "linkedName": null
-    },
-    {
-      "anchor": {
-        "x": 0.7284778050297884,
-        "y": 6.440960100179829
-      },
-      "prevControl": {
-        "x": 1.0680920648574521,
-        "y": 7.424670370025476
+        "x": 1.384284651593553,
+        "y": 1.3584570393106552
       },
       "nextControl": null,
       "isLocked": false,
@@ -46,7 +30,7 @@
   ],
   "rotationTargets": [
     {
-      "waypointRelativePos": 1.0,
+      "waypointRelativePos": 1,
       "rotationDegrees": 0,
       "rotateFast": false
     }
@@ -61,13 +45,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 60.0,
+    "rotation": 0,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "Amp Side Midfield 2 Piece",
+  "folder": null,
   "previewStartingState": {
-    "rotation": 0,
+    "rotation": -60.0,
     "velocity": 0
   },
   "useDefaultConstraints": true

@@ -86,9 +86,28 @@
           }
         },
         {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "Arm to Shooter Subwoofer"
+                }
+              },
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "2.5 Piece Amp Side_2nd Piece Back"
+                }
+              }
+            ]
+          }
+        },
+        {
           "type": "named",
           "data": {
-            "name": "Arm to Shooter Subwoofer"
+            "name": "April Tag Alignment"
           }
         },
         {
@@ -110,21 +129,15 @@
           }
         },
         {
-          "type": "named",
-          "data": {
-            "name": "Arm to Intake"
-          }
-        },
-        {
-          "type": "wait",
-          "data": {
-            "waitTime": 0.5
-          }
-        },
-        {
           "type": "parallel",
           "data": {
             "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "Arm to Intake"
+                }
+              },
               {
                 "type": "path",
                 "data": {
