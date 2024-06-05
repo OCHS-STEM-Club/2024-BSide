@@ -2,18 +2,16 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-package frc.robot.commands;
+package frc.robot.commands.Arm;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.ArmSubsystem;
 
 public class ArmDownCmd extends Command {
-
-  ArmSubsystem m_armSubsystem;
   /** Creates a new ArmDownCmd. */
+  private ArmSubsystem m_armSubsystem;
   public ArmDownCmd(ArmSubsystem armSubsystem) {
     // Use addRequirements() here to declare subsystem dependencies.
-
     m_armSubsystem = armSubsystem;
   }
 
@@ -24,8 +22,10 @@ public class ArmDownCmd extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if (m_armSubsystem.getMagLimitSwitch() == false ) {
+    if (m_armSubsystem.getMagLimitSwitch() == false) {
       m_armSubsystem.armDown();
+    }else if (m_armSubsystem.getMagLimitSwitch() == true) {
+      m_armSubsystem.armoff();
     }
   }
 
