@@ -11,9 +11,9 @@
         "vgap": 16.0,
         "titleType": 0,
         "tiles": {
-          "4,0": {
+          "5,0": {
             "size": [
-              5,
+              4,
               2
             ],
             "content": {
@@ -26,7 +26,7 @@
           },
           "0,0": {
             "size": [
-              4,
+              2,
               2
             ],
             "content": {
@@ -41,7 +41,7 @@
           },
           "0,2": {
             "size": [
-              4,
+              5,
               1
             ],
             "content": {
@@ -50,6 +50,27 @@
               "_title": "/SmartDashboard/Arm absolute encoder",
               "_glyph": 148,
               "_showGlyph": false
+            }
+          },
+          "2,0": {
+            "size": [
+              3,
+              2
+            ],
+            "content": {
+              "_type": "Camera Stream",
+              "_source0": "camera_server://limelight-bside",
+              "_title": "limelight-bside",
+              "_glyph": 148,
+              "_showGlyph": false,
+              "Crosshair/Show crosshair": false,
+              "Crosshair/Crosshair color": "#FFFFFFFF",
+              "Controls/Show controls": false,
+              "Controls/Rotation": "NONE",
+              "compression": -1.0,
+              "fps": -1,
+              "imageWidth": -1,
+              "imageHeight": -1
             }
           }
         }
