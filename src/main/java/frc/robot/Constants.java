@@ -42,14 +42,14 @@ public final class Constants
   public static class OperatorConstants
   {
 
-    // Joystick Deadband
+    // Joystick Deadbandn
     public static final double LEFT_X_DEADBAND  = 0.1;
     public static final double LEFT_Y_DEADBAND  = 0.1;
     public static final double RIGHT_X_DEADBAND = 0.2;
 
-    public static final double ROTATION_CONSTANT = 2;
+    public static final double ROTATION_CONSTANT = 1.15;
     public static final double TRANSLATION_X_CONSTANT = 1;
-    public static final double TRANSLATION_Y_CONSTANT = Constants.OperatorConstants.TRANSLATION_X_CONSTANT;
+    public static final double TRANSLATION_Y_CONSTANT = 1;
 
     public static final int kOperatorControllerPort = 2;
     public static final int kDriveJoystickPort = 0;
