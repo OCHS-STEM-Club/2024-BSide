@@ -47,9 +47,9 @@ public final class Constants
     public static final double LEFT_Y_DEADBAND  = 0.1;
     public static final double RIGHT_X_DEADBAND = 0.2;
 
-    public static final double ROTATION_CONSTANT = 1.15;
-    public static final double TRANSLATION_X_CONSTANT = 1;
-    public static final double TRANSLATION_Y_CONSTANT = 1;
+    public static final double ROTATION_CONSTANT = 0.75;
+    public static final double TRANSLATION_X_CONSTANT = 0.75;
+    public static final double TRANSLATION_Y_CONSTANT = Constants.OperatorConstants.TRANSLATION_X_CONSTANT;
 
     public static final int kOperatorControllerPort = 2;
     public static final int kDriveJoystickPort = 0;
@@ -60,8 +60,8 @@ public final class Constants
   public static class ShooterConstants {
     public static final int kShooterMotorLeftID = 21;
     public static final int kShooterMotorRightID = 22;
-    public static final double kShooterSpeed = 0.4;
-    public static final double kShooterSpeedShuttle = 0.45;
+    public static final double kShooterSpeed = 0.25;//0.45
+    public static final double kShooterSpeedShuttle = 0.5;
   }
 
   public static class IndexerConstants {
