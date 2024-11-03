@@ -48,6 +48,7 @@ public final class Constants
     public static final double RIGHT_X_DEADBAND = 0.2;
 
     public static final double ROTATION_CONSTANT = 1;
+    
     public static final double TRANSLATION_X_CONSTANT = 1;
     public static final double TRANSLATION_Y_CONSTANT = Constants.OperatorConstants.TRANSLATION_X_CONSTANT;
 
