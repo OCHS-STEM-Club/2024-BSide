@@ -17,11 +17,15 @@ import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
 import edu.wpi.first.math.trajectory.Trajectory;
 import edu.wpi.first.math.util.Units;
+import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.networktables.NetworkTableEntry;
+import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine.Config;
+import frc.robot.LimelightHelpers;
 import frc.robot.Constants.AutonConstants;
 import java.io.File;
 import java.util.function.DoubleSupplier;
@@ -49,6 +53,18 @@ public class SwerveSubsystem extends SubsystemBase
    */
   public        double      maximumSpeed = Units.feetToMeters(14.5);
 
+  public double ty;
+  public double limelightMountAngleDegrees;
+  public double limelightLensHeightInches;
+  public double goalHeightInches;
+  public double angleToGoalDegrees;
+  public double angleToGoalRadians;
+  public double distanceFromLimelightToTagInches;
+  public double angleToSpeaker;
+
+
+  
+
   /**
    * Initialize {@link SwerveDrive} with the directory provided.
    *
@@ -56,6 +72,20 @@ public class SwerveSubsystem extends SubsystemBase
    */
   public SwerveSubsystem(File directory)
   {
+    
+     
+  
+
+
+     limelightMountAngleDegrees = 35.0; 
+     limelightLensHeightInches = 21.0; 
+     goalHeightInches = 58.0;
+
+    
+    
+
+
+
 
     // Configure the Telemetry before creating the SwerveDrive to avoid unnecessary objects being created.
     SwerveDriveTelemetry.verbosity = TelemetryVerbosity.HIGH;
@@ -68,7 +98,7 @@ public class SwerveSubsystem extends SubsystemBase
     {
       throw new RuntimeException(e);
     }
-    swerveDrive.setHeadingCorrection(false); // Heading correction should only be used while controlling the robot via angle.
+    swerveDrive.setHeadingCorrection(true); // Heading correction should only be used while controlling the robot via angle.
     swerveDrive.setCosineCompensator(!SwerveDriveTelemetry.isSimulation); // Disables cosine compensation for simulations since it causes discrepancies not seen in real life.
     setupPathPlanner();
   }
@@ -310,6 +340,15 @@ public class SwerveSubsystem extends SubsystemBase
   @Override
   public void periodic()
   {
+    // System.out.println(YValue);
+    ty = LimelightHelpers.getTY("limelight-bside");
+
+     angleToGoalDegrees = limelightMountAngleDegrees + ty;
+     angleToGoalRadians = angleToGoalDegrees * (3.14159 / 180.0);
+     distanceFromLimelightToTagInches = (goalHeightInches - limelightLensHeightInches) / Math.tan(angleToGoalRadians);
+     angleToSpeaker = Math.toDegrees(Math.atan(70.5/distanceFromLimelightToTagInches));
+
+     System.out.println(angleToSpeaker);
   }
 
   @Override
@@ -504,5 +543,9 @@ public class SwerveSubsystem extends SubsystemBase
   public void addFakeVisionReading()
   {
     swerveDrive.addVisionMeasurement(new Pose2d(3, 3, Rotation2d.fromDegrees(65)), Timer.getFPGATimestamp());
+  }
+
+  public double getAngleToSpeaker(){
+    return angleToSpeaker;
   }
 }

@@ -4,6 +4,7 @@
 
 package frc.robot;
 
+import edu.wpi.first.apriltag.AprilTag;
 import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.wpilibj.Filesystem;
 import edu.wpi.first.wpilibj.RobotBase;
@@ -21,6 +22,7 @@ import frc.robot.commands.Climber.ClimberDownCmd;
 import frc.robot.commands.Climber.ClimberDownOverrideCmd;
 import frc.robot.commands.Climber.ClimberUpCmd;
 import frc.robot.commands.Climber.ClimberUpOverrideCmd;
+import frc.robot.commands.ArmTag;
 import frc.robot.commands.AprilTag.TagAlignmentAutoCmd;
 import frc.robot.commands.Indexer.IndexerInCmd;
 import frc.robot.commands.Indexer.IndexerOverrideCmd;
@@ -76,6 +78,7 @@ public class RobotContainer
 
   //Shooter Cmd
   ShooterShuttleCmd m_shooterShuttle = new ShooterShuttleCmd(m_shooterSubsystem);
+  ArmTag m_armTag = new ArmTag(m_swerveSubsystem, m_armSubsystem);
   
   // Controllers
   final CommandXboxController driverXbox = new CommandXboxController(Constants.OperatorConstants.kDriveJoystickPort);
@@ -186,12 +189,20 @@ public class RobotContainer
       );
 
       driverXbox.rightTrigger().whileTrue(
-        m_tagAlignmentCmd
+        m_armTag
       );
+
+      // driverXbox.rightTrigger().whileTrue(
+        
+      // );
 
       driverXbox.b().whileTrue(
         m_indexerOverrideCmd
       );
+
+      // driverXbox.leftBumper().onTrue((Commands.runOnce(m_armSubsystem :: ampSetpoint).withTimeout(0.5))
+      //                               .andThen(m_intakeOutCmd).withTimeout(1.5)
+      //                               .andThen(m_intakeSetpointCmd).withTimeout(1.5));
 
       driverXbox.leftBumper().whileTrue(
       m_intakeOutCmd
@@ -227,6 +238,8 @@ public class RobotContainer
     // rotJoystick.button(4).whileTrue(
     //     m_shooterShuttle
     //   );
+
+
 
 
 

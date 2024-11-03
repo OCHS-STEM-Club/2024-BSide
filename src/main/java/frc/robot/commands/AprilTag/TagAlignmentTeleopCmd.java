@@ -49,6 +49,7 @@ public class TagAlignmentTeleopCmd extends Command {
   public void execute() {
     double targetAngularVelocity = LimelightHelpers.getTX("limelight-bside");
     double YValue = LimelightHelpers.getTY("limelight-bside");
+    System.out.println(YValue);
 
 
     // m_swerveSubsystem.drive(new Translation2d(MathUtil.applyDeadband(-driveJoystick.getRawAxis(1)*2,
