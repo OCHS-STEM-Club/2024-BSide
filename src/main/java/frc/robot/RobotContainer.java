@@ -173,104 +173,91 @@ public class RobotContainer
         Commands.runOnce(m_swerveSubsystem::zeroGyro)
       );
 
-      driverXbox.leftTrigger().whileTrue(
-        m_indexerInCmd
-      );
-
-      driverXbox.rightBumper().whileTrue(
-        m_shooterShuttle
-      );
-
+      // Left Trigger 
       driverXbox.leftTrigger().whileTrue(
         m_intakeInCmd
       );
 
+      driverXbox.leftTrigger().whileTrue(
+        m_indexerInCmd
+      );
+
+      driverXbox.leftTrigger().onTrue(
+        m_intakeSetpointCmd
+      );
+
+
+      // Right Trigger
       driverXbox.rightTrigger().whileTrue(
         m_tagAlignmentCmd
       );
 
-      driverXbox.b().whileTrue(
-        m_indexerOverrideCmd
+      driverXbox.rightTrigger().onTrue(
+        Commands.runOnce(m_armSubsystem :: shooterSetpoint)
       );
-
+      
+      
+      // Left Bumper
       driverXbox.leftBumper().whileTrue(
       m_intakeOutCmd
       );
 
-  // Joystick Button Configs
+      // Right Bumper (Might Need Changes)
+      driverXbox.rightBumper().whileTrue(
+        Commands.runOnce(m_armSubsystem :: ampSetpoint).andThen(m_intakeOutCmd).withTimeout(2)
+      );
 
-    // rotJoystick.button(11).onTrue(
-    //    Commands.runOnce(m_swerveSubsystem::zeroGyro)
-    //   );
+      // B Button
+      driverXbox.b().whileTrue(
+        m_indexerOverrideCmd
+      );
 
-    // driveJoystick.button(1).whileTrue(
-    //   m_indexerInCmd
-    //   );
-
-    // driveJoystick.button(1).whileTrue(
-    //   m_intakeInCmd
-    //   );
-
-    // rotJoystick.button(1).whileTrue(
-    //   m_tagAlignmentCmd
-    //   );
-
-
-    // rotJoystick.button(3).whileTrue(
-    //   m_indexerOverrideCmd
-    //   );
-
-    // driveJoystick.button(3).whileTrue(
-    //   m_intakeOutCmd
-    //   );
-
-    // rotJoystick.button(4).whileTrue(
-    //     m_shooterShuttle
-    //   );
-
+      
 
 
 
       // Button Box Configs
-    ButtonBox.button(3).onTrue(
-      Commands.runOnce(m_armSubsystem :: armUp)).onFalse(Commands.runOnce(m_armSubsystem::armoff)
-    );
 
-    ButtonBox.button(1).whileTrue(
-      m_armDownCmd
-    );
 
-    ButtonBox.button(6).onTrue(
-      Commands.runOnce(m_armSubsystem :: shooterSetpoint)
-    );
+    // ButtonBox.button(3).onTrue(
+    //   Commands.runOnce(m_armSubsystem :: armUp)).onFalse(Commands.runOnce(m_armSubsystem::armoff)
+    // );
 
-    ButtonBox.button(4).onTrue(
-      m_intakeSetpointCmd
-    );
+    // ButtonBox.button(1).whileTrue(
+    //   m_armDownCmd
+    // );
 
-    ButtonBox.button(5).onTrue(
-      Commands.runOnce(m_armSubsystem :: ampSetpoint)
-    );
+    // ButtonBox.button(6).onTrue(
+    //   Commands.runOnce(m_armSubsystem :: shooterSetpoint)
+    // );
 
-    ButtonBox.pov(0).whileTrue(
-      m_climberUpCommand
-    );
+    // ButtonBox.button(4).onTrue(
+    //   m_intakeSetpointCmd
+    // );
 
-    ButtonBox.pov(180).whileTrue(
-      m_climberDownCommand
-    );
+    // ButtonBox.button(5).onTrue(
+    //   Commands.runOnce(m_armSubsystem :: ampSetpoint)
+    // );
 
-    ButtonBox.button(10).whileTrue(
-      m_climberUpOverrideCmd
-    );
+    // ButtonBox.pov(0).whileTrue(
+    //   m_climberUpCommand
+    // );
 
-    ButtonBox.button(9).whileTrue(
-      m_climberDownOverrideCmd
-    );
+    // ButtonBox.pov(180).whileTrue(
+    //   m_climberDownCommand
+    // );
 
-    ButtonBox.leftTrigger().whileTrue(
-      Commands.runOnce(m_armSubsystem :: climberSetpoint)
-    );
+    // ButtonBox.button(10).whileTrue(
+    //   m_climberUpOverrideCmd
+    // );
+
+    // ButtonBox.button(9).whileTrue(
+    //   m_climberDownOverrideCmd
+    // );
+
+    // ButtonBox.leftTrigger().whileTrue(
+    //   Commands.runOnce(m_armSubsystem :: climberSetpoint)
+    // );
     
     
     // driverXbox.b().whileTrue(
