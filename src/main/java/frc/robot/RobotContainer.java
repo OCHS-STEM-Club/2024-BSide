@@ -203,8 +203,10 @@ public class RobotContainer
       );
 
       // Right Bumper (Might Need Changes)
-      driverXbox.rightBumper().whileTrue(
+      driverXbox.rightBumper().onTrue(
         Commands.runOnce(m_armSubsystem :: ampSetpoint)
+      ).onFalse(
+        m_intakeOutCmd
       );
 
       // B Button
