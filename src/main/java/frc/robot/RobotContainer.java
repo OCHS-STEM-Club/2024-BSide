@@ -28,7 +28,7 @@ import frc.robot.commands.Drive.AbsoluteDriveAdv;
 import frc.robot.commands.Drive.AbsoluteFieldDrive;
 import frc.robot.commands.Indexer.IndexerInCmd;
 import frc.robot.commands.Indexer.IndexerOverrideCmd;
-import frc.robot.commands.Intake.IntakeInCmd;
+// import frc.robot.commands.Intake.IntakeInCmd;
 import frc.robot.commands.Intake.IntakeOutCmd;
 import frc.robot.commands.Shooter.ShooterShuttleCmd;
 import frc.robot.subsystems.ArmSubsystem;
@@ -70,7 +70,7 @@ public class RobotContainer
   private final ClimberSubsystem m_climberSubsystem = new ClimberSubsystem();
 
   // Intake Cmd
-  IntakeInCmd m_intakeInCmd = new IntakeInCmd(m_intakeSubsystem, m_armSubsystem, m_indexerSubsystem);
+  // IntakeInCmd m_intakeInCmd = new IntakeInCmd(m_intakeSubsystem, m_armSubsystem, m_indexerSubsystem);
   IntakeOutCmd m_intakeOutCmd = new IntakeOutCmd(m_intakeSubsystem, m_indexerSubsystem);
   // Indexer Cmd
   IndexerOverrideCmd m_indexerOverrideCmd = new IndexerOverrideCmd(m_indexerSubsystem);
@@ -103,7 +103,7 @@ public class RobotContainer
 
     // Intake
     NamedCommands.registerCommand("Intake & Indexer Out", new IntakeOutCmd(m_intakeSubsystem, m_indexerSubsystem));
-    NamedCommands.registerCommand("Intake in", new IntakeInCmd(m_intakeSubsystem, m_armSubsystem, m_indexerSubsystem));
+    // NamedCommands.registerCommand("Intake in", new IntakeInCmd(m_intakeSubsystem, m_armSubsystem, m_indexerSubsystem));
     NamedCommands.registerCommand("Intake Off", Commands.runOnce(m_intakeSubsystem::intakeOff));
     
     // Shooter
@@ -182,7 +182,7 @@ public class RobotContainer
       );
 
       driverXbox.leftTrigger().whileTrue(
-        m_indexerInCmd
+        Commands.runOnce(m_indexerSubsystem :: indexerIn)
       );
 
       driverXbox.rightBumper().whileTrue(
@@ -190,7 +190,15 @@ public class RobotContainer
       );
 
       driverXbox.leftTrigger().whileTrue(
-        m_intakeInCmd
+        Commands.runOnce(m_intakeSubsystem :: intakeIn)
+      );
+
+      driverXbox.leftTrigger().whileFalse(
+        Commands.runOnce(m_intakeSubsystem :: intakeOff)
+      );
+
+      driverXbox.leftTrigger().whileFalse(
+        Commands.runOnce(m_indexerSubsystem :: indexerOff)
       );
 
       driverXbox.rightTrigger().whileTrue(

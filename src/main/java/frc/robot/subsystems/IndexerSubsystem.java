@@ -20,12 +20,12 @@ public class IndexerSubsystem extends SubsystemBase {
   /** Creates a new IntakeSubsystem. */
 
         private CANSparkMax indexerMotor;
-        private DigitalInput indexerSensor;
+        // private DigitalInput indexerSensor;
         private double speed;
 
     public IndexerSubsystem() {
         indexerMotor = new CANSparkMax(Constants.IndexerConstants.kIndexerMotorID, MotorType.kBrushless);
-        indexerSensor = new DigitalInput(Constants.IndexerConstants.kBeamBreakPort);
+        // indexerSensor = new DigitalInput(Constants.IndexerConstants.kBeamBreakPort);
         indexerMotor.setInverted(false);
         indexerMotor.setIdleMode(IdleMode.kBrake);
 
@@ -44,7 +44,7 @@ public class IndexerSubsystem extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
-    SmartDashboard.putBoolean(("Beam Brake"), beamBreakSensor());
+    // SmartDashboard.putBoolean(("Beam Brake"), beamBreakSensor());
     SmartDashboard.putNumber("Indexer Motor Speed", indexerMotor.get());
     SmartDashboard.putNumber("Indexer Motor current", indexerMotor.getOutputCurrent());
   }
@@ -65,8 +65,8 @@ public class IndexerSubsystem extends SubsystemBase {
     indexerMotor.set(Constants.IndexerConstants.kIndexerOutSpeed);
   }
 
-  public boolean beamBreakSensor() {
-    return indexerSensor.get();
-  }
+  // public boolean beamBreakSensor() {
+  //   return indexerSensor.get();
+  // }
 }
 
