@@ -11,83 +11,30 @@
         "vgap": 16.0,
         "titleType": 0,
         "tiles": {
-          "0,0": {
+          "3,1": {
             "size": [
-              2,
-              2
-            ],
-            "content": {
-              "_type": "Field",
-              "_title": "Field",
-              "_glyph": 148,
-              "_showGlyph": false,
-              "Game/Game": "k2024Crescendo",
-              "Visuals/Robot Icon Size": 50.0,
-              "Visuals/Show Outside Circles": false
-            }
-          },
-          "0,2": {
-            "size": [
-              4,
+              3,
               1
             ],
             "content": {
               "_type": "ComboBox Chooser",
-              "_source0": "network_table:///SmartDashboard/Autos",
-              "_title": "/SmartDashboard/Autos",
+              "_source0": "network_table:///SmartDashboard/Auto Chooser",
+              "_title": "SmartDashboard/Auto Chooser",
               "_glyph": 148,
               "_showGlyph": false
             }
           },
-          "2,0": {
+          "3,0": {
             "size": [
-              2,
-              2
-            ],
-            "content": {
-              "_type": "Boolean Box",
-              "_source0": "network_table:///AdvantageKit/RealOutputs/Beam Break",
-              "_title": "/AdvantageKit/RealOutputs/Beam Break",
-              "_glyph": 148,
-              "_showGlyph": false,
-              "Colors/Color when true": "#FF0000FF",
-              "Colors/Color when false": "#00FF00FF"
-            }
-          },
-          "3,3": {
-            "size": [
-              2,
+              3,
               1
             ],
             "content": {
-              "_type": "Boolean Box",
-              "_source0": "network_table:///SmartDashboard/Beam Brake",
-              "_title": "/SmartDashboard/Beam Brake",
+              "_type": "ComboBox Chooser",
+              "_source0": "network_table:///SmartDashboard/Speed Limit",
+              "_title": "SmartDashboard/Speed Limit",
               "_glyph": 148,
-              "_showGlyph": false,
-              "Colors/Color when true": "#7CFC00FF",
-              "Colors/Color when false": "#8B0000FF"
-            }
-          },
-          "4,0": {
-            "size": [
-              3,
-              2
-            ],
-            "content": {
-              "_type": "Camera Stream",
-              "_source0": "camera_server://limelight-bside",
-              "_title": "limelight-bside",
-              "_glyph": 148,
-              "_showGlyph": false,
-              "Crosshair/Show crosshair": true,
-              "Crosshair/Crosshair color": "#FFFFFFFF",
-              "Controls/Show controls": true,
-              "Controls/Rotation": "NONE",
-              "compression": -1.0,
-              "fps": -1,
-              "imageWidth": -1,
-              "imageHeight": -1
+              "_showGlyph": false
             }
           }
         }

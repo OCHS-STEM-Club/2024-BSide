@@ -19,7 +19,7 @@ public class IntakeSubsystem extends SubsystemBase {
 
         private CANSparkMax intakeMotor;
         private DigitalInput intakeSensor;
-        private double speed;
+        // private double speed;
 
     public IntakeSubsystem() {
         intakeMotor = new CANSparkMax(Constants.IntakeConstants.kIntakeMotorID, MotorType.kBrushless);

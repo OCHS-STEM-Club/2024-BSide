@@ -4,13 +4,9 @@
 
 package frc.robot.commands.Indexer;
 
-import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.Constants;
-import frc.robot.LimelightHelpers;
 import frc.robot.subsystems.ArmSubsystem;
 import frc.robot.subsystems.IndexerSubsystem;
-import frc.robot.subsystems.IntakeSubsystem;
 
 public class IndexerInCmd extends Command {
   /** Creates a new IntakeCommand. */

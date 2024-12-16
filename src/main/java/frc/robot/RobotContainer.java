@@ -5,16 +5,12 @@
 package frc.robot;
 
 import edu.wpi.first.math.MathUtil;
-import edu.wpi.first.math.geometry.Pose2d;
-import edu.wpi.first.math.geometry.Rotation2d;
-import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.wpilibj.Filesystem;
 import edu.wpi.first.wpilibj.RobotBase;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
-import edu.wpi.first.wpilibj2.command.button.CommandJoystick;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.Constants.OperatorConstants;
@@ -24,8 +20,6 @@ import frc.robot.commands.Climber.ClimberDownOverrideCmd;
 import frc.robot.commands.Climber.ClimberUpCmd;
 import frc.robot.commands.Climber.ClimberUpOverrideCmd;
 import frc.robot.commands.AprilTag.TagAlignmentAutoCmd;
-import frc.robot.commands.Drive.AbsoluteDriveAdv;
-import frc.robot.commands.Drive.AbsoluteFieldDrive;
 import frc.robot.commands.Indexer.IndexerInCmd;
 import frc.robot.commands.Indexer.IndexerOverrideCmd;
 // import frc.robot.commands.Intake.IntakeInCmd;
@@ -35,7 +29,6 @@ import frc.robot.subsystems.ArmSubsystem;
 import frc.robot.subsystems.ClimberSubsystem;
 import frc.robot.subsystems.IndexerSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
-import frc.robot.subsystems.LimelightSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.SwerveSubsystem;
 
@@ -54,8 +47,8 @@ import com.pathplanner.lib.auto.NamedCommands;
  */
 public class RobotContainer
 {
-  private double rot;
-  private double rot_limelight;
+  // private double rot;
+  // private double rot_limelight;
 
   // Auto Builder Sendable Chooser 
   private final SendableChooser<Command> autoChooser;
@@ -66,7 +59,7 @@ public class RobotContainer
   private final IntakeSubsystem m_intakeSubsystem = new IntakeSubsystem();
   private final IndexerSubsystem m_indexerSubsystem = new IndexerSubsystem();
   private final ShooterSubsystem m_shooterSubsystem = new ShooterSubsystem();
-  private final LimelightSubsystem m_limelightSubsystem = new LimelightSubsystem();
+  // private final LimelightSubsystem m_limelightSubsystem = new LimelightSubsystem();
   private final ClimberSubsystem m_climberSubsystem = new ClimberSubsystem();
 
   // Intake Cmd
