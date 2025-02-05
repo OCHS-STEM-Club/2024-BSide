@@ -20,12 +20,12 @@ import frc.robot.commands.Climber.ClimberDownOverrideCmd;
 import frc.robot.commands.Climber.ClimberUpCmd;
 import frc.robot.commands.Climber.ClimberUpOverrideCmd;
 import frc.robot.commands.AprilTag.TagAlignmentAutoCmd;
-import frc.robot.commands.Indexer.IndexerInCmd;
+// import frc.robot.commands.Indexer.IndexerInCmd;
 import frc.robot.commands.Indexer.IndexerOverrideCmd;
 // import frc.robot.commands.Intake.IntakeInCmd;
 import frc.robot.commands.Intake.IntakeOutCmd;
 import frc.robot.commands.Shooter.ShooterShuttleCmd;
-import frc.robot.subsystems.ArmSubsystem;
+// import frc.robot.subsystems.ArmSubsystem;
 import frc.robot.subsystems.ClimberSubsystem;
 import frc.robot.subsystems.IndexerSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
@@ -55,7 +55,7 @@ public class RobotContainer
 
   // All Subsystems
   private final SwerveSubsystem m_swerveSubsystem = new SwerveSubsystem(new File(Filesystem.getDeployDirectory(), "swerve/neo"));
-  private final ArmSubsystem m_armSubsystem = new ArmSubsystem();
+  // private final ArmSubsystem m_armSubsystem = new ArmSubsystem();
   private final IntakeSubsystem m_intakeSubsystem = new IntakeSubsystem();
   private final IndexerSubsystem m_indexerSubsystem = new IndexerSubsystem();
   private final ShooterSubsystem m_shooterSubsystem = new ShooterSubsystem();
@@ -67,8 +67,8 @@ public class RobotContainer
   IntakeOutCmd m_intakeOutCmd = new IntakeOutCmd(m_intakeSubsystem, m_indexerSubsystem);
   // Indexer Cmd
   IndexerOverrideCmd m_indexerOverrideCmd = new IndexerOverrideCmd(m_indexerSubsystem);
-  IndexerInCmd m_indexerInCmd = new IndexerInCmd(m_indexerSubsystem, m_armSubsystem);
-  TagAlignmentTeleopCmd m_tagAlignmentCmd = new TagAlignmentTeleopCmd(m_swerveSubsystem, m_shooterSubsystem, m_armSubsystem);
+  // IndexerInCmd m_indexerInCmd = new IndexerInCmd(m_indexerSubsystem, m_armSubsystem);
+  // TagAlignmentTeleopCmd m_tagAlignmentCmd = new TagAlignmentTeleopCmd(m_swerveSubsystem, m_shooterSubsystem, m_armSubsystem);
   // Climber Cmd
   ClimberDownOverrideCmd m_climberDownOverrideCmd = new ClimberDownOverrideCmd(m_climberSubsystem);
   ClimberUpOverrideCmd m_climberUpOverrideCmd = new ClimberUpOverrideCmd(m_climberSubsystem);
@@ -91,7 +91,7 @@ public class RobotContainer
   {
     // Indexer
     NamedCommands.registerCommand("Indexer in Override", Commands.runOnce(m_indexerSubsystem::indexerIn));
-    NamedCommands.registerCommand("Indexer in", new IndexerInCmd(m_indexerSubsystem, m_armSubsystem));
+    // NamedCommands.registerCommand("Indexer in", new IndexerInCmd(m_indexerSubsystem, m_armSubsystem));
     NamedCommands.registerCommand("Indexer Off", Commands.runOnce(m_indexerSubsystem::indexerOff));
 
     // Intake
@@ -105,23 +105,23 @@ public class RobotContainer
     NamedCommands.registerCommand("Shooter Off", Commands.runOnce(m_shooterSubsystem::shooterOff));
 
     // Arm Normal Setpoints
-    NamedCommands.registerCommand("Arm to Intake", Commands.runOnce(m_armSubsystem::intakeSetpoint));
-    NamedCommands.registerCommand("Arm to Amp", Commands.runOnce(m_armSubsystem::ampSetpoint));
-    NamedCommands.registerCommand("Arm to Shooter Subwoofer", Commands.runOnce(m_armSubsystem::shooterSetpoint));
+    // NamedCommands.registerCommand("Arm to Intake", Commands.runOnce(m_armSubsystem::intakeSetpoint));
+    // NamedCommands.registerCommand("Arm to Amp", Commands.runOnce(m_armSubsystem::ampSetpoint));
+    // NamedCommands.registerCommand("Arm to Shooter Subwoofer", Commands.runOnce(m_armSubsystem::shooterSetpoint));
 
-    NamedCommands.registerCommand("Arm to Shooter 1st Piece Middle", Commands.runOnce(() -> m_armSubsystem.setReference(27)));
-    NamedCommands.registerCommand("Arm to Shooter Shuttle", Commands.runOnce(() -> m_armSubsystem.setReference(27)));
-    NamedCommands.registerCommand("Arm to Shooter 4 Piece", Commands.runOnce(() -> m_armSubsystem.setReference(31)));
-    NamedCommands.registerCommand("Arm to Shooter 4 Piece 1st", Commands.runOnce(() -> m_armSubsystem.setReference(37)));
-    NamedCommands.registerCommand("Arm to Shooter Sides", Commands.runOnce(() -> m_armSubsystem.setReference(7)));
+    // NamedCommands.registerCommand("Arm to Shooter 1st Piece Middle", Commands.runOnce(() -> m_armSubsystem.setReference(27)));
+    // NamedCommands.registerCommand("Arm to Shooter Shuttle", Commands.runOnce(() -> m_armSubsystem.setReference(27)));
+    // NamedCommands.registerCommand("Arm to Shooter 4 Piece", Commands.runOnce(() -> m_armSubsystem.setReference(31)));
+    // NamedCommands.registerCommand("Arm to Shooter 4 Piece 1st", Commands.runOnce(() -> m_armSubsystem.setReference(37)));
+    // NamedCommands.registerCommand("Arm to Shooter Sides", Commands.runOnce(() -> m_armSubsystem.setReference(7)));
 
     // In Use
-    NamedCommands.registerCommand("Arm to Shooter Midfield 2 piece", Commands.runOnce(() -> m_armSubsystem.setReference(25)));
+    // NamedCommands.registerCommand("Arm to Shooter Midfield 2 piece", Commands.runOnce(() -> m_armSubsystem.setReference(25)));
     // 
-    NamedCommands.registerCommand("Arm to Shooter Side Source 1st Piece", Commands.runOnce(() -> m_armSubsystem.setReference(26.5)));
-    NamedCommands.registerCommand("Arm to Shooter Side Source 1st Piece Test", Commands.runOnce(() -> m_armSubsystem.setReference(23)));
+    // NamedCommands.registerCommand("Arm to Shooter Side Source 1st Piece", Commands.runOnce(() -> m_armSubsystem.setReference(26.5)));
+    // NamedCommands.registerCommand("Arm to Shooter Side Source 1st Piece Test", Commands.runOnce(() -> m_armSubsystem.setReference(23)));
     // Tag Alignment
-    NamedCommands.registerCommand("April Tag Alignment", new TagAlignmentAutoCmd(m_swerveSubsystem, m_shooterSubsystem, m_armSubsystem).withTimeout(0.75));
+    // NamedCommands.registerCommand("April Tag Alignment", new TagAlignmentAutoCmd(m_swerveSubsystem, m_shooterSubsystem, m_armSubsystem).withTimeout(0.75));
 
 
 
@@ -194,9 +194,9 @@ public class RobotContainer
         Commands.runOnce(m_indexerSubsystem :: indexerOff)
       );
 
-      driverXbox.rightTrigger().whileTrue(
-        m_tagAlignmentCmd
-      );
+      // driverXbox.rightTrigger().whileTrue(
+      //   m_tagAlignmentCmd
+      // );
 
       driverXbox.b().whileTrue(
         m_indexerOverrideCmd
@@ -241,25 +241,25 @@ public class RobotContainer
 
 
       // Button Box Configs
-    ButtonBox.button(3).onTrue(
-      Commands.runOnce(m_armSubsystem :: armUp)).onFalse(Commands.runOnce(m_armSubsystem::armoff)
-    );
+    // ButtonBox.button(3).onTrue(
+    //   Commands.runOnce(m_armSubsystem :: armUp)).onFalse(Commands.runOnce(m_armSubsystem::armoff)
+    // );
 
-    ButtonBox.button(1).onTrue(
-      Commands.runOnce(m_armSubsystem :: armDown)).onFalse(Commands.runOnce(m_armSubsystem::armoff)
-    );
+    // ButtonBox.button(1).onTrue(
+    //   Commands.runOnce(m_armSubsystem :: armDown)).onFalse(Commands.runOnce(m_armSubsystem::armoff)
+    // );
 
-    ButtonBox.button(6).onTrue(
-      Commands.runOnce(m_armSubsystem :: shooterSetpoint)
-    );
+    // ButtonBox.button(6).onTrue(
+    //   Commands.runOnce(m_armSubsystem :: shooterSetpoint)
+    // );
 
-    ButtonBox.button(4).onTrue(
-      Commands.runOnce(m_armSubsystem :: intakeSetpoint)
-    );
+    // ButtonBox.button(4).onTrue(
+    //   Commands.runOnce(m_armSubsystem :: intakeSetpoint)
+    // );
 
-    ButtonBox.button(5).onTrue(
-      Commands.runOnce(m_armSubsystem :: ampSetpoint)
-    );
+    // ButtonBox.button(5).onTrue(
+    //   Commands.runOnce(m_armSubsystem :: ampSetpoint)
+    // );
 
     ButtonBox.pov(0).whileTrue(
       m_climberUpCommand
@@ -277,9 +277,9 @@ public class RobotContainer
       m_climberDownOverrideCmd
     );
 
-    ButtonBox.leftTrigger().whileTrue(
-      Commands.runOnce(m_armSubsystem :: climberSetpoint)
-    );
+    // ButtonBox.leftTrigger().whileTrue(
+    //   Commands.runOnce(m_armSubsystem :: climberSetpoint)
+    // );
     
     
     // driverXbox.b().whileTrue(

@@ -78,28 +78,28 @@ public final class Constants
     public static final int kBeamBreakPort = 0;
   }
 
-  public static class ArmConstants {
-    public static final int kArmMotorLeftID = 19;
-    public static final int kArmMotorRightID = 20;
-    public static final double kEncoderZeroOffset = 164;
+  // public static class ArmConstants {
+  //   public static final int kArmMotorLeftID = 19;
+  //   public static final int kArmMotorRightID = 20;
+  //   public static final double kEncoderZeroOffset = 164;
 
-    public static final double kP = 0.04;
-    public static final double kI = 0;
-    public static final double kD = 0.01;
-    public static final int kIz = 0;
-    public static final int kFF = 0;
-    public static final int kMaxOutput = 1;
-    public static final double kMinOutput = -1;
+  //   public static final double kP = 0.04;
+  //   public static final double kI = 0;
+  //   public static final double kD = 0.01;
+  //   public static final int kIz = 0;
+  //   public static final int kFF = 0;
+  //   public static final int kMaxOutput = 1;
+  //   public static final double kMinOutput = -1;
 
-    public static final double kIntakeSetpoint = 4.85;
-    public static final double kShooterSetpoint = 30;
-    public static final double kAmpSetpoint = 59.3;
-    public static final double kClimberSetpoint = 101;
+  //   public static final double kIntakeSetpoint = 4.85;
+  //   public static final double kShooterSetpoint = 30;
+  //   public static final double kAmpSetpoint = 59.3;
+  //   public static final double kClimberSetpoint = 101;
 
-    public static final double kArmUpSpeed = 0.2;
-    public static final double kArmDownSpeed = -0.2;
+  //   public static final double kArmUpSpeed = 0.2;
+  //   public static final double kArmDownSpeed = -0.2;
 
-  }
+  // }
 
   public static class ClimberConstants {
     public static final int kClimberMotorID = 23;
